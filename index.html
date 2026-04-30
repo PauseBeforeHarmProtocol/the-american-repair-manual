@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE AMERICAN REPAIR MANUAL — CAPA Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0D1B2A;--navy2:#1B2838;--navy3:#263545;
+  --blue:#1565C0;--blue2:#0D47A1;--blue3:#0A3680;--blueL:#E3F2FD;--blueL2:#BBDEFB;
+  --red:#C62828;--red2:#B71C1C;--redL:#FFEBEE;
+  --gold:#F9A825;--gold2:#F57F17;--goldL:#FFF8E1;--goldGlow:rgba(249,168,37,.25);
+  --green:#2E7D32;--greenL:#E8F5E9;
+  --purple:#6A1B9A;--purpleL:#F3E5F5;
+  --bg:#FAFBFE;--bg2:#F0F3F9;--bg3:#E4E9F2;
+  --txt:#0D1B2A;--txt2:#3A4466;--dim:#5A6080;
+  --border:#C4CEDF;--border2:#A8B6CC;
+  --grad-main:linear-gradient(90deg,var(--blue),var(--gold),var(--red));
+  --grad-navy:linear-gradient(135deg,var(--navy),var(--navy2));
+  --grad-blue:linear-gradient(135deg,var(--blue3),var(--blue));
+  --grad-gold:linear-gradient(135deg,var(--gold2),var(--gold));
+  --grad-red:linear-gradient(135deg,var(--red2),var(--red));
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;min-height:100vh;line-height:1.7;}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+/* HEADER */
+.mh{position:sticky;top:0;z-index:90;background:linear-gradient(180deg,rgba(255,255,255,.99),rgba(250,251,254,.97));border-bottom:4px solid var(--navy);border-image:var(--grad-main) 1;backdrop-filter:blur(14px);box-shadow:0 4px 30px rgba(10,54,128,.12);}
+.mh-top{display:flex;align-items:center;padding:.8rem 1.6rem;gap:1rem;flex-wrap:wrap;}
+.logo{display:flex;flex-direction:column;}
+.logo h1{font-weight:900;font-size:1.5rem;letter-spacing:.04em;color:var(--navy);line-height:1;}
+.logo .sub{font-family:'JetBrains Mono',monospace;font-size:.5rem;text-transform:uppercase;letter-spacing:.15em;color:var(--dim);margin-top:.25rem;}
+.logo .sub em{color:var(--gold);font-style:normal;font-weight:700;}
+.mh-r{display:flex;align-items:center;gap:.5rem;margin-left:auto;}
+.ctr{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;}
+
+/* NAV */
+.navstrip{background:linear-gradient(180deg,var(--bg2),var(--bg3));border-bottom:2px solid var(--border);display:flex;align-items:center;padding:0 .5rem;gap:0;overflow-x:auto;scrollbar-width:none;}
+.navstrip::-webkit-scrollbar{display:none;}
+.navtab{font-family:'JetBrains Mono',monospace;font-size:.55rem;text-transform:uppercase;letter-spacing:.06em;padding:.55rem .9rem;border-bottom:3px solid transparent;background:transparent;color:var(--dim);cursor:pointer;white-space:nowrap;transition:all .2s;font-weight:600;border-top:none;border-left:none;border-right:none;}
+.navtab:hover{color:var(--blue);background:var(--blueL);border-bottom-color:var(--blueL2);}
+.navtab.on{color:#fff;background:var(--grad-navy);border-bottom-color:var(--gold);font-weight:700;border-radius:6px 6px 0 0;}
+
+/* PANELS */
+.panel{display:none;padding:2rem;max-width:1100px;margin:0 auto;}
+.panel.show{display:block;}
+
+/* HOME HERO */
+.home-hero{text-align:center;padding:3rem 0 2rem;position:relative;}
+.home-hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:80%;max-width:600px;height:4px;background:var(--grad-main);border-radius:2px;}
+.home-hero h2{font-size:2.4rem;font-weight:900;color:var(--navy);margin-bottom:.6rem;letter-spacing:-.02em;}
+.home-hero h2 span{background:var(--grad-gold);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.home-hero .tagline{font-size:1.05rem;color:var(--txt2);max-width:780px;margin:0 auto;line-height:1.8;font-weight:400;}
+.home-stats{display:flex;justify-content:center;gap:2.5rem;margin:2rem 0;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat .num{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:900;background:var(--grad-blue);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat .lbl{font-family:'JetBrains Mono',monospace;font-size:.5rem;text-transform:uppercase;letter-spacing:.14em;color:var(--dim);margin-top:.3rem;font-weight:600;}
+
+/* CONTENT SECTIONS */
+.section-header{font-size:1.4rem;font-weight:900;color:var(--navy);margin:2rem 0 .8rem;padding-bottom:.5rem;border-bottom:3px solid transparent;border-image:var(--grad-main) 1;}
+.section-header.first{margin-top:0;}
+.sub-header{font-size:1.1rem;font-weight:700;color:var(--blue3);margin:1.8rem 0 .6rem;}
+.content-block{margin-bottom:1.5rem;font-size:.92rem;color:var(--txt2);line-height:1.8;}
+.content-block p{margin-bottom:1rem;}
+.content-block p:last-child{margin-bottom:0;}
+
+/* CALLOUT BOXES */
+.callout{border-radius:12px;padding:1.2rem 1.4rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.callout.navy{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border:none;}
+.callout.navy .callout-title{color:var(--gold);}
+.callout.blue{background:var(--blueL);border:2px solid var(--blue);color:var(--txt);}
+.callout.blue .callout-title{color:var(--blue3);}
+.callout.gold{background:var(--goldL);border:2px solid var(--gold);color:var(--txt);}
+.callout.gold .callout-title{color:var(--gold2);}
+.callout.red{background:var(--redL);border:2px solid var(--red);color:var(--txt);}
+.callout.red .callout-title{color:var(--red2);}
+.callout.green{background:var(--greenL);border:2px solid var(--green);color:var(--txt);}
+.callout.green .callout-title{color:var(--green);}
+.callout-title{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:.5rem;}
+.callout-text{font-size:.88rem;line-height:1.7;}
+
+/* POLICY CARDS */
+.policy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin:1.5rem 0;}
+.policy-card{background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.policy-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(21,101,192,.12);transform:translateY(-2px);}
+.policy-card .pc-icon{font-size:1.5rem;margin-bottom:.5rem;}
+.policy-card .pc-title{font-weight:800;font-size:.88rem;color:var(--txt);margin-bottom:.4rem;}
+.policy-card .pc-text{font-size:.82rem;color:var(--txt2);line-height:1.6;}
+.policy-card.navy-accent{border-left:5px solid var(--navy);}
+.policy-card.blue-accent{border-left:5px solid var(--blue);}
+.policy-card.gold-accent{border-left:5px solid var(--gold);}
+.policy-card.red-accent{border-left:5px solid var(--red);}
+.policy-card.green-accent{border-left:5px solid var(--green);}
+.policy-card.purple-accent{border-left:5px solid var(--purple);}
+
+/* SLOGAN STRIP */
+.slogan-strip{background:var(--grad-navy);color:#fff;padding:1.5rem;border-radius:12px;margin:2rem 0;text-align:center;}
+.slogan-strip .slogan{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;line-height:2.2;color:var(--gold);font-weight:600;}
+
+/* HARM SCALE */
+.harm-scale{display:grid;grid-template-columns:1fr;gap:.6rem;margin:1.5rem 0;}
+.harm-level{display:flex;align-items:flex-start;gap:.8rem;padding:.8rem 1rem;border-radius:8px;font-size:.85rem;}
+.harm-level .hl-badge{font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .6rem;border-radius:4px;white-space:nowrap;min-width:70px;text-align:center;}
+.hl-green{background:var(--greenL);}.hl-green .hl-badge{background:var(--green);color:#fff;}
+.hl-yellow{background:#FFFDE7;border:1px solid #F9A825;}.hl-yellow .hl-badge{background:#F9A825;color:#000;}
+.hl-orange{background:#FFF3E0;border:1px solid #EF6C00;}.hl-orange .hl-badge{background:#EF6C00;color:#fff;}
+.hl-red{background:var(--redL);border:1px solid var(--red);}.hl-red .hl-badge{background:var(--red);color:#fff;}
+.hl-black{background:#263238;color:#fff;}.hl-black .hl-badge{background:#000;color:#fff;}
+
+/* SCORECARD */
+.scorecard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem;margin:1.5rem 0;}
+.score-item{background:var(--bg);border:2px solid var(--border);border-radius:10px;padding:1rem 1.2rem;}
+.score-item .si-title{font-weight:700;font-size:.85rem;color:var(--txt);margin-bottom:.3rem;}
+.score-item .si-desc{font-size:.78rem;color:var(--dim);line-height:1.5;}
+
+/* QUOTE BLOCKS */
+.phil-quote{border-left:4px solid var(--gold);padding:1rem 1.4rem;margin:1.5rem 0;background:rgba(249,168,37,.04);border-radius:0 8px 8px 0;font-style:italic;font-size:.95rem;color:var(--txt);line-height:1.8;}
+.phil-quote .attr{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-top:.5rem;font-weight:600;}
+
+/* POLICY LIST */
+.policy-list{margin:1rem 0 1.5rem;padding-left:0;list-style:none;}
+.policy-list li{position:relative;padding:.4rem 0 .4rem 1.6rem;font-size:.88rem;color:var(--txt2);line-height:1.6;}
+.policy-list li::before{content:'→';position:absolute;left:0;color:var(--gold);font-weight:700;}
+
+/* FOOTER */
+.site-footer{background:var(--grad-navy);color:rgba(255,255,255,.7);padding:2rem;text-align:center;margin-top:2rem;}
+.site-footer a{color:var(--gold);text-decoration:none;}
+.site-footer a:hover{text-decoration:underline;}
+.footer-links{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;margin-top:.5rem;}
+.footer-brand{font-family:'JetBrains Mono',monospace;font-size:.5rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:.3rem;font-weight:700;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .mh-top{padding:.5rem .8rem;}
+  .logo h1{font-size:1.1rem;}
+  .panel{padding:1rem;}
+  .home-hero h2{font-size:1.6rem;}
+  .home-stats{gap:1rem;}
+  .stat .num{font-size:1.3rem;}
+  .policy-grid{grid-template-columns:1fr;}
+  .scorecard-grid{grid-template-columns:1fr;}
+  .section-header{font-size:1.1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="mh">
+  <div class="mh-top">
+    <div class="logo">
+      <h1>THE AMERICAN REPAIR MANUAL</h1>
+      <div class="sub">CAPA Edition &middot; <em>Pause Before Harm Protocol</em></div>
+    </div>
+    <div class="mh-r">
+      <span class="ctr">Civic QA for a Failing Republic</span>
+    </div>
+  </div>
+  <nav class="navstrip">
+    <button class="navtab on" onclick="showPanel('home')">Home</button>
+    <button class="navtab" onclick="showPanel('about')">About Phil</button>
+    <button class="navtab" onclick="showPanel('diagnosis')">The Diagnosis</button>
+    <button class="navtab" onclick="showPanel('democracy')">Democracy Repair</button>
+    <button class="navtab" onclick="showPanel('truth')">Truth Repair</button>
+    <button class="navtab" onclick="showPanel('economic')">Economic Repair</button>
+    <button class="navtab" onclick="showPanel('rights')">Rights &amp; Justice</button>
+    <button class="navtab" onclick="showPanel('pbhp')">PBHP Method</button>
+    <button class="navtab" onclick="showPanel('candidate')">Candidate Test</button>
+    <button class="navtab" onclick="showPanel('action')">Action</button>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- HOME PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel show" id="panel-home">
+  <div class="home-hero">
+    <h2>America Needs a <span>CAPA</span></h2>
+    <p class="tagline">The United States is not failing because ordinary people are lazy, stupid, or irresponsible. It is failing because the systems that govern our lives have been captured by money, protected from accountability, and allowed to harm people without correction.</p>
+  </div>
+
+  <div class="home-stats">
+    <div class="stat"><div class="num">9</div><div class="lbl">Repair Packages</div></div>
+    <div class="stat"><div class="num">30+</div><div class="lbl">Policy Areas</div></div>
+    <div class="stat"><div class="num">1</div><div class="lbl">Method: PBHP</div></div>
+  </div>
+
+  <div class="content-block">
+    <p>In regulated industries, repeated failure triggers investigation. You document the deviation. You identify root cause. You implement corrective action. You verify effectiveness. You prevent recurrence.</p>
+    <p>America does the opposite. It lets politicians lie, corporations extract, media manipulate, landlords gouge, employers exploit, judges operate without accountability, and billionaires buy the rules. Then it blames working people for not surviving the damage.</p>
+    <p>This project is a repair manual for that machine.</p>
+  </div>
+
+  <div class="slogan-strip">
+    <div class="slogan">No disposable people · No purchased government · No public power without accountability</div>
+    <div class="slogan">No mass persuasion without receipts · No policy without harm review · No democracy where money counts more than people</div>
+  </div>
+
+  <h3 class="section-header">The Agenda Stack</h3>
+  <div class="content-block">
+    <p>This is not just a manifesto. It is a civic accountability engine built from four interlocking tools:</p>
+  </div>
+
+  <div class="policy-grid">
+    <div class="policy-card navy-accent">
+      <div class="pc-title">THE RECORD</div>
+      <div class="pc-text">Documents what happened. Sourced, timestamped, three-layer accountability entries tracking political power. Currently live for <a href="https://pausebeforeharmprotocol.github.io/the-record/" target="_blank">Trump (4,466 entries)</a> and <a href="https://pausebeforeharmprotocol.github.io/the-record-in6/" target="_blank">IN-6/Shreve (111 entries)</a>.</div>
+    </div>
+    <div class="policy-card blue-accent">
+      <div class="pc-title">THE REPAIR MANUAL</div>
+      <div class="pc-text">Explains what to build. A complete corrective and preventive action plan for American democracy &mdash; policy by policy, system by system, with public metrics and harm review.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">THE CANDIDATE TEST</div>
+      <div class="pc-text">Measures alignment. A public scorecard that grades politicians against the repair agenda. Not vibes. Not party labels. Receipts.</div>
+    </div>
+    <div class="policy-card red-accent">
+      <div class="pc-title">PBHP: THE HARM TEST</div>
+      <div class="pc-text">Prevents the next harm. Before public power acts, ask: Who benefits? Who pays? Who is harmed first? Is it reversible? What is the safer path? How will we measure success?</div>
+    </div>
+  </div>
+
+  <div class="callout navy">
+    <div class="callout-title">The Governing Thesis</div>
+    <div class="callout-text">The country is not broken because ordinary people failed. It is broken because power has been allowed to detach itself from accountability. Money detached from labor. Politics detached from voters. Media detached from truth. Corporations detached from communities. Healthcare detached from care. Housing detached from shelter. Government detached from the public it is supposed to serve. The repair is not one policy. It is a system-wide power shift.</div>
+  </div>
+
+  <div class="phil-quote">
+    "We run hospitals, tissue banks, aviation systems, food production, drug manufacturing, laboratories, and medical supply chains with quality systems because we understand that when stakes are high, vibes are not enough. But somehow the systems that decide healthcare, housing, wages, elections, war, policing, education, media, and public truth are allowed to run on corruption, propaganda, donor influence, and 'trust us bro.' That is insane."
+    <div class="attr">&mdash; Phillip Linstrum</div>
+  </div>
+
+  <div class="content-block" style="text-align:center;margin-top:2rem;">
+    <p>Also from PBHP: <a href="https://pausebeforeharmprotocol.github.io/the-record/" target="_blank" style="color:var(--blue);font-weight:600;">THE RECORD &mdash; Trump Administration</a> &middot; <a href="https://pausebeforeharmprotocol.github.io/the-record-in6/" target="_blank" style="color:var(--blue);font-weight:600;">THE RECORD &mdash; IN-6</a></p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- ABOUT PHIL PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-about">
+  <h3 class="section-header first">Who I Am and Why I&rsquo;m Building This</h3>
+
+  <div class="content-block">
+    <p>My name is Phillip Linstrum. I am not a career politician, and I am not pretending to be one.</p>
+
+    <p>I am a working-class father, a Quality Systems Manager, a former plasma worker, and someone who has spent years working inside regulated systems where harm prevention, documentation, training, audits, and corrective action actually matter.</p>
+
+    <p>That background shaped how I see politics.</p>
+
+    <p>When I look at America, I see a system producing repeated failures without real corrective action. I see root causes being ignored because powerful people benefit from the failure. I see public harm treated like an acceptable side effect of private profit. I see politicians making promises with no verification, media spreading claims with no accountability, and corporations creating damage they never have to repair.</p>
+
+    <p>In my world, that is not acceptable.</p>
+
+    <p>If a process can harm people, you pause. You investigate. You document. You correct. You prevent recurrence. You prove the fix worked.</p>
+
+    <p>That is what this project is about. This is civic QA for a failing republic.</p>
+  </div>
+
+  <h3 class="sub-header">Why I Am Qualified</h3>
+
+  <div class="content-block">
+    <p>I am qualified to speak on this not because I am above anyone else, but because I am exactly the kind of person the system keeps telling to shut up.</p>
+
+    <p>I work. I pay bills. I raise a family. I have watched healthcare, housing, groceries, utilities, childcare, debt, and basic survival become more expensive while politicians act like the economy is fine because the stock market is fine. I have watched people with real jobs and real responsibilities get squeezed from every direction and then blamed for not budgeting hard enough.</p>
+
+    <p>I have also spent my working life learning how systems fail. That matters.</p>
+
+    <p>A lot of politics is theater because most politicians are not trained to think in systems. They think in donors, slogans, polls, press releases, and re-election cycles. I think in process failure, root cause, risk, documentation, evidence, accountability, training gaps, leadership failure, and corrective action.</p>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">My Credentials Are Not Academic</div>
+    <div class="callout-text">
+      <p><strong>I am a father.</strong> That means policy is not abstract to me. I care what kind of world my kids inherit.</p>
+      <p><strong>I work in quality systems.</strong> That means I understand process failure, documentation, audits, corrective action, preventive action, training gaps, leadership failures, and verification.</p>
+      <p><strong>I worked in plasma for years.</strong> That means I have seen working people, regulated systems, healthcare-adjacent extraction, and the gap between corporate policy and human reality.</p>
+      <p><strong>I am not rich.</strong> That means grocery prices, rent, healthcare, utilities, cars, family stress, and time actually mean something to me.</p>
+      <p><strong>I have built The Record.</strong> That means I am not just yelling; I am documenting.</p>
+      <p><strong>I created PBHP.</strong> That means I have a method for harm review, not just vibes.</p>
+      <p><strong>I am not perfect.</strong> That means I need receipts, accountability, and correction too.</p>
+    </div>
+  </div>
+
+  <div class="phil-quote">
+    "I am not asking anyone to treat me as above accountability. The entire point is the opposite. If I say something false, correct me. If I make a bad argument, challenge it. If my policy idea has a harm pathway I missed, show me. A serious repair movement cannot be built around one man being right all the time. It has to be built around a method that makes everyone more accountable, including me."
+    <div class="attr">&mdash; Phillip Linstrum</div>
+  </div>
+
+  <h3 class="sub-header">Not a Politician. A Systems Thinker.</h3>
+
+  <div class="content-block">
+    <p>I do not believe America will be saved by polished politicians saying the right words while taking the wrong money.</p>
+
+    <p>We need normal people in government. People who know what rent feels like. People who know what groceries cost. People who know what it means to work under broken management. People who know what it means to raise kids in a country that makes survival harder than it needs to be.</p>
+
+    <p>We also need people who understand systems. Anger is not enough. Outrage is not enough. Memes are not enough. Policy lists are not enough. We need a method for turning public anger into public repair.</p>
+
+    <p>That is what I am trying to build.</p>
+  </div>
+
+  <h3 class="sub-header">Freedom Requires Material Security</h3>
+
+  <div class="content-block">
+    <p>The American right has spent decades reducing freedom to &ldquo;the government cannot tell me what to do,&rdquo; while corporations, landlords, bosses, banks, insurance companies, platforms, and monopolies gained more and more power over everyday life.</p>
+
+    <p>That is not freedom.</p>
+
+    <p>Freedom is not choosing which insurance company gets to deny your claim. Freedom is not choosing which landlord gets half your paycheck. Freedom is not choosing which gig app exploits you. Freedom is not choosing between groceries and medicine. Freedom is not working full time and still needing help to survive. Freedom is not being forced to stay in a bad job because your healthcare is tied to employment. Freedom is not watching billionaires buy the political system and then being told your vote matters just as much as their money.</p>
+
+    <p>Real freedom requires material security. Not luxury. Not guaranteed wealth. Not a perfect life. Basic security. Healthcare. Housing. Food. Education. Wages. Time. Safety. Rights. Voice. Accountability. Without those, &ldquo;freedom&rdquo; is just a word rich people use while they steal your life.</p>
+  </div>
+
+  <h3 class="sub-header">On Democratic Socialism</h3>
+
+  <div class="content-block">
+    <p>When I say democratic socialism, I do not mean some cartoon dictatorship Republicans made up to scare people who never read anything.</p>
+
+    <p>I mean democracy should apply to the economy too. I mean workers should have power where they work. I mean public goods should serve the public. I mean essential needs should not be held hostage by private profit. I mean billionaires should not be able to buy the government. I mean corporations should not have more rights than people. I mean government should be democratic, accountable, transparent, and used as a tool to protect people from concentrated private power.</p>
+
+    <p>Markets can exist. Businesses can exist. Small businesses should thrive. Innovation should happen. People should be able to build, create, invent, own, trade, and succeed. But nobody should be allowed to get so rich they can purchase democracy. No company should be allowed to become so powerful that communities are forced to obey it. No employer should be allowed to pay poverty wages while executives take obscene bonuses. No industry should be allowed to profit by denying healthcare, poisoning communities, crushing unions, or pricing people out of survival.</p>
+
+    <p>That is not &ldquo;anti-business.&rdquo; That is anti-feudalism.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- DIAGNOSIS PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-diagnosis">
+  <h3 class="section-header first">The Diagnosis: What Is Broken</h3>
+
+  <div class="content-block">
+    <p>America does not need a vibe shift. America needs a quality system.</p>
+
+    <p>The country is not failing because ordinary people made bad choices. It is failing because the entire machine has been pointed in the wrong direction for decades. It extracts from working people, protects the rich, punishes the poor, monetizes sickness, privatizes survival, and then lectures everyone about personal responsibility.</p>
+  </div>
+
+  <div class="callout red">
+    <div class="callout-title">Root Causes</div>
+    <div class="callout-text">Democratic capture. Economic extraction. Information poisoning. Accountability failure. Money in politics. Corporate concentration. Weak labor power. Propaganda. Regulatory capture. Judicial capture. Civic ignorance. Austerity ideology. And a complete lack of public accountability mechanisms.</div>
+  </div>
+
+  <h3 class="sub-header">What &ldquo;Grief Math&rdquo; Looks Like</h3>
+
+  <div class="content-block">
+    <p>This is what being working class in America feels like now.</p>
+
+    <p>You wake up and your landlord wants more money. You open your email and your insurance wants more money. You go to the grocery store and $73 buys you milk, tomatoes, ranch, crackers, and the emotional experience of getting mugged by a barcode scanner. You try to heat your house and somehow &ldquo;not freezing to death&rdquo; becomes a luxury subscription. You get paid, and before you even get to feel like you have money, the whole system is already standing there with its hand out.</p>
+
+    <p>Rent. Utilities. Groceries. Gas. Insurance. Medicine. Childcare. Car repairs. School stuff. Random fees. Late fees. Convenience fees. Processing fees. Go-fuck-yourself fees.</p>
+
+    <p>And then politicians get on TV and ask why Americans are so angry.</p>
+
+    <p>People are angry because they are doing everything they were told to do and still losing. They work. They pay taxes. They raise kids. They skip vacations. They delay dental work. They drive cars with mystery noises. They keep the heat at 60 degrees. They put groceries back at the register. They do grief math every single day.</p>
+
+    <p>&ldquo;If I pay this, can I afford that?&rdquo; &ldquo;If I buy this for my kid, what bill gets pushed?&rdquo; &ldquo;If I go to the doctor, what gets sacrificed?&rdquo; &ldquo;If rent goes up again, where the hell do we go?&rdquo;</p>
+
+    <p>That is not freedom. That is not prosperity. That is managed desperation.</p>
+  </div>
+
+  <h3 class="sub-header">The Scam</h3>
+
+  <div class="content-block">
+    <p>And the sickest part is how trained we are to blame each other for it. A working mom says milk is too expensive and half the internet turns into Dave Ramsey with brain damage. &ldquo;Buy beans.&rdquo; &ldquo;Clip coupons.&rdquo; &ldquo;Don&rsquo;t buy snacks.&rdquo; &ldquo;Don&rsquo;t have kids.&rdquo; &ldquo;Get a better job.&rdquo; &ldquo;Move somewhere cheaper.&rdquo; &ldquo;Work harder.&rdquo;</p>
+
+    <p>Shut up. Seriously, shut up. That is exactly what the people robbing us want. They want us fighting over ranch dressing so we don&rsquo;t ask why wages are garbage, rent is insane, healthcare is a scam, and billionaires are launching themselves into space with money extracted from workers who can&rsquo;t afford groceries. They want you staring at someone&rsquo;s cart instead of staring at the CEO. They want you mad at the poor person with Cheez-Its, not the corporation raising prices while buying back stock.</p>
+  </div>
+
+  <h3 class="sub-header">The Detachment Map</h3>
+
+  <div class="policy-grid">
+    <div class="policy-card red-accent"><div class="pc-title">Money Detached from Labor</div><div class="pc-text">Work no longer produces wealth for workers. Productivity rose; wages flatlined. Profits rise; workers get squeezed. The wealthiest extract value from labor without sharing it.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Politics Detached from Voters</div><div class="pc-text">Elected officials respond to donors, not constituents. Citizens United opened unlimited corporate election spending. Gerrymandering and voter suppression finish the job.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Media Detached from Truth</div><div class="pc-text">Billion-dollar propaganda machines masquerade as news. Algorithmic rage farming replaces journalism. Lies are profitable. Corrections are invisible.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Corporations Detached from Communities</div><div class="pc-text">Private equity strips towns. Monopolies kill competition. Essential services become extraction rackets. Worker deaths become productivity calculations.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Healthcare Detached from Care</div><div class="pc-text">Insurance companies profit by denying care. Medical debt is the leading cause of bankruptcy. People ration insulin, skip doctors, and start GoFundMes to survive.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Housing Detached from Shelter</div><div class="pc-text">Housing became a speculative casino. Corporate landlords and private equity bulk-buy homes. Rent eats half of working-class income. Homelessness is a policy choice.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Justice Detached from Equality</div><div class="pc-text">A poor person steals $500 and faces immediate consequences. A corporation steals $500 million in wages and gets a negotiated settlement.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Government Detached from the Public</div><div class="pc-text">Benefits require fighting a bureaucratic maze. Agencies are understaffed and underfunded. Public service became a networking internship for future lobbying careers.</div></div>
+  </div>
+
+  <h3 class="sub-header">America Is Not Expensive by Accident</h3>
+
+  <div class="content-block">
+    <p>It is expensive because every part of working-class life has been turned into someone else&rsquo;s profit center. Your rent goes up because your landlord can raise it. Your utilities go up because the energy company can squeeze you. Your groceries go up because corporations learned they can blame &ldquo;inflation&rdquo; while still posting massive profits. Your health insurance goes up because some middleman company gets to stand between you and medical care and charge you for the privilege of maybe being allowed to survive.</p>
+
+    <p>This is the richest country on Earth, and millions of people are living like one flat tire could end their entire life. That is a policy choice. Poverty wages are a policy choice. Medical debt is a policy choice. Homelessness is a policy choice. Child poverty is a policy choice. Unaffordable rent is a policy choice. Letting billionaires hoard more wealth than entire nations while working people ration groceries is a policy choice.</p>
+
+    <p>Funny how America only &ldquo;can&rsquo;t afford&rdquo; things that help normal people.</p>
+  </div>
+
+  <div class="callout navy">
+    <div class="callout-title">The Quality Systems Diagnosis</div>
+    <div class="callout-text">America is a system producing repeated failures without real corrective action. Root causes are ignored because powerful people benefit from the failure. Deviations recur because there are no consequences. Leadership ignores known risks. Documentation is missing. Auditors are captured. Repeat offenders face no escalation. The system punishes low-power people instantly while letting high-power people fail upward forever. That is not just immoral. It is bad quality. And if we would not accept that level of dysfunction in a regulated workplace, we sure as hell should not accept it in a country.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- DEMOCRACY REPAIR PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-democracy">
+  <h3 class="section-header first">Democracy Repair Package</h3>
+
+  <div class="content-block">
+    <p>You cannot fix America by starting with healthcare, wages, rent, groceries, or taxes alone. Those are the bleeding wounds. The disease is democratic capture. The machine is not failing because nobody has good ideas. The machine is failing because the people with good ideas cannot get power, and the people with power are financially rewarded for making sure those ideas die.</p>
+
+    <p>So the first priority is not &ldquo;pass my favorite policy.&rdquo; The first priority is to rebuild the political operating system so decent policy can survive contact with money, courts, lobbyists, gerrymandering, propaganda, and career politicians.</p>
+  </div>
+
+  <h3 class="sub-header">1. Overturn Citizens United</h3>
+  <div class="content-block">
+    <p>A constitutional amendment to overturn Citizens United and the broader money-is-speech doctrine. Citizens United held that the government could not ban independent political expenditures by corporations and unions, and the practical result was a system where wealthy actors can pour enormous money into politics through outside groups while pretending it is &ldquo;speech.&rdquo;</p>
+    <p>My amendment would say: political rights belong to natural persons, not corporations. Money is property used to amplify speech, not speech itself. Congress and the states have power to set reasonable limits on campaign spending, independent expenditures, electioneering communications, and dark-money operations.</p>
+    <p>That amendment matters because almost every other reform dies if the donor class can drown it. Healthcare reform dies. Labor reform dies. Housing reform dies. Climate reform dies. Anti-monopoly reform dies. You can pass a good bill one year and watch billionaires spend the next six years building a propaganda machine to repeal it. So you do not just pass better laws. You cut the wires connecting private wealth to public power.</p>
+  </div>
+
+  <h3 class="sub-header">2. Public Campaign Financing</h3>
+  <div class="content-block">
+    <p>Small-dollar matching. Democracy vouchers. Free basic media access for qualified candidates. Strict donation caps. Full real-time disclosure of every donor behind election ads. No more &ldquo;Americans for Apple Pie and Freedom&rdquo; funded by twelve billionaires and three corporations laundering propaganda through a fake patriot name. Every political ad should have a public money trail. Who paid for it? Who benefits? What organization created it? Who funds that organization? If we can track a $6 cheeseburger order in real time, we can track who is buying elections.</p>
+  </div>
+
+  <h3 class="sub-header">3. Congressional Term Limits</h3>
+  <div class="content-block">
+    <p>States cannot just impose extra qualifications on members of Congress by themselves because the Supreme Court said states cannot add congressional qualifications beyond the Constitution in U.S. Term Limits v. Thornton. So if we want real congressional term limits, we need a constitutional amendment.</p>
+    <p>My version: 12 years in the House and 12 years in the Senate, with no more than 24 total years in Congress. That gives people enough time to become competent without letting them turn public office into a lifetime throne. But term limits by themselves are dangerous if you do not also ban the revolving door, because otherwise you just make lobbyists even more powerful.</p>
+    <p>So term limits have to come with a professional public legislative service. Congress needs independent policy staff, public-interest lawyers, economic analysts, science advisors, labor experts, healthcare experts, and anti-corruption auditors who work for the public, not lobbyists.</p>
+  </div>
+
+  <h3 class="sub-header">4. Federal Recall Amendment</h3>
+  <div class="content-block">
+    <p>Right now, voters cannot recall members of Congress under the federal Constitution. Congress can expel its own members with a two-thirds vote, but that means the institution polices itself. Imagine if your workplace policy was, &ldquo;The only way to fire corrupt managers is if the other managers agree by supermajority.&rdquo; That is not accountability. That is a country club honor system.</p>
+    <p>I would propose a Federal Recall Amendment with guardrails so billionaires cannot just spam recalls every time a representative votes for healthcare or labor rights. No recall during the first six months of a House term or first year of a Senate term unless there is a formal finding of serious misconduct. For ordinary political recall, voters would need signatures from 25% of the voters who participated in the last election for that seat. For misconduct recall, the threshold drops to 15% if an independent federal ethics body finds probable cause. Once triggered, a recall election happens within 90 days. Public financing applies. Dark money banned.</p>
+  </div>
+
+  <h3 class="sub-header">5. Age Limits</h3>
+  <div class="content-block">
+    <p>No person may begin a new term as president, senator, representative, or Supreme Court justice after age 75. Not &ldquo;kick everyone out on their birthday.&rdquo; Just: you cannot start a new term after that point.</p>
+    <p>That is not because older people are worthless. That is because power calcifies. A government run by people who will not live with the long-term consequences of their decisions becomes structurally reckless. Climate policy, AI policy, debt, war, healthcare, labor, education, housing, infrastructure &mdash; these are future-shaping issues. The people governing the future should have some reasonable stake in living in it.</p>
+  </div>
+
+  <h3 class="sub-header">6. Supreme Court Repair</h3>
+  <div class="content-block">
+    <p>18-year active terms for Supreme Court justices. One justice appointed every two years. After active term, justices move to senior status. Binding ethics code. Mandatory gift, travel, and hospitality disclosure. Binding recusal rules. Public explanation for emergency/shadow docket decisions. No spouse or immediate-family conflicts hidden behind &ldquo;trust me.&rdquo;</p>
+  </div>
+
+  <h3 class="sub-header">7. Ban Congressional Stock Trading</h3>
+  <div class="content-block">
+    <p>No individual stocks. No sector ETFs. No options. No crypto trading while in office. Members of Congress and senior executive officials should use blind trusts or broad public index funds only. If you are writing laws, receiving classified briefings, shaping regulation, and moving markets with your votes, you do not get to day-trade the country. Same for spouses and dependent children.</p>
+  </div>
+
+  <h3 class="sub-header">8. Revolving Door Lockdown</h3>
+  <div class="content-block">
+    <p>Ten-year lobbying ban for former members of Congress. Five-year lobbying ban for senior congressional staff. Five-year ban for senior agency officials lobbying their former agency. Lifetime ban on lobbying for foreign governments after holding certain national security offices. All draft legislation submitted by outside groups must be disclosed. When a bill is basically written by industry, the public should know.</p>
+  </div>
+
+  <h3 class="sub-header">9. Independent Anti-Corruption Commission</h3>
+  <div class="content-block">
+    <p>An agency with subpoena power, public reporting duties, referral power to DOJ, civil enforcement authority, and protection from presidential interference. Congress should not get to bury its own ethics complaints. The Senate should not get to quietly police itself. Every federal officeholder should be under enforceable ethics rules with real consequences.</p>
+  </div>
+
+  <h3 class="sub-header">10. End Gerrymandering</h3>
+  <div class="content-block">
+    <p>In Rucho v. Common Cause, the Supreme Court held that partisan gerrymandering claims are political questions beyond the reach of federal courts. Fine. Then Congress has to stop it. Independent redistricting commissions nationwide. Transparent map criteria. Compactness. Communities of interest. No partisan data in map drawing except to test for fairness.</p>
+    <p>I would go further: the House should move toward multi-member districts with ranked-choice voting. That one reform could do more to break the two-party death grip than almost anything else, because it would let voters support candidates who actually represent them without feeling like they are &ldquo;throwing their vote away.&rdquo;</p>
+  </div>
+
+  <h3 class="sub-header">11. Voting Rights</h3>
+  <div class="content-block">
+    <p>Automatic voter registration. Same-day registration. Election Day as a federal holiday. Early voting. No-excuse mail voting. Restored voting rights after incarceration. Paper ballots. Risk-limiting audits. Strong protections against voter intimidation. Federal penalties for election officials who knowingly suppress lawful votes. You do not get to call yourself a democracy while making voting a scavenger hunt.</p>
+  </div>
+
+  <h3 class="sub-header">12. Executive Power Limits</h3>
+  <div class="content-block">
+    <p>Limit emergency declarations. Reform pardon power so presidents cannot use it to protect co-conspirators. Enforce subpoenas faster. Strengthen inspectors general. Protect whistleblowers. Make presidential conflicts of interest illegal in plain language. Require divestment or blind trusts. Fast-track judicial review when presidents defy Congress or courts. No kings means no kings.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TRUTH REPAIR PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-truth">
+  <h3 class="section-header first">Truth Repair Package</h3>
+
+  <div class="content-block">
+    <p>America cannot repair itself if the public cannot tell what is true. That does not mean government gets to control opinions. That does not mean criticism becomes illegal. That does not mean satire, disagreement, or honest mistakes should be punished.</p>
+    <p>But powerful people and institutions should face consequences for knowingly spreading material lies that cause public harm.</p>
+    <p>The higher the power, the higher the duty.</p>
+  </div>
+
+  <h3 class="sub-header">The Legal Reality</h3>
+  <div class="content-block">
+    <p>The First Amendment makes broad &ldquo;lying is illegal&rdquo; laws extremely difficult. In United States v. Alvarez, the Supreme Court struck down the Stolen Valor Act as applied to a man lying about receiving the Medal of Honor, treating that kind of false speech as protected unless it fits into recognized categories like fraud, defamation, perjury, etc. And public officials or public figures already face the very high &ldquo;actual malice&rdquo; standard in defamation cases under New York Times v. Sullivan.</p>
+    <p>So the move is not &ldquo;make all lies illegal.&rdquo; That is too broad, too unconstitutional, and too easy to abuse.</p>
+    <p>The move is: make material, provable, high-harm lying legally accountable in specific public-power contexts.</p>
+  </div>
+
+  <h3 class="sub-header">Public Information Integrity Commission</h3>
+  <div class="content-block">
+    <p>Not controlled by the president. Not controlled by one party. Not a cable-news referee. A genuinely independent constitutional agency with staggered terms, bipartisan and nonpartisan appointments, judicial review, public evidence files, appeal rights, and strict limits on what it can touch.</p>
+    <p>Its job would not be to ban speech. Its job would be to classify, document, correct, and penalize high-harm deception in regulated public contexts.</p>
+  </div>
+
+  <h3 class="sub-header">Enforcement Ladder</h3>
+  <div class="harm-scale">
+    <div class="harm-level hl-green"><span class="hl-badge">Level 1</span><span>False or misleading, low harm. Public notice only.</span></div>
+    <div class="harm-level hl-yellow"><span class="hl-badge">Level 2</span><span>False, material, and not corrected after notice. Required correction with equal or comparable reach.</span></div>
+    <div class="harm-level hl-orange"><span class="hl-badge">Level 3</span><span>Knowingly or recklessly false and harmful. Fines, mandatory disclosure, loss of public financing eligibility, or campaign penalties.</span></div>
+    <div class="harm-level hl-red"><span class="hl-badge">Level 4</span><span>Election sabotage, public safety deception, fabricated evidence, deepfake fraud, incitement-adjacent targeting, or repeated bad-faith deception. Civil penalties, criminal referral where existing law applies, and recall/ethics triggers for officials.</span></div>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-title">The Key Rule: Equal-Reach Correction</div>
+    <div class="callout-text">If a PAC spends $10 million telling people a candidate voted to legalize murder or whatever insane bullshit they invent, and it is proven false, they should not get to quietly delete the ad two weeks later. They should be forced to spend comparable money correcting it. Same audience. Same markets. Same visibility. You lied loudly; now you correct loudly. That one rule alone would change politics.</div>
+  </div>
+
+  <h3 class="sub-header">Political Ads Need Receipts</h3>
+  <div class="content-block">
+    <p>Every paid political ad should be required to maintain a public evidence file for every factual claim. Not opinions. Not &ldquo;my opponent is bad.&rdquo; But factual claims. &ldquo;My opponent voted for X.&rdquo; Source it. &ldquo;My opponent took money from Y.&rdquo; Source it. &ldquo;My opponent supports cutting Z.&rdquo; Explain the vote, bill, or statement.</p>
+  </div>
+
+  <h3 class="sub-header">Algorithmic Amplification Accountability</h3>
+  <div class="content-block">
+    <p>A person can say something stupid. But no one has a constitutional right to algorithmic boost, monetization, paid targeting, recommendation placement, bot assistance, or platform-engineered virality.</p>
+    <p>Platforms should have to disclose when political content is paid, AI-generated, bot-amplified, foreign-linked, microtargeted, or rapidly spreading despite being materially false. They should also need &ldquo;pause before amplification&rdquo; protocols for high-stakes content: elections, public health, violence, civil unrest, disaster response, targeted harassment, ethnic/religious scapegoating, war propaganda, and civil rights panic.</p>
+    <p>That is not banning speech. That is not letting the algorithm pour gasoline on a public fire.</p>
+  </div>
+
+  <h3 class="sub-header">AI Political Content Rules</h3>
+  <div class="content-block">
+    <p>Every synthetic political ad should require clear labeling. Every AI-generated candidate impersonation should require consent or obvious parody labeling. Deepfakes close to elections should face expedited review. Campaigns should disclose AI-generated mass messaging. Because the next stage of lying is not just a politician lying on TV. It is 50,000 customized AI-generated lies sent to different micro-audiences, each optimized to exploit fear, race, religion, gender, guns, inflation, immigration, or whatever pressure point works on that specific person. That is not persuasion. That is psychological warfare against voters.</p>
+  </div>
+
+  <h3 class="sub-header">Media Accountability Without a Ministry of Truth</h3>
+  <div class="content-block">
+    <p>If you want to call yourself a news organization and receive legal, platform, tax, credentialing, or access benefits as news, then you meet basic standards. You maintain a corrections policy. You distinguish news from opinion. You disclose ownership and major conflicts of interest. You disclose sponsored content clearly. You do not knowingly present fabricated evidence. You correct material falsehoods with reasonable prominence. You publish an annual transparency report.</p>
+    <p>Not &ldquo;the government approves your articles.&rdquo; No. You can publish what you want. But if you want the public trust benefits of being treated as a news institution, you need a functioning quality system. That is literally QA applied to democracy.</p>
+  </div>
+
+  <h3 class="sub-header">PBHP for Political Persuasion</h3>
+  <div class="content-block">
+    <p>Politics should persuade people. That is democracy. But persuasion should not mean manipulation, dehumanization, fabricated evidence, fear exploitation, or mass psychological warfare. A PBHP political message should answer:</p>
+  </div>
+  <ul class="policy-list">
+    <li>Is the claim true?</li>
+    <li>Is the evidence attached?</li>
+    <li>Is opinion clearly separated from fact?</li>
+    <li>Does this message increase the audience&rsquo;s understanding, or exploit their fear?</li>
+    <li>Does it attack actions, policies, systems, and power &mdash; or human worth?</li>
+    <li>Does it scapegoat vulnerable people?</li>
+    <li>Does it preserve the audience&rsquo;s democratic agency?</li>
+    <li>Would we accept this tactic if the other side used it?</li>
+  </ul>
+  <div class="content-block">
+    <p>That last question matters. If the answer is no, then maybe the tactic is poison, even if the policy goal is good. This is how we build a better politics without becoming what we hate.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- ECONOMIC REPAIR PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-economic">
+  <h3 class="section-header first">Economic Repair Package</h3>
+
+  <div class="content-block">
+    <p>My solution is simple in principle, even if it is hard in practice: build a country where people who work can live, people who cannot work are not discarded, and nobody gets rich enough to buy the government out from under the rest of us.</p>
+  </div>
+
+  <h3 class="sub-header">Labor Repair</h3>
+  <div class="content-block">
+    <p><strong>The first economic law is simple: no full-time worker should be poor.</strong> Minimum wage indexed to local cost of living and productivity. Not some fake $15 number that becomes obsolete the moment it passes. A living wage formula. If rent, food, healthcare, childcare, utilities, and transportation go up, wages move. If productivity goes up, workers share in it. If a company cannot survive without poverty wages, then the company is not a business. It is a subsidy extraction machine.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Card check union recognition</li>
+    <li>First-contract arbitration so companies cannot stall a new union to death</li>
+    <li>Massive penalties for illegal union busting, with personal liability for executives</li>
+    <li>Sectoral bargaining by industry</li>
+    <li>Worker seats on corporate boards for large companies</li>
+    <li>Profit-sharing requirements above a company-size threshold</li>
+    <li>Paid sick leave and paid family leave</li>
+    <li>Predictable scheduling</li>
+    <li>Gig worker protections and misclassification enforcement</li>
+    <li>Ban noncompetes by statute</li>
+    <li>Wage theft enforcement with treble damages</li>
+    <li>Workplace safety enforcement &mdash; heat safety, warehouse safety</li>
+  </ul>
+
+  <h3 class="sub-header">Healthcare as a Right</h3>
+  <div class="content-block">
+    <p>Universal coverage. No medical bankruptcy. No insurance company standing between you and a doctor. The destination is obvious: healthcare is a public right. No more death panels run by insurance companies with quarterly earnings calls.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Universal coverage &mdash; Medicare for All, public option glidepath, or all-payer rate setting</li>
+    <li>Mental health, dental, and vision included</li>
+    <li>Direct negotiation on drug prices</li>
+    <li>Rural hospital protection</li>
+    <li>Public pharmaceutical manufacturing for essential medicines</li>
+    <li>Private equity out of critical healthcare infrastructure</li>
+    <li>Strict regulation of insurance denial practices</li>
+  </ul>
+
+  <h3 class="sub-header">Housing Anti-Ransom Plan</h3>
+  <div class="content-block">
+    <p>If you want to own one home, good. If you want to own a reasonable rental property and maintain it responsibly, fine. But if your entire business model is hoarding housing, jacking up rent, neglecting repairs, and forcing working families to fund your passive income fantasy, then no.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Ban algorithmic rent-fixing and data-sharing systems that coordinate rents</li>
+    <li>Tax vacant speculative units</li>
+    <li>Limit corporate bulk purchases of single-family homes</li>
+    <li>National social housing construction program</li>
+    <li>Federal habitability standards</li>
+    <li>Right to counsel in eviction</li>
+    <li>Anti-retaliation protections for tenants</li>
+    <li>Community land trusts and public housing maintenance trusts</li>
+    <li>Right of first refusal for tenants when properties are sold</li>
+  </ul>
+
+  <h3 class="sub-header">Food &amp; Essentials</h3>
+  <div class="content-block">
+    <p>If a working parent in America cannot buy milk, tomatoes, crackers, and ranch without feeling like they got robbed at a grocery store, the problem is not the cart. The problem is the country.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Public grocery pilots where markets fail</li>
+    <li>Support cooperative grocery stores</li>
+    <li>Universal school breakfast and lunch</li>
+    <li>Price-gouging investigations for essentials</li>
+    <li>Break up grocery and food-processing monopolies</li>
+    <li>Support local farmers over agribusiness giants</li>
+    <li>Anti-price-gouging enforcement</li>
+  </ul>
+
+  <h3 class="sub-header">Tax Justice</h3>
+  <div class="content-block">
+    <p>Work should be rewarded more than hoarding. If you became unimaginably wealthy using American workers, infrastructure, law, courts, currency, research, and markets, you owe the country back.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Tax capital gains like labor</li>
+    <li>Close carried interest loophole</li>
+    <li>Wealth tax or billionaire minimum tax</li>
+    <li>Stronger estate tax</li>
+    <li>Tax stock buybacks</li>
+    <li>Crack down on offshore tax avoidance</li>
+    <li>Make IRS enforcement focus upward, not downward</li>
+  </ul>
+
+  <h3 class="sub-header">Corporate Power Repair</h3>
+  <div class="content-block">
+    <p>Break up corporate concentration in healthcare, food, tech, housing, media, agriculture, banks, defense, and finance. Ban anti-competitive mergers. Regulate private equity. Create public options where private markets fail. A free market cannot exist when five companies own the marketplace, the sellers, the data, the payment rails, the ads, and the politicians.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Executive certification of compliance with personal liability for knowing false certification</li>
+    <li>Corporate death penalty for repeat criminal enterprises</li>
+    <li>Wage theft prosecuted like theft</li>
+    <li>No tax deductions for settlements or penalties</li>
+    <li>Victim compensation before shareholder distributions</li>
+  </ul>
+
+  <h3 class="sub-header">Small Business Liberation</h3>
+  <div class="content-block">
+    <p>I am not anti-business. I am anti-ransom. A mechanic, coffee shop, small contractor, family farm, or local restaurant is not the same thing as Amazon, UnitedHealth, BlackRock, or Walmart. Small businesses get crushed by the same machine workers do: unaffordable healthcare, commercial rent, monopoly suppliers, payment processors, platform fees, chain competition, private equity landlords, and lack of affordable credit.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Universal healthcare to remove employer healthcare burden</li>
+    <li>Antitrust against platform monopolies</li>
+    <li>Fair payment processing fees</li>
+    <li>Public/local banking</li>
+    <li>Co-op conversion support</li>
+    <li>Local procurement preferences</li>
+  </ul>
+
+  <h3 class="sub-header">Childcare &amp; Family Survival</h3>
+  <div class="content-block">
+    <p>Conservatives scream about birth rates and family values, then oppose every policy that would make family life survivable. That is fake pro-family politics. Real family values means parents have time, money, healthcare, housing, and support.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Universal childcare</li>
+    <li>Paid family leave</li>
+    <li>Child tax credits</li>
+    <li>Elder care and disability care</li>
+    <li>Domestic violence support</li>
+    <li>Maternal healthcare</li>
+    <li>Reproductive rights</li>
+  </ul>
+
+  <h3 class="sub-header">Utilities &amp; Infrastructure</h3>
+  <ul class="policy-list">
+    <li>Public power options</li>
+    <li>Grid modernization</li>
+    <li>Water system repair and lead pipe replacement</li>
+    <li>Broadband as a utility</li>
+    <li>Shutoff protections during extreme weather</li>
+    <li>Weatherization grants</li>
+    <li>Public transit expansion</li>
+    <li>Rural infrastructure investment</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- RIGHTS & JUSTICE PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-rights">
+  <h3 class="section-header first">Rights &amp; Justice Repair</h3>
+
+  <h3 class="sub-header">Criminal Justice</h3>
+  <div class="content-block">
+    <p>We need emergency response, investigation, violence prevention, mental health crisis teams, addiction treatment, and community safety. We do not need every social problem treated like a nail for militarized policing.</p>
+  </div>
+  <ul class="policy-list">
+    <li>End qualified immunity or create real civil accountability</li>
+    <li>National police licensing</li>
+    <li>Independent investigations of police killings</li>
+    <li>Public misconduct databases</li>
+    <li>Bail reform and sentencing reform</li>
+    <li>End private prisons</li>
+    <li>End civil asset forfeiture abuse</li>
+    <li>Treat addiction and mental health as healthcare problems</li>
+    <li>Corporate crime should scale upward &mdash; the law gets harsher as power increases, not softer</li>
+  </ul>
+
+  <h3 class="sub-header">Immigration Without Cruelty Theater</h3>
+  <div class="content-block">
+    <p>A serious country can have rules without becoming cruel.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Secure processing, not sadism</li>
+    <li>More immigration judges and faster asylum decisions</li>
+    <li>Legal work authorization while cases proceed</li>
+    <li>Pathway to status for long-term residents</li>
+    <li>Employer penalties for exploitation</li>
+    <li>Humane detention standards</li>
+    <li>Family unity</li>
+    <li>No private detention profiteering</li>
+  </ul>
+
+  <h3 class="sub-header">Civil Rights</h3>
+  <ul class="policy-list">
+    <li>Codify abortion rights</li>
+    <li>Protect contraception and IVF</li>
+    <li>Protect LGBTQ rights</li>
+    <li>Federal voting rights</li>
+    <li>Disability rights enforcement</li>
+    <li>Religious freedom as shield, not sword for domination</li>
+    <li>Ban discrimination in housing, employment, education, healthcare, and public services</li>
+    <li>Protect protest rights and union organizing</li>
+    <li>Protect bodily autonomy</li>
+  </ul>
+
+  <div class="callout navy">
+    <div class="callout-title">The Culture War Detox</div>
+    <div class="callout-text">They want you fighting your neighbor over identity while they rob both of you. Protect people&rsquo;s rights, then get back to the money trail. The billionaire does not care about your bathroom. He cares that you are yelling about bathrooms while he steals your pension, busts your union, and buys your senator.</div>
+  </div>
+
+  <h3 class="sub-header">War Powers &amp; Empire Accountability</h3>
+  <div class="content-block">
+    <p>Congress should have to vote on military action. No endless authorizations. No blank checks. No undeclared wars. No laundering foreign policy through &ldquo;emergency&rdquo; forever.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Repeal outdated Authorizations for Use of Military Force</li>
+    <li>Require affirmative congressional votes for military action beyond immediate defense</li>
+    <li>War cost public dashboard</li>
+    <li>Civilian casualty reporting</li>
+    <li>Defense contractor audit and anti-profiteering enforcement</li>
+    <li>Ban stock trading by officials during conflict decisions</li>
+    <li>Veterans care funded before contractor bonuses</li>
+  </ul>
+
+  <h3 class="sub-header">Education as Infrastructure</h3>
+  <div class="content-block">
+    <p>A democracy cannot survive if people are intentionally kept ignorant of how power works.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Universal pre-K</li>
+    <li>Fully funded public schools &mdash; federal equalization so poor ZIP codes are not punished for being poor</li>
+    <li>Trade schools and community college tuition-free</li>
+    <li>Public universities affordable</li>
+    <li>Student debt relief tied to a new system that prevents the debt machine from restarting</li>
+    <li>Real civics, labor history, media literacy, financial literacy, and &ldquo;how power works&rdquo; education</li>
+  </ul>
+
+  <h3 class="sub-header">Climate &amp; National Repair</h3>
+  <div class="content-block">
+    <p>We do not just doom-scroll collapse. We build.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Clean energy buildout and grid expansion</li>
+    <li>Public transit</li>
+    <li>Climate-resilient infrastructure</li>
+    <li>Disaster response</li>
+    <li>Home weatherization</li>
+    <li>Regenerative agriculture</li>
+    <li>Water protection</li>
+    <li>Job guarantees for transition-affected workers</li>
+  </ul>
+
+  <h3 class="sub-header">Rural Repair</h3>
+  <div class="content-block">
+    <p>Rural America has been used as a prop by Republicans and abandoned by corporate Democrats. A repair agenda needs a rural chapter that does not talk down to people.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Rural hospital stabilization and mobile clinics</li>
+    <li>Broadband</li>
+    <li>Farm anti-monopoly enforcement and right to repair</li>
+    <li>Postal banking and public power</li>
+    <li>Rural addiction treatment</li>
+    <li>Veterans services</li>
+    <li>Small-town housing rehabilitation</li>
+    <li>Independent pharmacy support</li>
+  </ul>
+
+  <h3 class="sub-header">Government Service Repair</h3>
+  <div class="content-block">
+    <p>A benefit you cannot access is not a benefit. It is a maze. Government should be boring, accessible, and humane.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Plain-language forms</li>
+    <li>One-stop benefits portal</li>
+    <li>Phone and in-person access</li>
+    <li>Automatic enrollment when eligibility is known</li>
+    <li>Fast appeals</li>
+    <li>Public service standards and wait-time dashboards</li>
+    <li>No algorithmic denial without human appeal</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PBHP METHOD PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-pbhp">
+  <h3 class="section-header first">PBHP: The Civic Quality System</h3>
+
+  <div class="content-block">
+    <p>PBHP &mdash; the Pause Before Harm Protocol &mdash; is a simple idea with serious implications: before a person, institution, algorithm, corporation, or government takes an action that could harm people, especially people with less power, it should pause and answer basic questions.</p>
+  </div>
+
+  <div class="callout navy">
+    <div class="callout-title">The PBHP Harm Test</div>
+    <div class="callout-text">
+      <p>Who benefits?</p>
+      <p>Who pays?</p>
+      <p>Who gets harmed first?</p>
+      <p>Is the harm reversible?</p>
+      <p>What assumptions are we making?</p>
+      <p>What evidence supports those assumptions?</p>
+      <p>Is there a safer path?</p>
+      <p>Are we protecting people, or protecting profit?</p>
+      <p>How will we know whether this worked?</p>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <p>That should not be radical. That should be normal.</p>
+  </div>
+
+  <h3 class="sub-header">The Civic QA Model</h3>
+  <div class="content-block">
+    <p>Every major system that can seriously harm people needs quality controls. Eye banks need them. Plasma centers need them. Drug manufacturers need them. Food production needs them. Aviation needs them. But somehow politics, media, elections, policing, war, housing, healthcare, and corporate power are allowed to run on vibes, donor influence, lies, and selective accountability.</p>
+  </div>
+
+  <div class="policy-grid">
+    <div class="policy-card blue-accent"><div class="pc-title">Step 1: Identify the Harm</div><div class="pc-text">What harm is occurring or what risk exists? Who is affected? What is the severity, reach, and reversibility?</div></div>
+    <div class="policy-card blue-accent"><div class="pc-title">Step 2: Document the Evidence</div><div class="pc-text">What are the facts? What are the sources? What is verifiable? What is opinion, prediction, or assumption?</div></div>
+    <div class="policy-card gold-accent"><div class="pc-title">Step 3: Identify Root Cause</div><div class="pc-text">What systemic failures produce this harm? What incentives maintain it? Who benefits from the status quo?</div></div>
+    <div class="policy-card gold-accent"><div class="pc-title">Step 4: Corrective &amp; Preventive Action</div><div class="pc-text">What stops the active harm? What prevents recurrence? What structural changes are needed?</div></div>
+    <div class="policy-card green-accent"><div class="pc-title">Step 5: Verify Effectiveness</div><div class="pc-text">Did it work? How do we measure? What are the public metrics? What happens if it fails?</div></div>
+  </div>
+
+  <h3 class="sub-header">Public Harm Thresholds</h3>
+  <div class="content-block">
+    <p>Every policy, campaign message, media claim, platform decision, or government action should be checked against a harm threshold. The test is not &ldquo;does someone dislike this?&rdquo; The test is: does this create credible risk of material harm, especially to people with less power?</p>
+  </div>
+
+  <div class="harm-scale">
+    <div class="harm-level hl-green"><span class="hl-badge">Green</span><span>Low harm, ordinary political disagreement. Proceed.</span></div>
+    <div class="harm-level hl-yellow"><span class="hl-badge">Yellow</span><span>Uncertainty or moderate impact. Add context, evidence, and monitoring.</span></div>
+    <div class="harm-level hl-orange"><span class="hl-badge">Orange</span><span>Material risk to rights, safety, livelihood, democratic agency, or vulnerable groups. Pause and mitigate before proceeding.</span></div>
+    <div class="harm-level hl-red"><span class="hl-badge">Red</span><span>High risk of irreversible harm, mass deception, civil rights violation, major corruption, or foreseeable public injury. Stop unless corrected.</span></div>
+    <div class="harm-level hl-black"><span class="hl-badge">Black</span><span>Authoritarian, violent, fraudulent, election-subverting, or intentionally rights-destroying conduct. Refuse, expose, escalate, and document.</span></div>
+  </div>
+
+  <h3 class="sub-header">PBHP for Governance</h3>
+  <div class="content-block">
+    <p>Every major bill should have a Harm Impact Statement. Who benefits? Who pays? Who is exposed to irreversible harm? What happens to poor people first? What happens to disabled people? What happens to children? What happens to rural communities? What happens to workers? What happens if the assumption is wrong? What is the smallest reversible test before we commit? That should be standard governance.</p>
+    <p>Every agency should have public outcome dashboards. Not 900-page reports nobody reads. Simple public receipts. Did rent burden go down? Did wages rise? Did medical debt fall? Did union density increase? Did evictions decrease? If a policy fails, adjust it. If it works, expand it. Government should be iterative repair, not religious loyalty to a talking point.</p>
+  </div>
+
+  <h3 class="sub-header">AI &amp; Technology Governance</h3>
+  <div class="content-block">
+    <p>This is PBHP home turf. AI systems used in healthcare, policing, employment, lending, housing, education, benefits, immigration, military, and courts need auditability, appeal rights, bias testing, human review, incident reporting, and harm thresholds. No secret algorithm should be able to deny someone housing, healthcare, a job, parole, immigration relief, or benefits without explanation and appeal.</p>
+  </div>
+  <ul class="policy-list">
+    <li>Risk classification before deployment</li>
+    <li>Public-facing notice when AI is used in decisions affecting people</li>
+    <li>Right to human appeal</li>
+    <li>Explanation rights</li>
+    <li>Bias and disparate-impact testing</li>
+    <li>Incident reporting and audit logs</li>
+    <li>Provenance labels for synthetic political media</li>
+    <li>Ban deceptive candidate deepfakes without clear consent/parody labeling</li>
+    <li>Strong data privacy law &mdash; right to know, right to delete</li>
+    <li>Ban warrantless data-broker purchases</li>
+    <li>Facial recognition limits and warrant requirements</li>
+    <li>Special protection for reproductive, union, immigration, protest, and health data</li>
+  </ul>
+
+  <div class="phil-quote">
+    "In a regulated quality system, you do not fix a recurring failure by giving a speech. You document it. You investigate it. You identify root cause. You implement corrective action. You prevent recurrence. You verify that the fix worked. America has repeated failures in healthcare, housing, labor, elections, media, policing, corruption, and public trust. Instead of CAPA, we get press conferences. That is not governance. That is theater."
+    <div class="attr">&mdash; Phillip Linstrum</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- CANDIDATE TEST PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-candidate">
+  <h3 class="section-header first">The Candidate Test</h3>
+
+  <div class="content-block">
+    <p>Not vibes. Not party labels. A scorecard. Do you support the repair plan? Here are the questions every candidate should answer publicly.</p>
+  </div>
+
+  <div class="scorecard-grid">
+    <div class="score-item"><div class="si-title">Democracy Repair</div><div class="si-desc">Do you support overturning Citizens United? Public financing? Stock trade bans? Term limits? Federal recall? Independent redistricting?</div></div>
+    <div class="score-item"><div class="si-title">Truth &amp; Media</div><div class="si-desc">Do you support political ad evidence requirements? Equal-reach corrections? AI content labeling? Platform amplification accountability?</div></div>
+    <div class="score-item"><div class="si-title">Labor Power</div><div class="si-desc">Do you support card check? Sectoral bargaining? Living wage? Worker board seats? Paid leave? Ban on union busting?</div></div>
+    <div class="score-item"><div class="si-title">Healthcare</div><div class="si-desc">Do you support universal coverage? No medical bankruptcy? Mental health parity? Drug price negotiation? Rural hospital protection?</div></div>
+    <div class="score-item"><div class="si-title">Housing</div><div class="si-desc">Do you support social housing? Tenant protections? Anti-rent-gouging rules? Corporate bulk-buy limits? Right to counsel in eviction?</div></div>
+    <div class="score-item"><div class="si-title">Anti-Corruption</div><div class="si-desc">Do you support an independent anti-corruption commission? Lobbying bans? Revolving door lockdown? Public conflict-of-interest database?</div></div>
+    <div class="score-item"><div class="si-title">Corporate Power</div><div class="si-desc">Do you support breaking monopolies? Price-gouging enforcement? Corporate crime penalties? Private equity regulation? No corporate PAC money?</div></div>
+    <div class="score-item"><div class="si-title">Civil Rights</div><div class="si-desc">Do you support codified abortion rights? LGBTQ protections? Voting rights? Disability rights? Religious freedom without domination?</div></div>
+    <div class="score-item"><div class="si-title">Climate &amp; Infrastructure</div><div class="si-desc">Do you support clean energy buildout? Grid modernization? Public transit? Water system repair? Worker transition guarantees?</div></div>
+    <div class="score-item"><div class="si-title">War Powers</div><div class="si-desc">Do you support requiring congressional votes for military action? Defense contractor audits? War cost dashboards? Veteran care funding?</div></div>
+    <div class="score-item"><div class="si-title">Technology &amp; AI</div><div class="si-desc">Do you support AI audit requirements? Data privacy law? Algorithmic transparency? Appeal rights for automated decisions?</div></div>
+    <div class="score-item"><div class="si-title">Local Repair</div><div class="si-desc">Do you support rural hospital stabilization? Broadband access? Farm anti-monopoly? Postal banking? Right to repair?</div></div>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-title">How the Candidate Test Works</div>
+    <div class="callout-text">
+      <p>Make candidates answer. Publish the answers. Archive them. Track whether they kept their word. That is where The Record plugs in.</p>
+      <p>The Record shows what they did. The Repair Plan shows what they should do. The Candidate Test shows whether they are aligned. The Accountability Tracker shows whether they betrayed it.</p>
+      <p>The site should distinguish &ldquo;says they support&rdquo; from &ldquo;voted for&rdquo; from &ldquo;funded by interests opposing it.&rdquo;</p>
+    </div>
+  </div>
+
+  <h3 class="sub-header">Candidate Score Format</h3>
+  <div class="content-block">
+    <p>For each category, the scorecard tracks:</p>
+  </div>
+  <ul class="policy-list">
+    <li><strong>Position:</strong> Yes / No / Partial / Unknown</li>
+    <li><strong>Evidence:</strong> Public statements, votes, co-sponsorships</li>
+    <li><strong>Votes:</strong> Actual voting record on related bills</li>
+    <li><strong>Donors:</strong> Who funds them? Conflicts?</li>
+    <li><strong>Contradictions:</strong> Where do words and actions diverge?</li>
+    <li><strong>PBHP Risk:</strong> Does their position create foreseeable public harm?</li>
+    <li><strong>Trust Level:</strong> Based on consistency between rhetoric and record</li>
+    <li><strong>Correction History:</strong> Have they corrected false claims?</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- ACTION PANEL -->
+<!-- ═══════════════════════════════════════ -->
+<div class="panel" id="panel-action">
+  <h3 class="section-header first">Action: What You Can Do</h3>
+
+  <div class="content-block">
+    <p>This is not just a manifesto. It should become an accountability engine. Here is how you participate.</p>
+  </div>
+
+  <div class="policy-grid">
+    <div class="policy-card blue-accent"><div class="pc-title">Share</div><div class="pc-text">Send this to people. Post it. Talk about it. The ideas only work if they spread beyond one site.</div></div>
+    <div class="policy-card gold-accent"><div class="pc-title">Submit Receipts</div><div class="pc-text">See a politician lying? See corporate harm? See a policy failure? Document it. Source it. Send it in.</div></div>
+    <div class="policy-card green-accent"><div class="pc-title">Run for Office</div><div class="pc-text">Start local. School board. City council. County council. State legislature. The right-wing understood this for decades. We need a farm system.</div></div>
+    <div class="policy-card navy-accent"><div class="pc-title">Pressure Officials</div><div class="pc-text">Call. Write. Show up. Use the Candidate Test. Ask them on the record. Archive the answers.</div></div>
+  </div>
+
+  <h3 class="sub-header">The Pipeline: Start Local</h3>
+  <div class="content-block">
+    <p>You do not wait for a savior. You build a candidate pipeline. School board. City council. County council. Township boards. State legislature. Prosecutor. Sheriff. Judges where elected. State attorney general. Secretary of state. These offices control real life and build the bench for Congress.</p>
+    <p>The right-wing understood this for decades. They took school boards, courts, statehouses, election offices, media ecosystems, churches, and donor networks while liberals kept acting like the presidency was the whole game. The left needs an actual farm system.</p>
+  </div>
+
+  <h3 class="sub-header">Movement Ethics</h3>
+  <div class="content-block">
+    <p>This is how we avoid building something that drifts into culty bullshit or pure rage. These are the rules:</p>
+  </div>
+  <ul class="policy-list">
+    <li>Receipts over vibes</li>
+    <li>Attack systems, conduct, and policies &mdash; not human worth</li>
+    <li>Correct errors publicly</li>
+    <li>Do not knowingly share false claims even if politically useful</li>
+    <li>Do not dehumanize vulnerable groups</li>
+    <li>Do not excuse political violence</li>
+    <li>Do not become what you oppose</li>
+    <li>Preserve agency</li>
+    <li>Use anger as fuel, not as steering</li>
+    <li>Measure outcomes</li>
+    <li>No purity spirals</li>
+    <li>No billionaire-funded capture</li>
+    <li>No leader above correction</li>
+  </ul>
+
+  <div class="callout navy">
+    <div class="callout-title">The Machine Heals When...</div>
+    <div class="callout-text">
+      <p>Harm can no longer hide. Voters have receipts. Public officials can be recalled for serious misconduct. Billionaires cannot buy elections. Political ads require evidence. Workers can organize without being crushed. Healthcare is separated from employment. Housing is treated as shelter. Corporations are broken up before they become private governments. Judges have ethics rules. Police have licensing and accountability. AI systems have audit trails and appeal rights. Government agencies are measured by outcomes. Policy is reviewed for harm before implementation, not after people get crushed.</p>
+      <p>The public stops accepting &ldquo;that&rsquo;s just how it is&rdquo; from the people benefiting from how it is.</p>
+    </div>
+  </div>
+
+  <div class="phil-quote">
+    "The country can be repaired, but not by the people who profit from keeping it broken. We need receipts. We need standards. We need public accountability. We need power to move downward again. We need a government that works like a public repair tool instead of a concierge desk for billionaires. America needs a CAPA. And this is the beginning of one."
+    <div class="attr">&mdash; Phillip Linstrum</div>
+  </div>
+
+  <h3 class="sub-header">Public Metrics Dashboard</h3>
+  <div class="content-block">
+    <p>This is how we avoid being dismissed as just angry. We measure outcomes. Here are the KPIs for a decent society:</p>
+  </div>
+  <div class="scorecard-grid">
+    <div class="score-item"><div class="si-title">Rent Burden</div><div class="si-desc">% of income spent on housing. Target: below 30%.</div></div>
+    <div class="score-item"><div class="si-title">Medical Debt</div><div class="si-desc">Households carrying medical debt. Target: zero.</div></div>
+    <div class="score-item"><div class="si-title">Wage Growth</div><div class="si-desc">Real wages vs. cost of living. Target: positive and rising.</div></div>
+    <div class="score-item"><div class="si-title">Union Density</div><div class="si-desc">% of workers in unions. Currently ~10%. Target: rising.</div></div>
+    <div class="score-item"><div class="si-title">Child Poverty</div><div class="si-desc">Children living below poverty line. Target: falling.</div></div>
+    <div class="score-item"><div class="si-title">Eviction Rates</div><div class="si-desc">Eviction filings per capita. Target: falling.</div></div>
+    <div class="score-item"><div class="si-title">Rural Hospital Access</div><div class="si-desc">Distance to nearest hospital. Target: decreasing.</div></div>
+    <div class="score-item"><div class="si-title">Voter Turnout</div><div class="si-desc">% of eligible voters participating. Target: rising.</div></div>
+    <div class="score-item"><div class="si-title">Dark Money Volume</div><div class="si-desc">Undisclosed political spending. Target: zero.</div></div>
+    <div class="score-item"><div class="si-title">Corporate Crime Penalties</div><div class="si-desc">Ratio of penalties to harm caused. Target: proportional.</div></div>
+    <div class="score-item"><div class="si-title">Police Misconduct</div><div class="si-desc">Complaints, investigations, outcomes. Target: transparent and declining.</div></div>
+    <div class="score-item"><div class="si-title">Food Insecurity</div><div class="si-desc">Households experiencing food insecurity. Target: falling.</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-brand">The American Repair Manual &middot; CAPA Edition</div>
+  <p style="font-size:.82rem;margin-bottom:.5rem;">America needs a corrective and preventive action plan. This is the beginning of one.</p>
+  <div class="footer-links">
+    <a href="https://pausebeforeharmprotocol.github.io/the-record/" target="_blank">The Record &mdash; Trump</a> &middot;
+    <a href="https://pausebeforeharmprotocol.github.io/the-record-in6/" target="_blank">The Record &mdash; IN-6</a> &middot;
+    <a href="https://github.com/PauseBeforeHarmProtocol/pbhp" target="_blank">PBHP on GitHub</a> &middot;
+    <a href="https://facebook.com/plinst" target="_blank">Facebook</a>
+  </div>
+  <p style="font-size:.7rem;margin-top:.8rem;color:rgba(255,255,255,.4);">Contact: <a href="mailto:pausebeforeharmprotocol_pbhp@protonmail.com" style="color:rgba(255,255,255,.5);">pausebeforeharmprotocol_pbhp@protonmail.com</a></p>
+  <p style="font-size:.6rem;margin-top:.4rem;color:rgba(255,255,255,.3);">Civic QA for a Failing Republic &middot; No Disposable People &middot; No Purchased Government</p>
+</footer>
+
+<!-- PANEL SWITCHING JS -->
+<script>
+window.showPanel = function(id) {
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('show'); });
+  document.querySelectorAll('.navtab').forEach(function(b) { b.classList.remove('on'); });
+  var panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('show');
+  var btns = document.querySelectorAll('.navtab');
+  btns.forEach(function(b) {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + id + "'") !== -1) b.classList.add('on');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+</script>
+</body>
+</html>
