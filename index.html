@@ -121,6 +121,8 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .data-card{background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:1rem 1.2rem;text-align:center;transition:all .25s;}
 .data-card:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 16px rgba(21,101,192,.1);}
 .data-card .dc-num{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:900;color:var(--red);line-height:1.2;}
+.data-card .dc-src a{color:var(--blue);text-decoration:none;border-bottom:1px dotted var(--blue);transition:all .2s;}
+.data-card .dc-src a:hover{color:var(--blue2);border-bottom-style:solid;}
 .data-card .dc-num.blue{color:var(--blue);}
 .data-card .dc-num.gold{color:var(--gold2);}
 .data-card .dc-num.green{color:var(--green);}
@@ -248,6 +250,42 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 @media(max-width:480px){
   .data-grid{grid-template-columns:1fr;}
 }
+
+/* START HERE FUNNEL */
+.start-here{display:flex;justify-content:center;gap:1.2rem;margin:2rem 0 1rem;flex-wrap:wrap;}
+.start-btn{display:flex;flex-direction:column;align-items:center;gap:.4rem;padding:1.2rem 1.8rem;border-radius:14px;border:3px solid;cursor:pointer;transition:all .25s;font-family:'JetBrains Mono',monospace;text-align:center;background:transparent;min-width:180px;}
+.start-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12);}
+.start-btn .sb-icon{font-size:2rem;}
+.start-btn .sb-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;}
+.start-btn .sb-sub{font-size:.55rem;color:var(--dim);font-weight:400;}
+.start-btn.blue{border-color:var(--blue);color:var(--blue);}.start-btn.blue:hover{background:var(--blueL);}
+.start-btn.red{border-color:var(--red);color:var(--red);}.start-btn.red:hover{background:var(--redL);}
+.start-btn.gold{border-color:var(--gold);color:var(--gold2);}.start-btn.gold:hover{background:var(--goldL);}
+.start-btn.green{border-color:var(--green);color:var(--green);}.start-btn.green:hover{background:var(--greenL);}
+
+/* GUARDRAIL BOX */
+.guardrail{border:3px solid var(--green);border-radius:12px;padding:1.2rem 1.4rem;margin:1.5rem 0;background:linear-gradient(135deg,rgba(46,125,50,.04),rgba(46,125,50,.01));position:relative;}
+.guardrail::before{content:'ANTI-CENSORSHIP GUARDRAIL';position:absolute;top:-10px;left:16px;background:var(--green);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.15em;padding:2px 10px;border-radius:4px;font-weight:700;}
+.guardrail p{font-size:.85rem;color:var(--txt2);line-height:1.7;margin-bottom:.5rem;}
+.guardrail p:last-child{margin-bottom:0;}
+.guardrail strong{color:var(--green);}
+
+/* LEGAL PATHWAY TABLE */
+.legal-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.78rem;border:2px solid var(--border);}
+.legal-table th{background:var(--grad-navy);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;padding:.6rem .5rem;text-align:left;}
+.legal-table td{padding:.5rem;border-bottom:1px solid var(--border);vertical-align:top;color:var(--txt2);line-height:1.5;}
+.legal-table tr:hover{background:var(--blueL);}
+.legal-table .pathway{font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:700;text-align:center;}
+.legal-table .pathway.yes{color:var(--green);}
+.legal-table .pathway.no{color:var(--red);}
+.legal-table .pathway.maybe{color:var(--orange);}
+
+/* EMAIL TEMPLATE TAB */
+.email-template{background:var(--bg2);border:2px solid var(--border);border-radius:12px;padding:1.5rem;margin:1.5rem 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.8;color:var(--txt2);white-space:pre-wrap;position:relative;}
+.email-template::before{content:'COPY & SEND';position:absolute;top:-10px;right:16px;background:var(--blue);color:#fff;font-size:.5rem;letter-spacing:.15em;padding:2px 10px;border-radius:4px;font-weight:700;}
+.copy-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--grad-navy);color:#fff;border:none;padding:.7rem 1.5rem;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;font-weight:700;transition:all .2s;}
+.copy-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.2);}
+.copy-btn.copied{background:var(--green);}
 </style>
 </head>
 <body>
@@ -285,6 +323,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <button class="navtab" data-panel="candidate" onclick="showPanel('candidate')" role="tab">Candidate Test</button>
     <button class="navtab" data-panel="numbers" onclick="showPanel('numbers')" role="tab">The Numbers</button>
     <button class="navtab" data-panel="ethics" onclick="showPanel('ethics')" role="tab">Movement Ethics</button>
+    <button class="navtab" data-panel="sendtest" onclick="showPanel('sendtest')" role="tab">Send the Test</button>
     <button class="navtab" data-panel="action" onclick="showPanel('action')" role="tab">Action</button>
   </nav>
 </header>
@@ -296,6 +335,13 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <div class="home-hero">
     <h2>America Needs a <span>CAPA</span></h2>
     <p class="tagline">You are not crazy. You are not lazy. You are not bad with money. You are living in a country where 905 billionaires hold $7.8 trillion while 62% of Americans live paycheck to paycheck. Where CEOs make 281 times what their workers make. Where corporations post $4 trillion in annual profits while wages shrink as a share of the economy. Where employers steal $50 billion a year from workers&rsquo; paychecks &mdash; more than all robberies, burglaries, and car thefts in America <em>combined</em> &mdash; and almost nobody goes to jail. You are not failing. You are being robbed. This is the repair manual.</p>
+  </div>
+
+  <div class="start-here">
+    <button class="start-btn blue" onclick="showPanel('diagnosis')"><span class="sb-icon">&#128270;</span><span class="sb-label">I&rsquo;m New &mdash; Show Me</span><span class="sb-sub">What&rsquo;s broken and why</span></button>
+    <button class="start-btn red" onclick="showPanel('numbers')"><span class="sb-icon">&#128200;</span><span class="sb-label">Show Me the Receipts</span><span class="sb-sub">Hard data, sourced numbers</span></button>
+    <button class="start-btn gold" onclick="showPanel('candidate')"><span class="sb-icon">&#128203;</span><span class="sb-label">Test a Candidate</span><span class="sb-sub">The 12-point scorecard</span></button>
+    <button class="start-btn green" onclick="showPanel('sendtest')"><span class="sb-icon">&#9993;</span><span class="sb-label">Send the Test</span><span class="sb-sub">Email it to your rep</span></button>
   </div>
 
   <div class="home-stats">
@@ -377,14 +423,14 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <p>Before we talk about solutions, let&rsquo;s talk about the crime scene.</p>
   </div>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">$50B/yr</div><div class="dc-label">Wage theft &mdash; more than all robberies, burglaries, larceny &amp; auto theft combined ($12.7B)</div><div class="dc-src">EPI / FBI UCR</div></div>
-    <div class="data-card"><div class="dc-num">$942B</div><div class="dc-label">Stock buybacks in 2024 (new record). Heading to $1.2T in 2025</div><div class="dc-src">S&amp;P Global</div></div>
-    <div class="data-card"><div class="dc-num">$4.0T</div><div class="dc-label">Corporate profits in 2024 &mdash; doubled since 2010 while wages shrank as % of GDP</div><div class="dc-src">BEA / St. Louis Fed</div></div>
-    <div class="data-card"><div class="dc-num">$1.7T</div><div class="dc-label">Wealth gained by US billionaires during 3 years of COVID while 150M fell into poverty worldwide</div><div class="dc-src">Americans for Tax Fairness / Oxfam</div></div>
-    <div class="data-card"><div class="dc-num">281:1</div><div class="dc-label">CEO-to-worker pay ratio in 2024 (was 31:1 in 1978). Low-wage employers: 632:1</div><div class="dc-src">EPI / AFL-CIO</div></div>
-    <div class="data-card"><div class="dc-num">10x</div><div class="dc-label">US insulin prices vs. 33 other developed countries</div><div class="dc-src">RAND / ASPE 2024</div></div>
-    <div class="data-card"><div class="dc-num">$14,885</div><div class="dc-label">US healthcare cost per person (double other countries). We rank 46th in life expectancy</div><div class="dc-src">Peterson-KFF / WHO</div></div>
-    <div class="data-card"><div class="dc-num">15 yrs</div><div class="dc-label">Life expectancy gap between richest and poorest US counties</div><div class="dc-src">Sanders Senate HELP Committee 2025</div></div>
+    <div class="data-card"><div class="dc-num">$50B/yr</div><div class="dc-label">Wage theft &mdash; more than all robberies, burglaries, larceny &amp; auto theft combined ($12.7B)</div><div class="dc-src"><a href="https://www.epi.org/publication/wage-theft-2021/" target="_blank">EPI</a> / <a href="https://ucr.fbi.gov/" target="_blank">FBI UCR</a></div></div>
+    <div class="data-card"><div class="dc-num">$942B</div><div class="dc-label">Stock buybacks in 2024 (new record). Heading to $1.2T in 2025</div><div class="dc-src"><a href="https://www.spglobal.com/marketintelligence/" target="_blank">S&amp;P Global</a></div></div>
+    <div class="data-card"><div class="dc-num">$4.0T</div><div class="dc-label">Corporate profits in 2024 &mdash; doubled since 2010 while wages shrank as % of GDP</div><div class="dc-src"><a href="https://fred.stlouisfed.org/series/CP" target="_blank">BEA / St. Louis Fed</a></div></div>
+    <div class="data-card"><div class="dc-num">$1.7T</div><div class="dc-label">Wealth gained by US billionaires during 3 years of COVID while 150M fell into poverty worldwide</div><div class="dc-src"><a href="https://americansfortaxfairness.org/billionaire-pandemic-wealth-gains/" target="_blank">Americans for Tax Fairness</a></div></div>
+    <div class="data-card"><div class="dc-num">281:1</div><div class="dc-label">CEO-to-worker pay ratio in 2024 (was 31:1 in 1978). Low-wage employers: 632:1</div><div class="dc-src"><a href="https://www.epi.org/publication/ceo-pay-in-2023/" target="_blank">EPI</a> / <a href="https://aflcio.org/paywatch" target="_blank">AFL-CIO</a></div></div>
+    <div class="data-card"><div class="dc-num">10x</div><div class="dc-label">US insulin prices vs. 33 other developed countries</div><div class="dc-src"><a href="https://www.rand.org/pubs/research_reports/RRA788-1.html" target="_blank">RAND</a> / <a href="https://aspe.hhs.gov/" target="_blank">ASPE</a></div></div>
+    <div class="data-card"><div class="dc-num">$14,885</div><div class="dc-label">US healthcare cost per person (double other countries). We rank 46th in life expectancy</div><div class="dc-src"><a href="https://www.healthsystemtracker.org/chart-collection/health-spending-u-s-compare-countries/" target="_blank">Peterson-KFF</a> / <a href="https://www.who.int/data" target="_blank">WHO</a></div></div>
+    <div class="data-card"><div class="dc-num">15 yrs</div><div class="dc-label">Life expectancy gap between richest and poorest US counties</div><div class="dc-src"><a href="https://www.help.senate.gov/" target="_blank">Senate HELP Committee</a></div></div>
   </div>
   <div class="content-block">
     <p>Read those numbers again. Employers steal more from workers than every thief, robber, and carjacker in America combined &mdash; and less than 3% is ever recovered. Corporations made $4 trillion in profit and spent $942 billion buying back their own stock instead of raising wages. Billionaires gained $1.7 trillion during a pandemic that killed over a million Americans. And the CEO of Starbucks made 6,666 times what a barista makes.</p>
@@ -718,10 +764,10 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
 
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">$4.2B</div><div class="dc-label">Total outside spending in 2024 elections (28x since 2008)</div><div class="dc-src">Brennan Center</div></div>
-    <div class="data-card"><div class="dc-num">$1.3B</div><div class="dc-label">Shell company &amp; nonprofit money to super PACs in 2024</div><div class="dc-src">Brennan Center</div></div>
-    <div class="data-card"><div class="dc-num">$250M</div><div class="dc-label">One man&rsquo;s contribution to super PACs for one candidate</div><div class="dc-src">Public filings</div></div>
-    <div class="data-card"><div class="dc-num">$71M</div><div class="dc-label">Dark money to top 4 congressional super PACs in 2025 alone</div><div class="dc-src">Issue One</div></div>
+    <div class="data-card"><div class="dc-num">$4.2B</div><div class="dc-label">Total outside spending in 2024 elections (28x since 2008)</div><div class="dc-src"><a href="https://www.brennancenter.org/our-work/research-reports" target="_blank">Brennan Center</a></div></div>
+    <div class="data-card"><div class="dc-num">$1.3B</div><div class="dc-label">Shell company &amp; nonprofit money to super PACs in 2024</div><div class="dc-src"><a href="https://www.brennancenter.org/our-work/research-reports" target="_blank">Brennan Center</a></div></div>
+    <div class="data-card"><div class="dc-num">$250M</div><div class="dc-label">One man&rsquo;s contribution to super PACs for one candidate</div><div class="dc-src"><a href="https://www.opensecrets.org/" target="_blank">Public filings</a></div></div>
+    <div class="data-card"><div class="dc-num">$71M</div><div class="dc-label">Dark money to top 4 congressional super PACs in 2025 alone</div><div class="dc-src"><a href="https://issueone.org/" target="_blank">Issue One</a></div></div>
   </div>
 
   <h3 class="sub-header">1. Overturn Citizens United</h3>
@@ -790,6 +836,33 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <p>Limit emergency declarations. Reform pardon power so presidents cannot use it to protect co-conspirators. Enforce subpoenas faster. Strengthen inspectors general. Protect whistleblowers. Make presidential conflicts of interest illegal in plain language. Fast-track judicial review when presidents defy Congress or courts. No kings means no kings.</p>
   </div>
 
+  <h3 class="sub-header">Legal Pathways: What It Actually Takes</h3>
+  <div class="content-block">
+    <p>Not all of these reforms are created equal. Some can pass by ordinary legislation. Some require a constitutional amendment &mdash; which means two-thirds of Congress and three-fourths of state legislatures. Some can start at the state level right now. Here is the honest breakdown:</p>
+  </div>
+  <table class="legal-table">
+    <thead>
+      <tr><th>Reform</th><th>Federal Statute</th><th>Amendment</th><th>State/Local</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Overturn Citizens United</td><td class="pathway no">&#10008;</td><td class="pathway yes">&#10004;</td><td class="pathway no">&#10008;</td><td>Requires amendment; SCOTUS precedent blocks statute</td></tr>
+      <tr><td>Public campaign financing</td><td class="pathway yes">&#10004;</td><td class="pathway no">&mdash;</td><td class="pathway yes">&#10004;</td><td>NYC &amp; other cities already do this; Congress can scale it</td></tr>
+      <tr><td>Congressional term limits</td><td class="pathway no">&#10008;</td><td class="pathway yes">&#10004;</td><td class="pathway no">&#10008;</td><td>U.S. Term Limits v. Thornton: states cannot add qualifications</td></tr>
+      <tr><td>Federal recall</td><td class="pathway no">&#10008;</td><td class="pathway yes">&#10004;</td><td class="pathway no">&#10008;</td><td>No mechanism in current Constitution</td></tr>
+      <tr><td>Age limits for office</td><td class="pathway maybe">&#9888;</td><td class="pathway yes">&#10004;</td><td class="pathway yes">&#10004;</td><td>Legally disputed; safest via amendment</td></tr>
+      <tr><td>Supreme Court term limits</td><td class="pathway maybe">&#9888;</td><td class="pathway yes">&#10004;</td><td class="pathway no">&#10008;</td><td>Statute possible via &ldquo;senior status&rdquo; rotation; may face challenge</td></tr>
+      <tr><td>Ban stock trading by Congress</td><td class="pathway yes">&#10004;</td><td class="pathway no">&mdash;</td><td class="pathway yes">&#10004;</td><td>Fully within Congress&rsquo;s power to pass by law</td></tr>
+      <tr><td>Revolving door / lobbying bans</td><td class="pathway yes">&#10004;</td><td class="pathway no">&mdash;</td><td class="pathway yes">&#10004;</td><td>Congress already sets cooling-off periods; extend them</td></tr>
+      <tr><td>Anti-corruption commission</td><td class="pathway yes">&#10004;</td><td class="pathway no">&mdash;</td><td class="pathway yes">&#10004;</td><td>Constitutional under Article I/II</td></tr>
+      <tr><td>End gerrymandering</td><td class="pathway yes">&#10004;</td><td class="pathway no">&mdash;</td><td class="pathway yes">&#10004;</td><td>Congress can mandate independent commissions</td></tr>
+      <tr><td>Voting rights restoration</td><td class="pathway yes">&#10004;</td><td class="pathway no">&mdash;</td><td class="pathway yes">&#10004;</td><td>Restore and strengthen Voting Rights Act</td></tr>
+      <tr><td>Executive power limits</td><td class="pathway yes">&#10004;</td><td class="pathway no">&mdash;</td><td class="pathway no">&#10008;</td><td>War Powers, pardon reform, subpoena enforcement</td></tr>
+    </tbody>
+  </table>
+  <div class="content-block">
+    <p style="font-size:.82rem;color:var(--dim);">&#10004; = Can be done this way &middot; &#10008; = Cannot &middot; &#9888; = Legally contested, may require court test or amendment &middot; &mdash; = Not needed</p>
+  </div>
+
   <div class="pbhp-box">
     <div class="pbhp-label">PBHP Harm Analysis: The Status Quo (No Democracy Reform)</div>
     <div class="pbhp-row">
@@ -837,6 +910,12 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="harm-level hl-yellow"><span class="hl-badge">Level 2</span><span>False, material, and not corrected after notice. Required correction with equal or comparable reach.</span></div>
     <div class="harm-level hl-orange"><span class="hl-badge">Level 3</span><span>Knowingly or recklessly false and harmful. Fines, mandatory disclosure, loss of public financing eligibility, or campaign penalties.</span></div>
     <div class="harm-level hl-red"><span class="hl-badge">Level 4</span><span>Election sabotage, public safety deception, fabricated evidence, deepfake fraud, incitement-adjacent targeting, or repeated bad-faith deception. Civil penalties, criminal referral, recall/ethics triggers.</span></div>
+  </div>
+
+  <div class="guardrail">
+    <p><strong>This system cannot and must not:</strong> punish opinion, satire, parody, criticism of government, good-faith mistakes, anonymous dissent, independent journalism, academic research, artistic expression, or ordinary citizens being wrong online.</p>
+    <p>It applies <strong>only</strong> to high-reach, high-power, material factual claims in regulated public contexts &mdash; paid political ads, official government communications, corporate public health claims, and platform-amplified election content &mdash; with full due process, public evidence, appeal rights, and judicial review.</p>
+    <p>If a proposed rule could be used to silence a union organizer, a whistleblower, a journalist, a protester, a comedian, or a citizen writing an angry letter to the editor, <strong>it fails the PBHP test and it does not belong here.</strong></p>
   </div>
 
   <div class="callout gold">
@@ -1418,101 +1497,101 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <h3 class="sub-header">Wealth &amp; Inequality</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">31.7%</div><div class="dc-label">US wealth owned by top 1% (Q3 2025)</div><div class="dc-src">Federal Reserve</div></div>
-    <div class="data-card"><div class="dc-num">$55T</div><div class="dc-label">Wealth held by top 1% of households</div><div class="dc-src">Federal Reserve</div></div>
-    <div class="data-card"><div class="dc-num">$4.1T</div><div class="dc-label">Wealth held by bottom 50% (66 million households)</div><div class="dc-src">Federal Reserve</div></div>
-    <div class="data-card"><div class="dc-num">$7.8T</div><div class="dc-label">Combined wealth of 905 US billionaires</div><div class="dc-src">Forbes Sept 2025</div></div>
-    <div class="data-card"><div class="dc-num">101x</div><div class="dc-label">Top 1% wealth gain vs. median household</div><div class="dc-src">Inequality.org</div></div>
-    <div class="data-card"><div class="dc-num">4x</div><div class="dc-label">Top 12 billionaires&rsquo; wealth growth since March 2020</div><div class="dc-src">Inequality.org</div></div>
+    <div class="data-card"><div class="dc-num">31.7%</div><div class="dc-label">US wealth owned by top 1% (Q3 2025)</div><div class="dc-src"><a href="https://www.federalreserve.gov/releases/z1/dataviz/dfa/distribute/chart/" target="_blank">Federal Reserve DFA</a></div></div>
+    <div class="data-card"><div class="dc-num">$55T</div><div class="dc-label">Wealth held by top 1% of households</div><div class="dc-src"><a href="https://www.federalreserve.gov/releases/z1/dataviz/dfa/distribute/chart/" target="_blank">Federal Reserve DFA</a></div></div>
+    <div class="data-card"><div class="dc-num">$4.1T</div><div class="dc-label">Wealth held by bottom 50% (66 million households)</div><div class="dc-src"><a href="https://www.federalreserve.gov/releases/z1/dataviz/dfa/distribute/chart/" target="_blank">Federal Reserve DFA</a></div></div>
+    <div class="data-card"><div class="dc-num">$7.8T</div><div class="dc-label">Combined wealth of 905 US billionaires</div><div class="dc-src"><a href="https://www.forbes.com/billionaires/" target="_blank">Forbes Billionaires 2025</a></div></div>
+    <div class="data-card"><div class="dc-num">101x</div><div class="dc-label">Top 1% wealth gain vs. median household</div><div class="dc-src"><a href="https://inequality.org/" target="_blank">Inequality.org</a></div></div>
+    <div class="data-card"><div class="dc-num">4x</div><div class="dc-label">Top 12 billionaires&rsquo; wealth growth since March 2020</div><div class="dc-src"><a href="https://inequality.org/" target="_blank">Inequality.org</a></div></div>
   </div>
 
   <h3 class="sub-header">Wages &amp; Labor</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">150%</div><div class="dc-label">Productivity growth since 1973</div><div class="dc-src">EPI</div></div>
-    <div class="data-card"><div class="dc-num">~17%</div><div class="dc-label">Real wage growth since 1973</div><div class="dc-src">EPI</div></div>
-    <div class="data-card"><div class="dc-num">$72.88</div><div class="dc-label">What hourly pay would be if wages tracked productivity</div><div class="dc-src">EPI</div></div>
-    <div class="data-card"><div class="dc-num">10.0%</div><div class="dc-label">Union membership rate (2025)</div><div class="dc-src">BLS</div></div>
-    <div class="data-card"><div class="dc-num">5.9%</div><div class="dc-label">Private-sector union density</div><div class="dc-src">BLS</div></div>
-    <div class="data-card"><div class="dc-num">~75%</div><div class="dc-label">Workers who say pay doesn&rsquo;t cover beyond basics</div><div class="dc-src">SHRM / EPI</div></div>
+    <div class="data-card"><div class="dc-num">150%</div><div class="dc-label">Productivity growth since 1973</div><div class="dc-src"><a href="https://www.epi.org/productivity-pay-gap/" target="_blank">EPI</a></div></div>
+    <div class="data-card"><div class="dc-num">~17%</div><div class="dc-label">Real wage growth since 1973</div><div class="dc-src"><a href="https://www.epi.org/productivity-pay-gap/" target="_blank">EPI</a></div></div>
+    <div class="data-card"><div class="dc-num">$72.88</div><div class="dc-label">What hourly pay would be if wages tracked productivity</div><div class="dc-src"><a href="https://www.epi.org/productivity-pay-gap/" target="_blank">EPI</a></div></div>
+    <div class="data-card"><div class="dc-num">10.0%</div><div class="dc-label">Union membership rate (2025)</div><div class="dc-src"><a href="https://www.bls.gov/news.release/union2.nr0.htm" target="_blank">BLS</a></div></div>
+    <div class="data-card"><div class="dc-num">5.9%</div><div class="dc-label">Private-sector union density</div><div class="dc-src"><a href="https://www.bls.gov/news.release/union2.nr0.htm" target="_blank">BLS</a></div></div>
+    <div class="data-card"><div class="dc-num">~75%</div><div class="dc-label">Workers who say pay doesn&rsquo;t cover beyond basics</div><div class="dc-src"><a href="https://www.epi.org/" target="_blank">SHRM / EPI</a></div></div>
   </div>
 
   <h3 class="sub-header">Housing</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">22.6M</div><div class="dc-label">Renter households spending 30%+ on housing</div><div class="dc-src">Census / JCHS 2023</div></div>
-    <div class="data-card"><div class="dc-num">12.1M</div><div class="dc-label">Severely cost-burdened renters (50%+ of income)</div><div class="dc-src">JCHS</div></div>
-    <div class="data-card"><div class="dc-num">49.5%</div><div class="dc-label">All renters who are cost-burdened</div><div class="dc-src">Census 2023</div></div>
-    <div class="data-card"><div class="dc-num">7 yrs</div><div class="dc-label">RealPage settlement duration (algorithmic rent-fixing)</div><div class="dc-src">DOJ Nov 2025</div></div>
+    <div class="data-card"><div class="dc-num">22.6M</div><div class="dc-label">Renter households spending 30%+ on housing</div><div class="dc-src"><a href="https://www.jchs.harvard.edu/state-nations-housing-2024" target="_blank">JCHS Harvard</a></div></div>
+    <div class="data-card"><div class="dc-num">12.1M</div><div class="dc-label">Severely cost-burdened renters (50%+ of income)</div><div class="dc-src"><a href="https://www.jchs.harvard.edu/state-nations-housing-2024" target="_blank">JCHS Harvard</a></div></div>
+    <div class="data-card"><div class="dc-num">49.5%</div><div class="dc-label">All renters who are cost-burdened</div><div class="dc-src"><a href="https://www.census.gov/" target="_blank">Census 2023</a></div></div>
+    <div class="data-card"><div class="dc-num">7 yrs</div><div class="dc-label">RealPage settlement duration (algorithmic rent-fixing)</div><div class="dc-src"><a href="https://www.justice.gov/" target="_blank">DOJ Nov 2025</a></div></div>
   </div>
 
   <h3 class="sub-header">Healthcare</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">$220B</div><div class="dc-label">Total medical debt owed by Americans</div><div class="dc-src">KFF / Roosevelt</div></div>
-    <div class="data-card"><div class="dc-num">66.5%</div><div class="dc-label">Bankruptcies caused by medical bills</div><div class="dc-src">Consumer Bankruptcy Project</div></div>
-    <div class="data-card"><div class="dc-num">$1.1T</div><div class="dc-label">Healthcare cuts in One Big Beautiful Bill</div><div class="dc-src">CBO</div></div>
-    <div class="data-card"><div class="dc-num">11.8M</div><div class="dc-label">People projected to lose coverage</div><div class="dc-src">CBO</div></div>
-    <div class="data-card"><div class="dc-num">$5,304</div><div class="dc-label">Average marketplace deductible (silver plan, 2026)</div><div class="dc-src">KFF</div></div>
-    <div class="data-card"><div class="dc-num">38-79%</div><div class="dc-label">Discounts from Medicare drug price negotiation</div><div class="dc-src">CMS</div></div>
+    <div class="data-card"><div class="dc-num">$220B</div><div class="dc-label">Total medical debt owed by Americans</div><div class="dc-src"><a href="https://www.kff.org/health-costs/" target="_blank">KFF</a></div></div>
+    <div class="data-card"><div class="dc-num">66.5%</div><div class="dc-label">Bankruptcies caused by medical bills</div><div class="dc-src"><a href="https://www.ncbi.nlm.nih.gov/" target="_blank">Consumer Bankruptcy Project</a></div></div>
+    <div class="data-card"><div class="dc-num">$1.1T</div><div class="dc-label">Healthcare cuts in One Big Beautiful Bill</div><div class="dc-src"><a href="https://www.cbo.gov/" target="_blank">CBO</a></div></div>
+    <div class="data-card"><div class="dc-num">11.8M</div><div class="dc-label">People projected to lose coverage</div><div class="dc-src"><a href="https://www.cbo.gov/" target="_blank">CBO</a></div></div>
+    <div class="data-card"><div class="dc-num">$5,304</div><div class="dc-label">Average marketplace deductible (silver plan, 2026)</div><div class="dc-src"><a href="https://www.kff.org/" target="_blank">KFF</a></div></div>
+    <div class="data-card"><div class="dc-num">38-79%</div><div class="dc-label">Discounts from Medicare drug price negotiation</div><div class="dc-src"><a href="https://www.cms.gov/" target="_blank">CMS</a></div></div>
   </div>
 
   <h3 class="sub-header">Wage Theft &amp; Corporate Crime</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">$50B</div><div class="dc-label">Annual wage theft from American workers</div><div class="dc-src">EPI</div></div>
-    <div class="data-card"><div class="dc-num">$12.7B</div><div class="dc-label">ALL property crime in the US combined (robbery, burglary, larceny, auto theft)</div><div class="dc-src">FBI UCR</div></div>
-    <div class="data-card"><div class="dc-num">&lt;3%</div><div class="dc-label">Wage theft that is ever recovered</div><div class="dc-src">EPI</div></div>
-    <div class="data-card"><div class="dc-num">$942B</div><div class="dc-label">Corporate stock buybacks in 2024 (record)</div><div class="dc-src">S&amp;P Global</div></div>
-    <div class="data-card"><div class="dc-num">$4T+</div><div class="dc-label">Corporate profits (2024, near all-time high)</div><div class="dc-src">BEA / FRED</div></div>
+    <div class="data-card"><div class="dc-num">$50B</div><div class="dc-label">Annual wage theft from American workers</div><div class="dc-src"><a href="https://www.epi.org/publication/wage-theft-2021/" target="_blank">EPI</a></div></div>
+    <div class="data-card"><div class="dc-num">$12.7B</div><div class="dc-label">ALL property crime in the US combined (robbery, burglary, larceny, auto theft)</div><div class="dc-src"><a href="https://ucr.fbi.gov/" target="_blank">FBI UCR</a></div></div>
+    <div class="data-card"><div class="dc-num">&lt;3%</div><div class="dc-label">Wage theft that is ever recovered</div><div class="dc-src"><a href="https://www.epi.org/publication/wage-theft-2021/" target="_blank">EPI</a></div></div>
+    <div class="data-card"><div class="dc-num">$942B</div><div class="dc-label">Corporate stock buybacks in 2024 (record)</div><div class="dc-src"><a href="https://www.spglobal.com/marketintelligence/" target="_blank">S&amp;P Global</a></div></div>
+    <div class="data-card"><div class="dc-num">$4T+</div><div class="dc-label">Corporate profits (2024, near all-time high)</div><div class="dc-src"><a href="https://fred.stlouisfed.org/series/CP" target="_blank">BEA / FRED</a></div></div>
   </div>
 
   <h3 class="sub-header">CEO Pay &amp; Extraction</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">281:1</div><div class="dc-label">Average CEO-to-worker pay ratio (2024)</div><div class="dc-src">EPI</div></div>
-    <div class="data-card"><div class="dc-num">31:1</div><div class="dc-label">CEO-to-worker ratio in 1978</div><div class="dc-src">EPI</div></div>
-    <div class="data-card"><div class="dc-num">632:1</div><div class="dc-label">CEO-to-worker ratio at low-wage companies</div><div class="dc-src">IPS</div></div>
-    <div class="data-card"><div class="dc-num">6,666:1</div><div class="dc-label">CEO-to-median-worker ratio at Starbucks</div><div class="dc-src">AFL-CIO Executive Paywatch</div></div>
-    <div class="data-card"><div class="dc-num">$1.7T</div><div class="dc-label">US billionaire wealth gain during COVID (2020&ndash;2023)</div><div class="dc-src">Americans for Tax Fairness</div></div>
+    <div class="data-card"><div class="dc-num">281:1</div><div class="dc-label">Average CEO-to-worker pay ratio (2024)</div><div class="dc-src"><a href="https://www.epi.org/publication/ceo-pay-in-2023/" target="_blank">EPI</a></div></div>
+    <div class="data-card"><div class="dc-num">31:1</div><div class="dc-label">CEO-to-worker ratio in 1978</div><div class="dc-src"><a href="https://www.epi.org/publication/ceo-pay-in-2023/" target="_blank">EPI</a></div></div>
+    <div class="data-card"><div class="dc-num">632:1</div><div class="dc-label">CEO-to-worker ratio at low-wage companies</div><div class="dc-src"><a href="https://ips-dc.org/" target="_blank">IPS</a></div></div>
+    <div class="data-card"><div class="dc-num">6,666:1</div><div class="dc-label">CEO-to-median-worker ratio at Starbucks</div><div class="dc-src"><a href="https://aflcio.org/paywatch" target="_blank">AFL-CIO Paywatch</a></div></div>
+    <div class="data-card"><div class="dc-num">$1.7T</div><div class="dc-label">US billionaire wealth gain during COVID (2020&ndash;2023)</div><div class="dc-src"><a href="https://americansfortaxfairness.org/billionaire-pandemic-wealth-gains/" target="_blank">Americans for Tax Fairness</a></div></div>
   </div>
 
   <h3 class="sub-header">Private Equity &amp; Healthcare Deaths</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">+13%</div><div class="dc-label">ER death rate increase after PE hospital acquisition</div><div class="dc-src">Annals of Internal Medicine</div></div>
-    <div class="data-card"><div class="dc-num">+17%</div><div class="dc-label">Surgical mortality increase at PE-owned hospitals</div><div class="dc-src">Harvard Medical School</div></div>
-    <div class="data-card"><div class="dc-num">+11%</div><div class="dc-label">Nursing home death rate increase under PE ownership</div><div class="dc-src">NBER</div></div>
-    <div class="data-card"><div class="dc-num">10x</div><div class="dc-label">US insulin prices vs. other developed nations</div><div class="dc-src">RAND / ASPE</div></div>
-    <div class="data-card"><div class="dc-num">$14,885</div><div class="dc-label">Per-person healthcare spending (double other rich nations)</div><div class="dc-src">Peterson-KFF</div></div>
-    <div class="data-card"><div class="dc-num">46th</div><div class="dc-label">US life expectancy rank globally (despite #1 spending)</div><div class="dc-src">WHO</div></div>
-    <div class="data-card"><div class="dc-num">15 yrs</div><div class="dc-label">Life expectancy gap between richest and poorest US counties</div><div class="dc-src">Sanders HELP Committee</div></div>
+    <div class="data-card"><div class="dc-num">+13%</div><div class="dc-label">ER death rate increase after PE hospital acquisition</div><div class="dc-src"><a href="https://www.acpjournals.org/journal/aim" target="_blank">Annals of Internal Medicine</a></div></div>
+    <div class="data-card"><div class="dc-num">+17%</div><div class="dc-label">Surgical mortality increase at PE-owned hospitals</div><div class="dc-src"><a href="https://hms.harvard.edu/" target="_blank">Harvard Medical School</a></div></div>
+    <div class="data-card"><div class="dc-num">+11%</div><div class="dc-label">Nursing home death rate increase under PE ownership</div><div class="dc-src"><a href="https://www.nber.org/" target="_blank">NBER</a></div></div>
+    <div class="data-card"><div class="dc-num">10x</div><div class="dc-label">US insulin prices vs. other developed nations</div><div class="dc-src"><a href="https://www.rand.org/pubs/research_reports/RRA788-1.html" target="_blank">RAND / ASPE</a></div></div>
+    <div class="data-card"><div class="dc-num">$14,885</div><div class="dc-label">Per-person healthcare spending (double other rich nations)</div><div class="dc-src"><a href="https://www.healthsystemtracker.org/chart-collection/health-spending-u-s-compare-countries/" target="_blank">Peterson-KFF</a></div></div>
+    <div class="data-card"><div class="dc-num">46th</div><div class="dc-label">US life expectancy rank globally (despite #1 spending)</div><div class="dc-src"><a href="https://www.who.int/data" target="_blank">WHO</a></div></div>
+    <div class="data-card"><div class="dc-num">15 yrs</div><div class="dc-label">Life expectancy gap between richest and poorest US counties</div><div class="dc-src"><a href="https://www.help.senate.gov/" target="_blank">Senate HELP Committee</a></div></div>
   </div>
 
   <h3 class="sub-header">Dark Money &amp; Elections</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">$4.2B</div><div class="dc-label">Total outside spending in 2024 elections</div><div class="dc-src">Brennan Center</div></div>
-    <div class="data-card"><div class="dc-num">$1.9B</div><div class="dc-label">Dark money in 2024 federal races (record)</div><div class="dc-src">Brennan Center</div></div>
-    <div class="data-card"><div class="dc-num">28x</div><div class="dc-label">Growth in outside spending since 2008</div><div class="dc-src">Brennan Center</div></div>
-    <div class="data-card"><div class="dc-num">$1.3B</div><div class="dc-label">Shell company / nonprofit money to super PACs (2024)</div><div class="dc-src">Brennan Center</div></div>
+    <div class="data-card"><div class="dc-num">$4.2B</div><div class="dc-label">Total outside spending in 2024 elections</div><div class="dc-src"><a href="https://www.brennancenter.org/our-work/research-reports" target="_blank">Brennan Center</a></div></div>
+    <div class="data-card"><div class="dc-num">$1.9B</div><div class="dc-label">Dark money in 2024 federal races (record)</div><div class="dc-src"><a href="https://www.brennancenter.org/our-work/research-reports" target="_blank">Brennan Center</a></div></div>
+    <div class="data-card"><div class="dc-num">28x</div><div class="dc-label">Growth in outside spending since 2008</div><div class="dc-src"><a href="https://www.brennancenter.org/our-work/research-reports" target="_blank">Brennan Center</a></div></div>
+    <div class="data-card"><div class="dc-num">$1.3B</div><div class="dc-label">Shell company / nonprofit money to super PACs (2024)</div><div class="dc-src"><a href="https://www.brennancenter.org/our-work/research-reports" target="_blank">Brennan Center</a></div></div>
   </div>
 
   <h3 class="sub-header">Corporate Power</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">90%+</div><div class="dc-label">US broadband/mobile controlled by 5 companies</div><div class="dc-src">Market data</div></div>
-    <div class="data-card"><div class="dc-num">40%+</div><div class="dc-label">US pharma market controlled by 3 companies</div><div class="dc-src">Market data</div></div>
-    <div class="data-card"><div class="dc-num">$500B</div><div class="dc-label">North America PE buyout value (2025, up 69%)</div><div class="dc-src">Bain PE Report 2026</div></div>
-    <div class="data-card"><div class="dc-num">$323B</div><div class="dc-label">Revenue forfeited by IRS workforce cuts (10-year)</div><div class="dc-src">CBO estimates</div></div>
+    <div class="data-card"><div class="dc-num">90%+</div><div class="dc-label">US broadband/mobile controlled by 5 companies</div><div class="dc-src"><a href="https://www.fcc.gov/reports-research" target="_blank">FCC / Market data</a></div></div>
+    <div class="data-card"><div class="dc-num">40%+</div><div class="dc-label">US pharma market controlled by 3 companies</div><div class="dc-src"><a href="https://www.statista.com/" target="_blank">Industry data</a></div></div>
+    <div class="data-card"><div class="dc-num">$500B</div><div class="dc-label">North America PE buyout value (2025, up 69%)</div><div class="dc-src"><a href="https://www.bain.com/insights/topics/global-private-equity-report/" target="_blank">Bain PE Report</a></div></div>
+    <div class="data-card"><div class="dc-num">$323B</div><div class="dc-label">Revenue forfeited by IRS workforce cuts (10-year)</div><div class="dc-src"><a href="https://www.cbo.gov/" target="_blank">CBO</a></div></div>
   </div>
 
   <h3 class="sub-header">DOGE &amp; Government</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">350K</div><div class="dc-label">Federal workers who left in 2025</div><div class="dc-src">OPM / PBS</div></div>
-    <div class="data-card"><div class="dc-num">$135B</div><div class="dc-label">Estimated cost of DOGE actions in FY2025</div><div class="dc-src">Nonpartisan analysis / CBS</div></div>
-    <div class="data-card"><div class="dc-num">6%</div><div class="dc-label">Government spending increase despite DOGE cuts</div><div class="dc-src">Brookings Hamilton Project</div></div>
-    <div class="data-card"><div class="dc-num">$215B</div><div class="dc-label">DOGE claimed savings (vs. $135B actual cost)</div><div class="dc-src">DOGE website / analysis</div></div>
+    <div class="data-card"><div class="dc-num">350K</div><div class="dc-label">Federal workers who left in 2025</div><div class="dc-src"><a href="https://www.opm.gov/" target="_blank">OPM</a> / <a href="https://www.pbs.org/newshour/" target="_blank">PBS</a></div></div>
+    <div class="data-card"><div class="dc-num">$135B</div><div class="dc-label">Estimated cost of DOGE actions in FY2025</div><div class="dc-src"><a href="https://www.cbsnews.com/" target="_blank">CBS / Nonpartisan analysis</a></div></div>
+    <div class="data-card"><div class="dc-num">6%</div><div class="dc-label">Government spending increase despite DOGE cuts</div><div class="dc-src"><a href="https://www.hamiltonproject.org/" target="_blank">Brookings Hamilton Project</a></div></div>
+    <div class="data-card"><div class="dc-num">$215B</div><div class="dc-label">DOGE claimed savings (vs. $135B actual cost)</div><div class="dc-src">DOGE website / independent analysis</div></div>
   </div>
 
   <h3 class="sub-header">Children &amp; Families</h3>
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">13.7%</div><div class="dc-label">Child poverty rate (SPM, 2023, up from 5.2% in 2021)</div><div class="dc-src">Census</div></div>
-    <div class="data-card"><div class="dc-num">19M</div><div class="dc-label">Children receiving less than full CTC in 2026</div><div class="dc-src">CBPP</div></div>
-    <div class="data-card"><div class="dc-num">50%</div><div class="dc-label">Black children not receiving full credit</div><div class="dc-src">CBPP</div></div>
-    <div class="data-card"><div class="dc-num">2.4M</div><div class="dc-label">Children lifted above poverty by CTC in 2024</div><div class="dc-src">CBPP</div></div>
+    <div class="data-card"><div class="dc-num">13.7%</div><div class="dc-label">Child poverty rate (SPM, 2023, up from 5.2% in 2021)</div><div class="dc-src"><a href="https://www.census.gov/topics/income-poverty/poverty.html" target="_blank">Census</a></div></div>
+    <div class="data-card"><div class="dc-num">19M</div><div class="dc-label">Children receiving less than full CTC in 2026</div><div class="dc-src"><a href="https://www.cbpp.org/" target="_blank">CBPP</a></div></div>
+    <div class="data-card"><div class="dc-num">50%</div><div class="dc-label">Black children not receiving full credit</div><div class="dc-src"><a href="https://www.cbpp.org/" target="_blank">CBPP</a></div></div>
+    <div class="data-card"><div class="dc-num">2.4M</div><div class="dc-label">Children lifted above poverty by CTC in 2024</div><div class="dc-src"><a href="https://www.cbpp.org/" target="_blank">CBPP</a></div></div>
   </div>
 
   <div class="callout navy">
@@ -1600,6 +1679,160 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
       <div class="pbhp-cell"><strong>Check 3</strong>Are we tolerating coalition disagreement or demanding purity?</div>
       <div class="pbhp-cell"><strong>Check 4</strong>Would we accept this tactic if the other side used it?</div>
     </div>
+  </div>
+</div>
+
+<!-- ======================================= -->
+<!-- SEND THE TEST PANEL -->
+<!-- ======================================= -->
+<div class="panel" id="panel-sendtest">
+  <h3 class="section-header first">Send the Candidate Accountability Test</h3>
+
+  <div class="content-block">
+    <p>This is a copy-and-paste email template you can send to any candidate &mdash; from school board to Senate. It asks clear yes/no questions across 18 policy areas. Candidates who refuse to answer are telling you something. Candidates who answer and then vote differently get documented in The Record.</p>
+    <p>Customize the bracketed fields. Send it. Archive the response. Share the results. Hold them accountable.</p>
+  </div>
+
+  <div style="text-align:center;margin:1.5rem 0;">
+    <button class="copy-btn" id="copyEmailBtn" onclick="copyEmailTemplate()">&#128203; Copy Full Email to Clipboard</button>
+  </div>
+
+  <div class="email-template" id="emailTemplate">Subject: Candidate Accountability Questionnaire &mdash; Civic QA / American Repair Manual
+
+Dear [Candidate Name],
+
+I am reaching out as a voter and constituent who believes public office should come with documentation, transparency, accountability, and measurable commitments. I am not asking for campaign language. I am asking for clear answers that will be shared publicly with voters.
+
+The basic idea is simple: if we require quality systems for hospitals, aviation, and food safety, we should require the same accountability from the people seeking power over healthcare, housing, wages, war, civil rights, courts, media, and democracy itself.
+
+Please answer the following. "Yes," "No," or "Yes, with explanation" is preferred.
+
+=== 1. MONEY IN POLITICS &amp; FOREIGN INFLUENCE ===
+- Will you refuse corporate PAC money?
+- Will you commit to not taking AIPAC money, or money from any PAC whose purpose is to pressure American officials to prioritize a foreign government over American interests?
+- Will you support overturning Citizens United?
+- Will you support publicly financed elections?
+- Will you support banning members of Congress from trading stocks?
+- Will you support a lifetime lobbying ban for former members?
+- Will you commit to representing the people of the United States first &mdash; not the interests of any foreign power, defense contractor, or multinational corporation?
+
+=== 2. TRUTH &amp; MEDIA ACCOUNTABILITY ===
+- Do you support consequences for knowingly spreading material falsehoods that cause public harm?
+- Will you support requiring paid political ads to provide public evidence files?
+- Will you support equal-reach corrections for proven material lies?
+- Will you support clear labeling of AI-generated political content?
+
+=== 3. DEMOCRACY REPAIR ===
+- Will you support independent redistricting commissions?
+- Will you support ranked-choice voting or similar reform?
+- Will you support automatic voter registration and making Election Day a holiday?
+- Will you support congressional term limits?
+- Will you support enforceable Supreme Court ethics rules?
+
+=== 4. LABOR, WAGES &amp; WORKER POWER ===
+- Will you support raising the minimum wage and indexing it to productivity?
+- Will you support card-check union recognition?
+- Will you support banning captive-audience anti-union meetings?
+- Will you support paid family leave as a national standard?
+
+=== 5. HEALTHCARE ===
+- Do you believe healthcare is a human right?
+- Will you support universal healthcare?
+- Will you support ending medical bankruptcy?
+- Will you oppose private equity models that strip hospitals for profit?
+
+=== 6. HOUSING ===
+- Will you support a major expansion of affordable and social housing?
+- Will you support banning algorithmic rent-fixing?
+- Will you support tenant protections including right to counsel in eviction?
+
+=== 7. CORPORATE POWER ===
+- Will you support aggressive antitrust enforcement?
+- Will you support holding executives personally accountable for repeated violations?
+- Will you support treating wage theft with the same seriousness as other theft?
+
+=== 8. TAXES &amp; WEALTH ===
+- Will you support taxing capital gains at least as strongly as labor income?
+- Will you support a billionaire minimum tax?
+- Will you support increasing IRS enforcement on wealthy tax evasion?
+
+=== 9. EDUCATION &amp; FAMILIES ===
+- Will you support universal childcare?
+- Will you support tuition-free community college and trade school?
+- Will you support teaching civics, labor history, and media literacy?
+
+=== 10. CIVIL RIGHTS &amp; BODILY AUTONOMY ===
+- Will you support codifying abortion rights into federal law?
+- Will you support LGBTQ protections?
+- Will you support strong enforcement of disability rights?
+
+=== 11. IMMIGRATION ===
+- Will you support immigration reform that is orderly, humane, and realistic?
+- Will you reject scapegoating immigrants for problems caused by corporate greed?
+
+=== 12. CRIMINAL JUSTICE ===
+- Will you support independent investigations of police killings?
+- Will you support ending private prisons?
+- Will you support treating addiction as a public health issue?
+
+=== 13. WAR POWERS ===
+- Will you support requiring Congress to vote before military action?
+- Will you support public accounting of war costs and defense contractor profits?
+- Will you support ending blank-check support for any foreign government?
+
+=== 14. TECHNOLOGY &amp; AI ===
+- Will you support requiring audits for AI systems used in high-stakes decisions?
+- Will you support a strong federal data privacy law?
+- Will you support banning government purchase of personal data without a warrant?
+
+=== 15. CLIMATE &amp; INFRASTRUCTURE ===
+- Will you support major investment in clean energy, public transit, and water systems?
+- Will you support right-to-repair laws?
+
+=== 16. RURAL AMERICA ===
+- Will you support protecting rural hospitals and pharmacies?
+- Will you support antitrust action against agribusiness monopolies?
+- Will you support universal broadband?
+
+=== 17. GOVERNMENT ACCOUNTABILITY ===
+- Will you support requiring major bills to include a public harm impact statement?
+- Will you support public dashboards tracking whether policies improve outcomes?
+- Will you support stronger whistleblower protections?
+
+=== 18. PERSONAL ACCOUNTABILITY ===
+- Will you commit to holding regular public town halls?
+- Will you commit to correcting public statements if proven false?
+- Will you commit to answering this questionnaire publicly?
+
+Thank you. I believe voters deserve clear answers before giving anyone power.
+
+Respectfully,
+[Your Name]
+[City / District]
+
+---
+For more: https://pausebeforeharmprotocol.github.io/the-american-repair-manual/
+The Record: https://pausebeforeharmprotocol.github.io/the-record/
+Contact: pausebeforeharmprotocol_pbhp@protonmail.com</div>
+
+  <div style="text-align:center;margin:1.5rem 0;">
+    <button class="copy-btn" id="copyEmailBtn2" onclick="copyEmailTemplate()">&#128203; Copy Full Email to Clipboard</button>
+  </div>
+
+  <div class="callout navy">
+    <div class="callout-title">How to Use This</div>
+    <div class="callout-text">
+      <p><strong>Step 1:</strong> Copy the email above. Customize the bracketed fields with your name and the candidate&rsquo;s name.</p>
+      <p><strong>Step 2:</strong> Find your candidate&rsquo;s contact. Most campaigns publish email or have contact forms. Town halls work too &mdash; print it and hand it to them.</p>
+      <p><strong>Step 3:</strong> Send it. CC local media if you want extra pressure. Ask them to respond on the record.</p>
+      <p><strong>Step 4:</strong> Archive the response. Screenshot it. Time-stamp it. If they answer, publish it. If they refuse, publish that.</p>
+      <p><strong>Step 5:</strong> Track performance. Did they vote the way they said they would? If not, submit the contradiction to The Record: pausebeforeharmprotocol_pbhp@protonmail.com</p>
+    </div>
+  </div>
+
+  <div class="phil-quote">
+    "Most politicians have never been asked to answer specific policy questions in writing, on the record, where voters can archive the response and compare it to their votes. They are used to scripted town halls, friendly interviews, and vague platform language. This email changes that. It puts them on the record. And The Record catches the divergence."
+    <div class="attr">&mdash; Phillip Linstrum</div>
   </div>
 </div>
 
@@ -1926,6 +2159,36 @@ function shareQuiz() {
 }
 
 renderQuestion();
+
+// COPY EMAIL TEMPLATE
+function copyEmailTemplate() {
+  var el = document.getElementById('emailTemplate');
+  var text = el.textContent || el.innerText;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      var btns = document.querySelectorAll('.copy-btn');
+      btns.forEach(function(b) {
+        b.classList.add('copied');
+        b.innerHTML = '&#10004; COPIED! Now customize and send it.';
+      });
+      setTimeout(function() {
+        btns.forEach(function(b) {
+          b.classList.remove('copied');
+          b.innerHTML = '&#128203; Copy Full Email to Clipboard';
+        });
+      }, 4000);
+    });
+  } else {
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    document.execCommand('copy');
+    sel.removeAllRanges();
+    alert('Email copied! Now customize the bracketed fields and send it.');
+  }
+}
 </script>
 </body>
 </html>
