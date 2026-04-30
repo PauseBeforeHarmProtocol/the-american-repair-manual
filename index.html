@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>THE AMERICAN REPAIR MANUAL — CAPA Edition</title>
+<meta name="description" content="A civic quality assurance framework for repairing American democracy. Policy-by-policy corrective and preventive action from the Pause Before Harm Protocol.">
+<meta property="og:title" content="THE AMERICAN REPAIR MANUAL — CAPA Edition">
+<meta property="og:description" content="America needs a CAPA. 9 repair packages. 30+ policy areas. 1 method: Pause Before Harm Protocol.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pausebeforeharmprotocol.github.io/the-american-repair-manual/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="THE AMERICAN REPAIR MANUAL — CAPA Edition">
+<meta name="twitter:description" content="Civic QA for a failing republic. Policy receipts, harm review, public accountability.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -23,6 +31,7 @@
   --grad-red:linear-gradient(135deg,var(--red2),var(--red));
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;min-height:100vh;line-height:1.7;}
 :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 
@@ -132,6 +141,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .footer-brand{font-family:'JetBrains Mono',monospace;font-size:.5rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:.3rem;font-weight:700;}
 
 /* RESPONSIVE */
+/* BACK TO TOP */
+.btt{position:fixed;bottom:1.5rem;right:1.5rem;z-index:80;width:40px;height:40px;border-radius:50%;background:var(--navy);color:var(--gold);border:2px solid var(--gold);font-size:1.1rem;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(13,27,42,.3);transition:all .2s;}
+.btt:hover{background:var(--gold);color:var(--navy);transform:scale(1.1);}
+.btt.vis{display:flex;}
+
+/* NAVSTRIP FADE HINT */
+.navstrip::after{content:'';position:absolute;right:0;top:0;bottom:0;width:30px;background:linear-gradient(90deg,transparent,var(--bg3));pointer-events:none;}
+.navstrip{position:relative;}
+
 @media(max-width:768px){
   .mh-top{padding:.5rem .8rem;}
   .logo h1{font-size:1.1rem;}
@@ -158,17 +176,17 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
       <span class="ctr">Civic QA for a Failing Republic</span>
     </div>
   </div>
-  <nav class="navstrip">
-    <button class="navtab on" onclick="showPanel('home')">Home</button>
-    <button class="navtab" onclick="showPanel('about')">About Phil</button>
-    <button class="navtab" onclick="showPanel('diagnosis')">The Diagnosis</button>
-    <button class="navtab" onclick="showPanel('democracy')">Democracy Repair</button>
-    <button class="navtab" onclick="showPanel('truth')">Truth Repair</button>
-    <button class="navtab" onclick="showPanel('economic')">Economic Repair</button>
-    <button class="navtab" onclick="showPanel('rights')">Rights &amp; Justice</button>
-    <button class="navtab" onclick="showPanel('pbhp')">PBHP Method</button>
-    <button class="navtab" onclick="showPanel('candidate')">Candidate Test</button>
-    <button class="navtab" onclick="showPanel('action')">Action</button>
+  <nav class="navstrip" role="tablist">
+    <button class="navtab on" data-panel="home" onclick="showPanel('home')" role="tab">Home</button>
+    <button class="navtab" data-panel="about" onclick="showPanel('about')" role="tab">About Phil</button>
+    <button class="navtab" data-panel="diagnosis" onclick="showPanel('diagnosis')" role="tab">The Diagnosis</button>
+    <button class="navtab" data-panel="democracy" onclick="showPanel('democracy')" role="tab">Democracy Repair</button>
+    <button class="navtab" data-panel="truth" onclick="showPanel('truth')" role="tab">Truth Repair</button>
+    <button class="navtab" data-panel="economic" onclick="showPanel('economic')" role="tab">Economic Repair</button>
+    <button class="navtab" data-panel="rights" onclick="showPanel('rights')" role="tab">Rights &amp; Justice</button>
+    <button class="navtab" data-panel="pbhp" onclick="showPanel('pbhp')" role="tab">PBHP Method</button>
+    <button class="navtab" data-panel="candidate" onclick="showPanel('candidate')" role="tab">Candidate Test</button>
+    <button class="navtab" data-panel="action" onclick="showPanel('action')" role="tab">Action</button>
   </nav>
 </header>
 
@@ -1036,6 +1054,9 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
 </div>
 
+<!-- BACK TO TOP -->
+<button class="btt" id="bttBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
+
 <!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-brand">The American Repair Manual &middot; CAPA Edition</div>
@@ -1043,6 +1064,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <div class="footer-links">
     <a href="https://pausebeforeharmprotocol.github.io/the-record/" target="_blank">The Record &mdash; Trump</a> &middot;
     <a href="https://pausebeforeharmprotocol.github.io/the-record-in6/" target="_blank">The Record &mdash; IN-6</a> &middot;
+    <a href="https://github.com/PauseBeforeHarmProtocol/the-american-repair-manual" target="_blank">Repair Manual on GitHub</a> &middot;
     <a href="https://github.com/PauseBeforeHarmProtocol/pbhp" target="_blank">PBHP on GitHub</a> &middot;
     <a href="https://facebook.com/plinst" target="_blank">Facebook</a>
   </div>
@@ -1050,7 +1072,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <p style="font-size:.6rem;margin-top:.4rem;color:rgba(255,255,255,.3);">Civic QA for a Failing Republic &middot; No Disposable People &middot; No Purchased Government</p>
 </footer>
 
-<!-- PANEL SWITCHING JS -->
+<!-- APP JS -->
 <script>
 window.showPanel = function(id) {
   document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('show'); });
@@ -1059,10 +1081,17 @@ window.showPanel = function(id) {
   if (panel) panel.classList.add('show');
   var btns = document.querySelectorAll('.navtab');
   btns.forEach(function(b) {
-    if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + id + "'") !== -1) b.classList.add('on');
+    if (b.dataset.panel === id) b.classList.add('on');
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
+
+// Back to top button
+var btt = document.getElementById('bttBtn');
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 400) { btt.classList.add('vis'); }
+  else { btt.classList.remove('vis'); }
+});
 </script>
 </body>
 </html>
