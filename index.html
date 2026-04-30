@@ -6,7 +6,7 @@
 <title>THE AMERICAN REPAIR MANUAL — CAPA Edition</title>
 <meta name="description" content="A civic quality assurance framework for repairing American democracy. Policy-by-policy corrective and preventive action from the Pause Before Harm Protocol.">
 <meta property="og:title" content="THE AMERICAN REPAIR MANUAL — CAPA Edition">
-<meta property="og:description" content="America needs a CAPA. 9 repair packages. 50+ policy areas. 1 method: Pause Before Harm Protocol. Hard data. No vibes.">
+<meta property="og:description" content="America needs a CAPA. 13 sections. 50+ policy areas. 1 method: Pause Before Harm Protocol. Hard data. No vibes.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pausebeforeharmprotocol.github.io/the-american-repair-manual/">
 <meta name="twitter:card" content="summary">
@@ -47,9 +47,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .ctr{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;}
 
 /* NAV */
-.navstrip{background:linear-gradient(180deg,var(--bg2),var(--bg3));border-bottom:2px solid var(--border);display:flex;align-items:center;padding:0 .5rem;gap:0;overflow-x:auto;scrollbar-width:none;position:relative;}
-.navstrip::-webkit-scrollbar{display:none;}
-.navstrip::after{content:'';position:absolute;right:0;top:0;bottom:0;width:30px;background:linear-gradient(90deg,transparent,var(--bg3));pointer-events:none;}
+.navstrip{background:linear-gradient(180deg,var(--bg2),var(--bg3));border-bottom:2px solid var(--border);display:flex;align-items:center;padding:.2rem .5rem;gap:2px;flex-wrap:wrap;position:relative;justify-content:center;}
 .navtab{font-family:'JetBrains Mono',monospace;font-size:.5rem;text-transform:uppercase;letter-spacing:.05em;padding:.5rem .7rem;border-bottom:3px solid transparent;background:transparent;color:var(--dim);cursor:pointer;white-space:nowrap;transition:all .2s;font-weight:600;border-top:none;border-left:none;border-right:none;}
 .navtab:hover{color:var(--blue);background:var(--blueL);border-bottom-color:var(--blueL2);}
 .navtab.on{color:#fff;background:var(--grad-navy);border-bottom-color:var(--gold);font-weight:700;border-radius:6px 6px 0 0;}
@@ -753,7 +751,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <h3 class="sub-header">PBHP for Political Persuasion</h3>
   <div class="content-block">
-    <p>Politics should persuade people. That is democracy. But persuasion should not mean manipulation, dehumanization, fabricated evidence, fear exploitation, or mass psychological warfare. A PBHP political message should answer:</p>
+    <p>Politics should persuade people. That is democracy. But persuasion should not mean manipulation, dehumanization, fabricated evidence, fear exploitation, or mass psychological warfare. The line between persuasion and propaganda is documentation. Persuasion gives you evidence and lets you decide. Propaganda gives you emotion and tells you what to think. A PBHP political message should answer:</p>
   </div>
   <ul class="policy-list">
     <li>Is the claim true? Is the evidence attached?</li>
@@ -766,6 +764,21 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </ul>
   <div class="content-block">
     <p>That last question matters. If the answer is no, then maybe the tactic is poison, even if the policy goal is good.</p>
+  </div>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Harm Analysis: The Information Crisis</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Who Benefits</strong>Politicians who win by lying. Billionaires who fund disinformation campaigns. Platforms that profit from engagement regardless of truth. Foreign actors who destabilize democracies. AI companies with no content accountability.</div>
+      <div class="pbhp-cell"><strong>Who Pays</strong>Voters who cannot tell what is true. Communities targeted by coordinated disinformation. Election integrity. Public health. Every policy debate that gets poisoned by manufactured lies.</div>
+      <div class="pbhp-cell"><strong>Who Gets Harmed First</strong>People with less media access and fewer tools to verify claims. Older voters targeted by social media manipulation. Communities of color targeted by voter suppression disinformation. Rural communities with fewer local news sources.</div>
+      <div class="pbhp-cell"><strong>Is It Reversible</strong>Partially. But trust, once destroyed, takes a generation to rebuild. The damage from a decade of unchecked disinformation cannot be undone with a single law. It requires sustained structural repair.</div>
+    </div>
+  </div>
+
+  <div class="phil-quote">
+    "In regulated industries, if you make a false claim about a product that harms people, you face consequences. You face fines, recalls, injunctions, license revocation, and criminal charges. But if you make a false claim about a candidate, a policy, or a public health measure &mdash; and millions of people believe it and act on it &mdash; nothing happens. The lie stays up. The damage is done. The liar profits. And the next liar learns that lying works. That is not a free speech problem. It is a quality control failure."
+    <div class="attr">&mdash; Phillip Linstrum</div>
   </div>
 </div>
 
@@ -937,117 +950,169 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 <div class="panel" id="panel-rights">
   <h3 class="section-header first">Rights &amp; Justice Repair</h3>
 
+  <div class="content-block">
+    <p>Rights are not a distraction from economics. They are the foundation. A country that allows the state to control your body, cage your neighbor for profit, or strip your vote based on your ZIP code is not a free country. It is a country where freedom is a product only some people can afford.</p>
+    <p>This section covers the full spectrum: criminal justice, immigration, civil rights, war powers, education, climate, rural repair, and government service reform. Every one of these connects back to the same root: concentrated power operating without accountability.</p>
+  </div>
+
   <h3 class="sub-header">Criminal Justice</h3>
   <div class="content-block">
-    <p>We need emergency response, investigation, violence prevention, mental health crisis teams, addiction treatment, and community safety. We do not need every social problem treated like a nail for militarized policing.</p>
+    <p>The United States incarcerates more people than any country on Earth &mdash; both in total numbers and per capita. We have 4% of the world&rsquo;s population and roughly 20% of its prisoners. The system does not produce safety. It produces revenue for private prison companies, cheap labor for corporations using prison contracts, and a permanent underclass of people who cannot vote, cannot get housing, and cannot get hired after serving time.</p>
+    <p>We need emergency response, investigation, violence prevention, mental health crisis teams, addiction treatment, and community safety. We do not need every social problem treated like a nail for militarized policing. A person having a mental health crisis does not need a SWAT team. A teenager shoplifting does not need to enter a system that will follow them for decades. An addict does not need a cell. They need treatment.</p>
+    <p>And corporate crime should scale upward, not downward. A person who steals $500 from a gas station faces immediate arrest, prosecution, and incarceration. A corporation that steals $500 million in wages faces a negotiated settlement, a fine smaller than its quarterly profit, and zero executives in handcuffs. That is not a justice system. That is a class enforcement system.</p>
   </div>
   <ul class="policy-list">
-    <li>End qualified immunity or create real civil accountability</li>
-    <li>National police licensing</li>
-    <li>Independent investigations of police killings</li>
-    <li>Public misconduct databases</li>
-    <li>Bail reform and sentencing reform</li>
-    <li>End private prisons</li>
-    <li>End civil asset forfeiture abuse</li>
-    <li>Treat addiction and mental health as healthcare problems</li>
-    <li>Corporate crime should scale upward &mdash; the law gets harsher as power increases, not softer</li>
+    <li><strong>End qualified immunity</strong> or create real civil accountability so officers who violate rights face consequences</li>
+    <li><strong>National police licensing</strong> &mdash; just like doctors, nurses, and electricians. Revoke the license, revoke the badge</li>
+    <li><strong>Independent investigations</strong> of all police killings &mdash; no department investigates itself</li>
+    <li><strong>Public misconduct databases</strong> so fired officers cannot quietly move to the next department</li>
+    <li><strong>Bail reform</strong> &mdash; cash bail means poverty equals prison. Risk-based pretrial release for nonviolent offenses</li>
+    <li><strong>Sentencing reform</strong> &mdash; end mandatory minimums for nonviolent drug offenses, expand diversion programs</li>
+    <li><strong>End private prisons</strong> &mdash; no corporation should profit from incarceration. Profit motive and justice are incompatible</li>
+    <li><strong>End civil asset forfeiture abuse</strong> &mdash; police should not be able to seize your property without a conviction</li>
+    <li><strong>Treat addiction as healthcare</strong> &mdash; fund treatment, not cages. Harm reduction saves lives and money</li>
+    <li><strong>Corporate crime penalties that scale with power</strong> &mdash; the bigger the company, the bigger the consequence. Personal liability for executives who authorize harm</li>
   </ul>
 
-  <h3 class="sub-header">Immigration Without Cruelty Theater</h3>
+  <h3 class="sub-header">Immigration: Rules Without Cruelty Theater</h3>
   <div class="content-block">
-    <p>A serious country can have rules without becoming cruel.</p>
+    <p>A serious country can have immigration rules without becoming cruel. The current system is not designed to process people efficiently. It is designed to create suffering as a deterrent &mdash; and then to use that suffering as a political prop. Children in cages is not border security. It is cruelty theater. Deporting people who have lived here for 20 years, paid taxes, raised families, and built communities is not law enforcement. It is community destruction.</p>
+    <p>Meanwhile, the employers who exploit undocumented workers &mdash; paying below minimum wage, ignoring safety rules, threatening deportation if workers complain &mdash; face almost no consequences. The system punishes the powerless and protects the powerful. That is the pattern everywhere.</p>
+    <p>Immigration should be fast, fair, humane, and enforced against exploitative employers, not just against families trying to survive.</p>
   </div>
   <ul class="policy-list">
-    <li>Secure processing, not sadism</li>
-    <li>More immigration judges and faster asylum decisions</li>
-    <li>Legal work authorization while cases proceed</li>
-    <li>Pathway to status for long-term residents</li>
-    <li>Employer penalties for exploitation</li>
-    <li>Humane detention standards</li>
-    <li>Family unity</li>
-    <li>No private detention profiteering</li>
+    <li><strong>Secure processing, not sadism</strong> &mdash; orderly intake, fast decisions, humane conditions</li>
+    <li><strong>More immigration judges</strong> &mdash; the backlog is over 3 million cases. Hire judges, not just border agents</li>
+    <li><strong>Legal work authorization</strong> while cases are pending so people can support themselves and pay taxes</li>
+    <li><strong>Pathway to status</strong> for long-term residents who have built lives here</li>
+    <li><strong>Employer penalties for exploitation</strong> &mdash; if you hire undocumented workers to avoid paying minimum wage, you face criminal charges, not just fines</li>
+    <li><strong>Humane detention standards</strong> with independent oversight and time limits</li>
+    <li><strong>Family unity</strong> &mdash; do not separate families as punishment</li>
+    <li><strong>End private detention profiteering</strong> &mdash; no corporation should profit from caging people</li>
   </ul>
 
   <h3 class="sub-header">Civil Rights</h3>
+  <div class="content-block">
+    <p>The Supreme Court overturned Roe v. Wade and millions of people lost bodily autonomy overnight. States immediately began passing near-total abortion bans, some with no exceptions for rape or incest. IVF access is under attack. Contraception access is being questioned by sitting justices. Trans rights are being used as a wedge issue while the people wielding that wedge cash checks from corporations that do not care about anyone&rsquo;s identity &mdash; they care about your distraction.</p>
+    <p>Civil rights are not culture war fodder. They are the non-negotiable baseline of a free society. You either have equal protection under the law or you do not. And right now, depending on what state you live in, you do not.</p>
+  </div>
   <ul class="policy-list">
-    <li>Codify abortion rights</li>
-    <li>Protect contraception and IVF</li>
-    <li>Protect LGBTQ rights</li>
-    <li>Federal voting rights</li>
-    <li>Disability rights enforcement</li>
-    <li>Religious freedom as shield, not sword for domination</li>
-    <li>Ban discrimination in housing, employment, education, healthcare, and public services</li>
-    <li>Protect protest rights and union organizing</li>
-    <li>Protect bodily autonomy</li>
+    <li><strong>Codify abortion rights</strong> into federal law &mdash; bodily autonomy is not a state-by-state suggestion</li>
+    <li><strong>Protect contraception and IVF</strong> with explicit federal legislation before the next court ruling</li>
+    <li><strong>Protect LGBTQ rights</strong> &mdash; employment, housing, healthcare, education, public services. No exceptions for &ldquo;religious objection&rdquo; that means denying someone a job or an apartment</li>
+    <li><strong>Federal voting rights</strong> &mdash; automatic registration, no voter suppression, restored rights after incarceration</li>
+    <li><strong>Disability rights enforcement</strong> &mdash; the ADA is 35 years old and still routinely ignored. Fund enforcement</li>
+    <li><strong>Religious freedom as shield, not sword</strong> &mdash; your religion protects you from government interference, not from having to coexist with people you disapprove of</li>
+    <li><strong>Anti-discrimination enforcement</strong> in housing, employment, education, healthcare, lending, and public services</li>
+    <li><strong>Protect protest rights and union organizing</strong> &mdash; the right to assemble is not conditional on convenience</li>
+    <li><strong>Protect bodily autonomy</strong> as a constitutional principle</li>
   </ul>
 
   <div class="callout navy">
     <div class="callout-title">The Culture War Detox</div>
-    <div class="callout-text">They want you fighting your neighbor over identity while they rob both of you. Protect people&rsquo;s rights firmly and clearly. Then get back to the money trail. Every single time. The billionaire does not care about your bathroom. He cares that you are yelling about bathrooms while he steals your pension, busts your union, and buys your senator. Rights are not negotiable. But they also are not a distraction tool for the powerful.</div>
+    <div class="callout-text">They want you fighting your neighbor over identity while they rob both of you. Protect people&rsquo;s rights firmly and clearly. Then get back to the money trail. Every single time. The billionaire does not care about your bathroom. He cares that you are yelling about bathrooms while he steals your pension, busts your union, and buys your senator. Rights are not negotiable. But they also are not a distraction tool for the powerful. Protect rights. Then follow the money. Every time.</div>
   </div>
 
   <h3 class="sub-header">War Powers &amp; Empire Accountability</h3>
+  <div class="content-block">
+    <p>The United States has been at war or conducting military operations for most of its existence. The post-9/11 wars cost over $8 trillion and resulted in an estimated 900,000+ deaths. Congress has effectively surrendered its war-making authority through open-ended Authorizations for Use of Military Force that presidents from both parties have used to bomb countries that were not named in the original authorization.</p>
+    <p>Meanwhile, defense contractors post record profits. Executives at weapons manufacturers trade stock while lobbying for conflicts. Veterans come home to underfunded VA systems, waitlists, and a country that thanks them for their service while cutting their benefits. The people who decide to go to war never fight in it. The people who profit from war never bleed in it. And the people who serve in it never get the care they were promised.</p>
+  </div>
   <ul class="policy-list">
-    <li>Repeal outdated Authorizations for Use of Military Force</li>
-    <li>Require affirmative congressional votes for military action beyond immediate defense</li>
-    <li>War cost public dashboard</li>
-    <li>Civilian casualty reporting</li>
-    <li>Defense contractor audit and anti-profiteering enforcement</li>
-    <li>Ban stock trading by officials during conflict decisions</li>
-    <li>Veterans care funded before contractor bonuses</li>
+    <li><strong>Repeal outdated AUMFs</strong> &mdash; no president should have a blank check for war based on an authorization from 2001</li>
+    <li><strong>Require affirmative congressional votes</strong> for military action beyond immediate self-defense</li>
+    <li><strong>War cost public dashboard</strong> &mdash; real-time public accounting of every dollar spent</li>
+    <li><strong>Civilian casualty reporting</strong> &mdash; mandatory, independent, and public</li>
+    <li><strong>Defense contractor audit</strong> and anti-profiteering enforcement with personal liability for fraud</li>
+    <li><strong>Ban stock trading</strong> by officials involved in conflict decisions</li>
+    <li><strong>Veterans care funded before contractor bonuses</strong> &mdash; no defense company gets a bonus while VA waitlists grow</li>
+    <li><strong>Arms sales accountability</strong> &mdash; public harm review before major weapons exports</li>
   </ul>
 
   <h3 class="sub-header">Education as Infrastructure</h3>
   <div class="content-block">
-    <p>A democracy cannot survive if people are intentionally kept ignorant of how power works.</p>
+    <p>A democracy cannot survive if people are intentionally kept ignorant of how power works. And that is exactly what has happened. Civics education has been gutted. Labor history has been erased. Media literacy is nonexistent. Financial literacy is optional. Most Americans cannot name their state legislators, explain how a bill becomes law, or identify who funds their representative&rsquo;s campaign.</p>
+    <p>This is not an accident. An informed electorate is dangerous to people who profit from confusion. So the education system has been defunded, privatized, and turned into another extraction machine &mdash; where students take on life-altering debt to access a credential that may or may not lead to a living wage, while for-profit colleges and student loan servicers profit regardless of outcomes.</p>
+    <p>Education is infrastructure. It is as essential as roads, bridges, and water systems. A country that does not invest in its people&rsquo;s ability to think, analyze, and participate is not a democracy. It is a factory for compliant consumers.</p>
   </div>
   <ul class="policy-list">
-    <li>Universal pre-K</li>
-    <li>Fully funded public schools &mdash; federal equalization so poor ZIP codes are not punished</li>
-    <li>Trade schools and community college tuition-free</li>
-    <li>Student debt relief tied to a system that prevents the debt machine from restarting</li>
-    <li>Real civics, labor history, media literacy, financial literacy, and &ldquo;how power works&rdquo; education</li>
+    <li><strong>Universal pre-K</strong> &mdash; every child, regardless of ZIP code or family income</li>
+    <li><strong>Fully funded public schools</strong> with federal equalization so poor districts are not punished for being poor</li>
+    <li><strong>Trade schools and community college tuition-free</strong> &mdash; not everyone needs a four-year degree, and that is fine. Fund every pathway</li>
+    <li><strong>Student debt relief</strong> tied to systemic reform that prevents the debt machine from restarting. Relief without reform is a bandage on a hemorrhage</li>
+    <li><strong>Real civics education</strong> &mdash; how power works, how money flows, how laws get made, how lobbying works, how to read a bill, how to hold officials accountable</li>
+    <li><strong>Labor history</strong> &mdash; students should know what unions built, what the Triangle Shirtwaist fire was, why the 40-hour week exists, and who fought for the rights they have</li>
+    <li><strong>Media literacy</strong> &mdash; how to evaluate sources, identify propaganda, detect AI-generated content, and distinguish news from opinion</li>
+    <li><strong>Financial literacy</strong> &mdash; how debt works, how compound interest works, how tax brackets work, how to read a lease, how to evaluate insurance</li>
   </ul>
 
-  <h3 class="sub-header">Climate &amp; National Repair</h3>
+  <h3 class="sub-header">Climate &amp; Energy Repair</h3>
+  <div class="content-block">
+    <p>Climate change is not a future problem. It is a current disaster that disproportionately harms the people with the least power to cause it. Floods, wildfires, heat waves, crop failures, water shortages, and infrastructure collapse are already happening. And the fossil fuel industry knew this was coming for decades while spending billions on disinformation to delay action.</p>
+    <p>The repair is not &ldquo;everyone buy an electric car.&rdquo; That is consumer-blame theater. The repair is structural: transition the energy system, build resilient infrastructure, protect affected workers, and make the industries that caused the damage pay for the cleanup. A just transition means nobody gets left behind &mdash; not coal miners, not refinery workers, not rural communities. But it also means the companies that lied about climate science for 40 years do not get to write the transition plan.</p>
+  </div>
   <ul class="policy-list">
-    <li>Clean energy buildout and grid expansion</li>
-    <li>Public transit</li>
-    <li>Climate-resilient infrastructure</li>
-    <li>Home weatherization</li>
-    <li>Regenerative agriculture</li>
-    <li>Water protection</li>
-    <li>Job guarantees for transition-affected workers</li>
+    <li><strong>Clean energy buildout</strong> and grid modernization &mdash; solar, wind, storage, transmission</li>
+    <li><strong>Public transit expansion</strong> &mdash; not everyone can afford a car. Transit is climate and equity policy</li>
+    <li><strong>Climate-resilient infrastructure</strong> &mdash; flood walls, fire-resistant building codes, cooling centers, emergency systems</li>
+    <li><strong>Home weatherization grants</strong> &mdash; lower energy bills and emissions at the same time</li>
+    <li><strong>Regenerative agriculture</strong> and soil health programs</li>
+    <li><strong>Water protection</strong> &mdash; PFAS cleanup, aquifer preservation, clean water enforcement</li>
+    <li><strong>Job guarantees for transition-affected workers</strong> &mdash; retraining, relocation support, wage insurance. No community abandoned</li>
+    <li><strong>Fossil fuel subsidy elimination</strong> &mdash; redirect $20+ billion in annual subsidies to clean energy and worker transition</li>
+    <li><strong>Polluter pays</strong> &mdash; companies that caused contamination fund the cleanup, not taxpayers</li>
   </ul>
 
   <h3 class="sub-header">Rural Repair</h3>
   <div class="content-block">
-    <p>Rural America has been used as a prop by Republicans and abandoned by corporate Democrats. A repair agenda needs a rural chapter that does not talk down to people.</p>
+    <p>Rural America has been used as a cultural prop by Republicans and abandoned by corporate Democrats. The right shows up every four years to wave a flag and talk about values, then goes back to Washington and votes for trade deals that gut factories, farm bills that benefit agribusiness over family farms, and healthcare cuts that close rural hospitals. The left writes off rural voters as lost causes and wonders why they keep losing elections.</p>
+    <p>A repair agenda needs a rural chapter that does not talk down to people. Rural communities need the same things everyone needs &mdash; healthcare, jobs, infrastructure, education, and a government that does not treat them like a sacrifice zone. Over 150 rural hospitals have closed since 2005, and dozens more are at risk as Medicaid cuts take effect. Broadband access is still unavailable to millions. Addiction treatment is hours away. The local pharmacy closed because a PE-backed chain undercut it. The family farm got absorbed by an agribusiness conglomerate.</p>
+    <p>Rural people are not the enemy of progressive policy. They are among its most urgent beneficiaries &mdash; if the policy is delivered without condescension.</p>
   </div>
   <ul class="policy-list">
-    <li>Rural hospital stabilization and mobile clinics</li>
-    <li>Broadband</li>
-    <li>Farm anti-monopoly enforcement and right to repair</li>
-    <li>Postal banking and public power</li>
-    <li>Rural addiction treatment</li>
-    <li>Veterans services</li>
-    <li>Small-town housing rehabilitation</li>
-    <li>Independent pharmacy support</li>
+    <li><strong>Rural hospital stabilization</strong> and mobile health clinics &mdash; no one should drive 90 minutes to an ER</li>
+    <li><strong>Universal broadband</strong> &mdash; treated as a utility, not a luxury</li>
+    <li><strong>Farm anti-monopoly enforcement</strong> &mdash; break the stranglehold of four companies controlling 85% of beef processing</li>
+    <li><strong>Right to repair</strong> &mdash; farmers should be able to fix their own equipment without permission from John Deere</li>
+    <li><strong>Postal banking</strong> &mdash; financial services in every community, not just ones profitable enough for a bank branch</li>
+    <li><strong>Public power options</strong> &mdash; rural electric cooperatives modernized and expanded</li>
+    <li><strong>Rural addiction treatment</strong> &mdash; fund treatment centers, not jails</li>
+    <li><strong>Veterans services</strong> &mdash; rural vets should not have to drive three hours to a VA facility</li>
+    <li><strong>Small-town housing rehabilitation</strong> and community development grants</li>
+    <li><strong>Independent pharmacy support</strong> &mdash; protect against PE-backed chain predation</li>
   </ul>
 
   <h3 class="sub-header">Government Service Repair</h3>
   <div class="content-block">
-    <p>A benefit you cannot access is not a benefit. It is a maze. DOGE cut 350,000 federal workers and then agencies had to rehire because they could not perform basic operations. The &ldquo;savings&rdquo; cost $135 billion. Government should be boring, accessible, and humane &mdash; not a political stunt.</p>
+    <p>A benefit you cannot access is not a benefit. It is a maze designed to exhaust you into giving up. And that is exactly how many government services function: labyrinthine application processes, phone trees that lead to disconnected numbers, websites that crash, forms that require information people do not have, and wait times measured in months.</p>
+    <p>DOGE made it worse. Cutting 350,000 federal workers did not make government more efficient. It made it nonfunctional. Agencies were left with skeleton crews. Social Security offices were overwhelmed. VA claims piled up. Benefits processing stalled. And then the government had to spend $135 billion rehiring, fixing broken systems, and dealing with the chaos the cuts created. The &ldquo;savings&rdquo; cost more than the original programs.</p>
+    <p>Government should be boring, accessible, and humane. It should work like a utility &mdash; you turn it on, it works, you do not need a lawyer to navigate it. That is not radical. That is basic competence.</p>
   </div>
   <ul class="policy-list">
-    <li>Plain-language forms</li>
-    <li>One-stop benefits portal</li>
-    <li>Phone and in-person access</li>
-    <li>Automatic enrollment when eligibility is known</li>
-    <li>Fast appeals</li>
-    <li>Public service standards and wait-time dashboards</li>
-    <li>No algorithmic denial without human appeal</li>
+    <li><strong>Plain-language forms</strong> &mdash; if you need a college degree to apply for food assistance, the form is the problem</li>
+    <li><strong>One-stop benefits portal</strong> &mdash; apply for everything you qualify for in one place</li>
+    <li><strong>Phone and in-person access</strong> &mdash; not everyone has broadband. Not everyone can navigate a website. Humans should be available</li>
+    <li><strong>Automatic enrollment</strong> when eligibility is known from existing data (tax returns, Medicaid, etc.)</li>
+    <li><strong>Fast appeals</strong> with real deadlines and consequences for agencies that miss them</li>
+    <li><strong>Public service standards</strong> and wait-time dashboards &mdash; measure it, publish it, fix it</li>
+    <li><strong>No algorithmic denial without human appeal</strong> &mdash; if a computer says no, a person reviews it</li>
+    <li><strong>Adequate staffing</strong> &mdash; you cannot run a government for 330 million people on a skeleton crew</li>
   </ul>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Harm Analysis: Rights Erosion &amp; Justice Failure</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Who Benefits</strong>Private prison companies. For-profit detention operators. Employers who exploit undocumented workers. Politicians who use cruelty as a campaign prop. Defense contractors. For-profit colleges. Fossil fuel companies. Agribusiness monopolies.</div>
+      <div class="pbhp-cell"><strong>Who Pays</strong>Incarcerated people and their families. Immigrants. Women who lose bodily autonomy. LGBTQ people denied equal protection. Rural communities losing hospitals. Students buried in debt. Veterans on waitlists. Communities breathing contaminated air.</div>
+      <div class="pbhp-cell"><strong>Who Gets Harmed First</strong>The poorest, most isolated, least powerful people. The ones who cannot hire a lawyer, cannot move states, cannot afford private healthcare, and cannot survive one more denial letter.</div>
+      <div class="pbhp-cell"><strong>Is It Reversible</strong>Some of it. But a rural hospital that closes does not reopen. A person wrongly incarcerated for a decade does not get those years back. A child separated from parents carries that trauma forever. Prevention is cheaper than repair.</div>
+    </div>
+  </div>
+
+  <div class="phil-quote">
+    "Rights are not a distraction from economic justice. They are the precondition for it. A worker who can be deported has no bargaining power. A woman who cannot control her own body has no economic freedom. A voter whose ballot is suppressed has no political power. A community whose hospital closed has no healthcare. You cannot separate rights from economics. The people in power separate them because divided people are easier to rob."
+    <div class="attr">&mdash; Phillip Linstrum</div>
+  </div>
 </div>
 
 <!-- ======================================= -->
@@ -1147,43 +1212,71 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <h3 class="section-header first">The Candidate Test</h3>
 
   <div class="content-block">
-    <p>Not vibes. Not party labels. A scorecard. Do you support the repair plan? Here are the questions every candidate should answer publicly &mdash; including Democrats.</p>
+    <p>Not vibes. Not party labels. Not &ldquo;they seem like a good person.&rdquo; A scorecard. Public, documented, verifiable, and applied equally to Republicans and Democrats.</p>
+    <p>American politics runs on brand loyalty. People vote for a letter next to a name and then hope for the best. That is not accountability. That is a subscription service where you never read the terms. The Candidate Test is the terms. It forces candidates to go on the record about specific policy positions, and then tracks whether they keep their word once elected.</p>
+    <p>This is how it connects to the rest of the PBHP system: The Repair Manual defines what should happen. The Candidate Test measures whether candidates align with it. The Record documents what they actually did. Together, they form a closed-loop accountability system &mdash; the kind that would get you fired in any regulated workplace if you did not have one.</p>
+  </div>
+
+  <h3 class="sub-header">The 12-Point Scorecard</h3>
+  <div class="content-block">
+    <p>Every candidate &mdash; from school board to Senate &mdash; should be asked to respond publicly to these 12 areas. Not in general terms. Specifically. On the record. With their name attached.</p>
   </div>
 
   <div class="scorecard-grid">
-    <div class="score-item"><div class="si-title">Democracy Repair</div><div class="si-desc">Do you support overturning Citizens United? Public financing? Stock trade bans? Term limits? Federal recall? Independent redistricting?</div></div>
-    <div class="score-item"><div class="si-title">Truth &amp; Media</div><div class="si-desc">Do you support political ad evidence requirements? Equal-reach corrections? AI content labeling? Platform amplification accountability?</div></div>
-    <div class="score-item"><div class="si-title">Labor Power</div><div class="si-desc">Do you support card check? Sectoral bargaining? Living wage? Worker board seats? Paid leave? Ban on union busting?</div></div>
-    <div class="score-item"><div class="si-title">Healthcare</div><div class="si-desc">Do you support universal coverage? No medical bankruptcy? Mental health parity? Drug price negotiation? Rural hospital protection?</div></div>
-    <div class="score-item"><div class="si-title">Housing</div><div class="si-desc">Do you support social housing? Tenant protections? Anti-rent-gouging rules? Banning algorithmic rent-fixing? Right to counsel?</div></div>
-    <div class="score-item"><div class="si-title">Anti-Corruption</div><div class="si-desc">Do you support an independent anti-corruption commission? Lobbying bans? Revolving door lockdown? No corporate PAC money?</div></div>
-    <div class="score-item"><div class="si-title">Corporate Power</div><div class="si-desc">Do you support breaking monopolies? Banning PE from essential services? Corporate crime penalties? Private equity regulation?</div></div>
-    <div class="score-item"><div class="si-title">Civil Rights</div><div class="si-desc">Do you support codified abortion rights? LGBTQ protections? Voting rights? Disability rights? Religious freedom without domination?</div></div>
-    <div class="score-item"><div class="si-title">Climate &amp; Infrastructure</div><div class="si-desc">Do you support clean energy buildout? Grid modernization? Public transit? Water system repair? Worker transition guarantees?</div></div>
-    <div class="score-item"><div class="si-title">War Powers</div><div class="si-desc">Do you support requiring congressional votes for military action? Defense contractor audits? War cost dashboards? Veteran care funding?</div></div>
-    <div class="score-item"><div class="si-title">Technology &amp; AI</div><div class="si-desc">Do you support AI audit requirements? Data privacy law? Algorithmic transparency? Appeal rights for automated decisions?</div></div>
-    <div class="score-item"><div class="si-title">Local Repair</div><div class="si-desc">Do you support rural hospital stabilization? Broadband access? Farm anti-monopoly? Postal banking? Right to repair?</div></div>
+    <div class="score-item"><div class="si-title">1. Democracy Repair</div><div class="si-desc">Do you support overturning Citizens United? Public financing? Stock trade bans? Term limits? Federal recall? Independent redistricting? If not, why not?</div></div>
+    <div class="score-item"><div class="si-title">2. Truth &amp; Media</div><div class="si-desc">Do you support political ad evidence requirements? Equal-reach corrections? AI content labeling? Platform amplification accountability?</div></div>
+    <div class="score-item"><div class="si-title">3. Labor Power</div><div class="si-desc">Do you support card check? Sectoral bargaining? Living wage? Worker board seats? Paid leave? Ban on union busting?</div></div>
+    <div class="score-item"><div class="si-title">4. Healthcare</div><div class="si-desc">Do you support universal coverage? No medical bankruptcy? Mental health parity? Drug price negotiation? Rural hospital protection?</div></div>
+    <div class="score-item"><div class="si-title">5. Housing</div><div class="si-desc">Do you support social housing? Tenant protections? Anti-rent-gouging rules? Banning algorithmic rent-fixing? Right to counsel in eviction?</div></div>
+    <div class="score-item"><div class="si-title">6. Anti-Corruption</div><div class="si-desc">Do you support an independent anti-corruption commission? Lobbying bans? Revolving door lockdown? Rejecting corporate PAC money?</div></div>
+    <div class="score-item"><div class="si-title">7. Corporate Power</div><div class="si-desc">Do you support breaking monopolies? Banning PE from essential services? Corporate crime penalties that scale with power? Antitrust enforcement?</div></div>
+    <div class="score-item"><div class="si-title">8. Civil Rights</div><div class="si-desc">Do you support codified abortion rights? LGBTQ protections? Voting rights? Disability rights? Religious freedom as a shield, not a weapon?</div></div>
+    <div class="score-item"><div class="si-title">9. Climate &amp; Infrastructure</div><div class="si-desc">Do you support clean energy buildout? Grid modernization? Public transit? Water system repair? Worker transition guarantees?</div></div>
+    <div class="score-item"><div class="si-title">10. War Powers</div><div class="si-desc">Do you support requiring congressional votes for military action? Defense contractor audits? War cost dashboards? Veteran care first?</div></div>
+    <div class="score-item"><div class="si-title">11. Technology &amp; AI</div><div class="si-desc">Do you support AI audit requirements? Data privacy law? Algorithmic transparency? Appeal rights for automated decisions? Deepfake labeling?</div></div>
+    <div class="score-item"><div class="si-title">12. Local Repair</div><div class="si-desc">Do you support rural hospital stabilization? Universal broadband? Farm anti-monopoly? Postal banking? Right to repair?</div></div>
   </div>
 
   <div class="callout gold">
     <div class="callout-title">How the Candidate Test Works</div>
     <div class="callout-text">
-      <p>Make candidates answer. Publish the answers. Archive them. Track whether they kept their word. That is where The Record plugs in.</p>
-      <p>The Record shows what they did. The Repair Plan shows what they should do. The Candidate Test shows whether they are aligned. The site distinguishes &ldquo;says they support&rdquo; from &ldquo;voted for&rdquo; from &ldquo;funded by interests opposing it.&rdquo;</p>
+      <p><strong>Step 1:</strong> Send the test to candidates. Email, town hall, public event, social media. Make them answer on the record.</p>
+      <p><strong>Step 2:</strong> Publish the answers. Archive them. Time-stamp them. Make them permanent and searchable.</p>
+      <p><strong>Step 3:</strong> Track performance. Did they vote the way they said they would? Did their donors conflict with their stated positions? Did they keep their promises or abandon them?</p>
+      <p><strong>Step 4:</strong> The Record catches the divergence. When a candidate says &ldquo;I support labor&rdquo; and then votes against the PRO Act, that contradiction becomes a documented, sourced entry in The Record. No hiding.</p>
     </div>
   </div>
 
   <h3 class="sub-header">Candidate Score Format</h3>
+  <div class="content-block">
+    <p>Each candidate gets evaluated on eight dimensions per policy area. This is not a simple yes/no poll. It is a multi-layer accountability assessment designed to catch the difference between what politicians say and what they do &mdash; and who is paying them to do it.</p>
+  </div>
   <ul class="policy-list">
-    <li><strong>Position:</strong> Yes / No / Partial / Unknown</li>
-    <li><strong>Evidence:</strong> Public statements, votes, co-sponsorships</li>
-    <li><strong>Votes:</strong> Actual voting record on related bills</li>
-    <li><strong>Donors:</strong> Who funds them? Conflicts?</li>
-    <li><strong>Contradictions:</strong> Where do words and actions diverge?</li>
-    <li><strong>PBHP Risk:</strong> Does their position create foreseeable public harm?</li>
-    <li><strong>Trust Level:</strong> Based on consistency between rhetoric and record</li>
-    <li><strong>Correction History:</strong> Have they corrected false claims?</li>
+    <li><strong>Position:</strong> Yes / No / Partial / Unknown / Refused to Answer &mdash; refusal is itself a data point</li>
+    <li><strong>Evidence:</strong> Public statements, interviews, debate answers, social media posts &mdash; time-stamped and archived</li>
+    <li><strong>Votes:</strong> Actual voting record on related bills. Not what they said at a fundraiser. What they did on the floor</li>
+    <li><strong>Donors:</strong> Who funds them? Does their donor list conflict with their stated positions? If you say you support labor but your top donors are anti-union corporations, that is a contradiction</li>
+    <li><strong>Contradictions:</strong> Where do words and actions diverge? How often? On which issues?</li>
+    <li><strong>PBHP Risk:</strong> Does their position create foreseeable public harm? Would it pass the harm test?</li>
+    <li><strong>Trust Level:</strong> Based on consistency between rhetoric and record over time. Not one statement. Pattern</li>
+    <li><strong>Correction History:</strong> Have they corrected false claims? Have they acknowledged errors? Or do they pretend mistakes never happened?</li>
   </ul>
+
+  <h3 class="sub-header">Why This Matters</h3>
+  <div class="content-block">
+    <p>Most Americans vote based on party label, personality, or the last attack ad they saw. That is how you get representatives who claim to fight for working people while taking corporate PAC money, voting against labor bills, and cashing in on stock trades. The Candidate Test makes the gap between rhetoric and reality impossible to hide.</p>
+    <p>It also holds Democrats accountable. If a Democratic candidate refuses to support universal healthcare, that refusal is documented. If they take pharma money and then vote against drug price negotiation, that contradiction is public. PBHP does not pick sides. It picks accountability.</p>
+  </div>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Harm Analysis: Elections Without Accountability Testing</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Who Benefits</strong>Politicians who win on branding instead of policy. Donors who buy access without public scrutiny. Consultants who profit from manufactured images. Incumbents who avoid tough questions.</div>
+      <div class="pbhp-cell"><strong>Who Pays</strong>Voters who elect people based on promises that were never going to be kept. Communities that needed healthcare, labor reform, or housing policy and got press releases instead.</div>
+      <div class="pbhp-cell"><strong>Who Gets Harmed First</strong>The same people who always get harmed first: working families, communities of color, rural communities, and anyone whose survival depends on government actually delivering.</div>
+      <div class="pbhp-cell"><strong>Is It Reversible</strong>Every election cycle without accountability testing is a cycle where bad actors can hide behind good messaging. You cannot get those years back. Start testing now.</div>
+    </div>
+  </div>
 </div>
 
 <!-- ======================================= -->
@@ -1361,35 +1454,83 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <h3 class="section-header first">Action: What You Can Do</h3>
 
   <div class="content-block">
-    <p>This is not just a manifesto. It should become an accountability engine. Here is how you participate.</p>
+    <p>This is not just a manifesto. It is not a blog post you read and forget. It is designed to be an accountability engine &mdash; a tool you use, share, adapt, and deploy in your own community. The ideas in this manual only matter if they spread beyond one website and into actual fights: town halls, union halls, school board meetings, DNC offices, local campaigns, and kitchen tables.</p>
+    <p>You do not need permission. You do not need a title. You do not need to be an expert. You need receipts, a spine, and the willingness to show up where it matters. Here is how.</p>
   </div>
 
   <div class="policy-grid">
-    <div class="policy-card blue-accent"><div class="pc-title">Share</div><div class="pc-text">Send this to people. Post it. Talk about it. Send it to your representative, your DNC chair, your local party, your union, your school board. The ideas only work if they spread beyond one site.</div></div>
-    <div class="policy-card gold-accent"><div class="pc-title">Submit Receipts</div><div class="pc-text">See a politician lying? See corporate harm? See a policy failure? Document it. Source it. Send it in. The Record grows when people contribute.</div></div>
-    <div class="policy-card green-accent"><div class="pc-title">Run for Office</div><div class="pc-text">Start local. School board. City council. County council. State legislature. The right-wing understood this for decades. We need a farm system. Start now.</div></div>
-    <div class="policy-card navy-accent"><div class="pc-title">Pressure Officials</div><div class="pc-text">Call. Write. Show up. Use the Candidate Test. Ask them on the record. Archive the answers. Hold them to it.</div></div>
-    <div class="policy-card red-accent"><div class="pc-title">Pressure the DNC</div><div class="pc-text">Send this site to DNC members. Demand economic populism. Demand they stop taking corporate PAC money. Demand candidate pipeline investment. They work for voters, not donors.</div></div>
-    <div class="policy-card orange-accent"><div class="pc-title">Use the Numbers</div><div class="pc-text">Every stat in The Numbers tab is sourced and shareable. Screenshot them. Print them. Use them in town halls. Make politicians answer to data, not slogans.</div></div>
+    <div class="policy-card blue-accent">
+      <div class="pc-icon">&#128225;</div>
+      <div class="pc-title">Share This Everywhere</div>
+      <div class="pc-text">Send this to people. Post it. Talk about it. Send it to your representative, your DNC chair, your local party, your union, your school board, your coworkers, your family group chat. Every tab is a standalone argument. Every data card is a screenshot. The ideas only work if they spread beyond one site and into actual conversations.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-icon">&#128203;</div>
+      <div class="pc-title">Submit Receipts</div>
+      <div class="pc-text">See a politician lying? See corporate harm? See a policy failure? Document it. Source it. Send it to pausebeforeharmprotocol_pbhp@protonmail.com. The Record grows when people contribute. Every entry needs a date, a source, and a description. We verify before publishing. That is the difference between accountability and rumor.</div>
+    </div>
+    <div class="policy-card green-accent">
+      <div class="pc-icon">&#127963;</div>
+      <div class="pc-title">Run for Office</div>
+      <div class="pc-text">Start local. School board. City council. County council. Township board. State legislature. Prosecutor. Sheriff. Secretary of state. The right-wing built a pipeline over 40 years. They took school boards, courts, statehouses, and election offices while the left kept acting like the presidency was the whole game. You are the farm system. Start now.</div>
+    </div>
+    <div class="policy-card navy-accent">
+      <div class="pc-icon">&#128222;</div>
+      <div class="pc-title">Pressure Your Officials</div>
+      <div class="pc-text">Call. Write. Show up. Use the Candidate Test. Print it. Hand it to them at a town hall. Ask them to answer on camera. Archive the answers. Then track whether they kept their word. When they do not, publish the contradiction. Accountability is not a one-time event. It is a sustained practice.</div>
+    </div>
+    <div class="policy-card red-accent">
+      <div class="pc-icon">&#128680;</div>
+      <div class="pc-title">Pressure the DNC</div>
+      <div class="pc-text">Send the Why We Lose tab to every DNC member you can find. Demand economic populism. Demand they stop taking corporate PAC money. Demand candidate pipeline investment. Demand they run on wages, housing, healthcare, and corporate power &mdash; not just &ldquo;the other guy is worse.&rdquo; They work for voters, not donors. Remind them.</div>
+    </div>
+    <div class="policy-card orange-accent">
+      <div class="pc-icon">&#128202;</div>
+      <div class="pc-title">Use the Numbers</div>
+      <div class="pc-text">Every stat in The Numbers tab is sourced and shareable. Screenshot data cards. Print them for town halls. Put them in campaign materials. When someone says &ldquo;the economy is fine,&rdquo; hand them the receipts. When a politician says reform is &ldquo;too expensive,&rdquo; ask who is paying now.</div>
+    </div>
+    <div class="policy-card purple-accent">
+      <div class="pc-icon">&#129309;</div>
+      <div class="pc-title">Organize Locally</div>
+      <div class="pc-text">Join your local Democratic committee. Join a union. Start a community group. Attend school board meetings. Show up at city council. The right-wing shows up to every meeting. Progressives show up to presidential elections. That has to change. Power is built in rooms most people never enter.</div>
+    </div>
+    <div class="policy-card blue-accent">
+      <div class="pc-icon">&#128218;</div>
+      <div class="pc-title">Adapt for Your Community</div>
+      <div class="pc-text">Take the repair packages and localize them. Housing repair for your city. Labor repair for your industry. Rural repair for your county. Education repair for your district. The framework is universal. The specifics are local. Make it yours.</div>
+    </div>
   </div>
 
   <h3 class="sub-header">The Pipeline: Start Local</h3>
   <div class="content-block">
-    <p>You do not wait for a savior. You build a candidate pipeline. School board. City council. County council. Township boards. State legislature. Prosecutor. Sheriff. Judges where elected. State attorney general. Secretary of state. These offices control real life and build the bench for Congress.</p>
+    <p>You do not wait for a savior. You build a candidate pipeline. Here is the office ladder, from bottom to top, and why each level matters:</p>
+  </div>
+  <ul class="policy-list">
+    <li><strong>School board:</strong> Controls curriculum, budgets, and the environment where the next generation learns how power works. This is where book bans and civics defunding get decided</li>
+    <li><strong>City council / Township board:</strong> Controls zoning, police policy, local taxes, housing rules, and community development. This is where rent policy, tenant protections, and police oversight live</li>
+    <li><strong>County council / commission:</strong> Controls county budgets, public health, courts, jails, elections administration, and infrastructure</li>
+    <li><strong>State legislature:</strong> Controls redistricting, voting laws, labor law, healthcare expansion, criminal justice reform, and education funding. Most of what affects your daily life is decided at this level</li>
+    <li><strong>Prosecutor / District attorney:</strong> Decides who gets charged, what gets ignored, and whether corporate crime is treated like crime</li>
+    <li><strong>Secretary of state:</strong> Runs elections. Controls voter access. This is the office the right-wing targeted after 2020</li>
+    <li><strong>State attorney general:</strong> Can sue corporations, investigate corruption, and enforce consumer protection</li>
+    <li><strong>Congress:</strong> The bench for federal office should be built from people who already won local fights and kept their word</li>
+  </ul>
+  <div class="content-block">
     <p>The right-wing understood this for decades. They took school boards, courts, statehouses, election offices, media ecosystems, churches, and donor networks while liberals kept acting like the presidency was the whole game. The left needs an actual farm system. And it needs it ten years ago. So start now.</p>
   </div>
 
   <h3 class="sub-header">How to Make This Spread</h3>
   <div class="content-block">
-    <p>This site is designed to be shared. Every tab is a standalone argument. Every data card is a screenshot. Every PBHP box is a framework people can apply to their own local fights.</p>
+    <p>This site is designed to be shared. Every tab is a standalone argument. Every data card is a screenshot. Every PBHP box is a framework people can apply to their own local fights. Here is the playbook:</p>
   </div>
   <ul class="policy-list">
-    <li><strong>For social media:</strong> Screenshot individual data cards or PBHP boxes. They are self-contained arguments.</li>
-    <li><strong>For town halls:</strong> Use the Candidate Test. Print it. Hand it to candidates. Ask them to fill it out on camera.</li>
-    <li><strong>For DNC pressure:</strong> Send the Why We Lose tab to DNC members. The data is undeniable.</li>
-    <li><strong>For union halls:</strong> The Economic Repair tab is a complete labor platform. Share it with organizers.</li>
-    <li><strong>For local campaigns:</strong> Adapt the repair packages to local issues. Housing repair for your city. Labor repair for your industry. Democracy repair for your state.</li>
-    <li><strong>For media:</strong> Every claim is sourced. Every number has a receipt. This is designed to survive fact-checking.</li>
+    <li><strong>For social media:</strong> Screenshot individual data cards or PBHP boxes. They are self-contained arguments. Post them with context. Tag your representatives. Make them respond to specific numbers, not general vibes</li>
+    <li><strong>For town halls:</strong> Print the Candidate Test. Hand it to candidates. Ask them to fill it out on camera. If they refuse, that refusal is the story</li>
+    <li><strong>For DNC pressure:</strong> Send the Why We Lose tab to every DNC member, state party chair, and county party officer you can reach. The voter-loss data is undeniable. Make them explain their plan</li>
+    <li><strong>For union halls:</strong> The Economic Repair tab is a complete labor platform. Share it with organizers, stewards, and local presidents. Ask your union to endorse the framework</li>
+    <li><strong>For local campaigns:</strong> Adapt the repair packages to local issues. Housing repair for your city. Labor repair for your industry. Democracy repair for your state. Rural repair for your county. Make it specific and local</li>
+    <li><strong>For media:</strong> Every claim is sourced. Every number has a receipt. This is designed to survive fact-checking because it was built on fact-checking. Journalists can verify every data point</li>
+    <li><strong>For family and friends:</strong> The Diagnosis tab and Grief Math section speak to people who feel squeezed but do not follow politics. Start there. Meet people where they are, not where you wish they were</li>
   </ul>
 
   <h3 class="sub-header">Public Metrics Dashboard</h3>
@@ -1416,6 +1557,16 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="callout-text">
       <p>Harm can no longer hide. Voters have receipts. Public officials can be recalled for serious misconduct. Billionaires cannot buy elections. Political ads require evidence. Workers can organize without being crushed. Healthcare is separated from employment. Housing is treated as shelter. Corporations are broken up before they become private governments. Judges have ethics rules. Police have licensing and accountability. AI systems have audit trails and appeal rights. Government agencies are measured by outcomes. Policy is reviewed for harm before implementation, not after people get crushed.</p>
       <p>The public stops accepting &ldquo;that&rsquo;s just how it is&rdquo; from the people benefiting from how it is.</p>
+    </div>
+  </div>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Self-Check: Is This Movement Working?</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Are we spreading?</strong>Is this reaching new audiences beyond people who already agree? Are working-class voters hearing it? Are rural communities seeing it? If not, fix the distribution, not the audience.</div>
+      <div class="pbhp-cell"><strong>Are we accurate?</strong>Has anything we published been proven false? Have we corrected it publicly with the same visibility? If not, we are failing our own standard.</div>
+      <div class="pbhp-cell"><strong>Are we building?</strong>Are candidates running on this framework? Are local chapters forming? Are people using the Candidate Test? If this stays a website and never becomes a movement, it failed.</div>
+      <div class="pbhp-cell"><strong>Are we accountable?</strong>Are we applying PBHP to ourselves? Are we tolerating coalition disagreement? Are we measuring outcomes? If the KPIs are not improving, we adjust. That is the whole point.</div>
     </div>
   </div>
 
