@@ -6,12 +6,12 @@
 <title>THE AMERICAN REPAIR MANUAL — CAPA Edition</title>
 <meta name="description" content="A civic quality assurance framework for repairing American democracy. Policy-by-policy corrective and preventive action from the Pause Before Harm Protocol.">
 <meta property="og:title" content="THE AMERICAN REPAIR MANUAL — CAPA Edition">
-<meta property="og:description" content="America needs a CAPA. 9 repair packages. 30+ policy areas. 1 method: Pause Before Harm Protocol.">
+<meta property="og:description" content="America needs a CAPA. 9 repair packages. 50+ policy areas. 1 method: Pause Before Harm Protocol. Hard data. No vibes.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pausebeforeharmprotocol.github.io/the-american-repair-manual/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="THE AMERICAN REPAIR MANUAL — CAPA Edition">
-<meta name="twitter:description" content="Civic QA for a failing republic. Policy receipts, harm review, public accountability.">
+<meta name="twitter:description" content="Civic QA for a failing republic. Policy receipts, harm review, public accountability. The data says we're losing. Here's the fix.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -21,6 +21,7 @@
   --gold:#F9A825;--gold2:#F57F17;--goldL:#FFF8E1;--goldGlow:rgba(249,168,37,.25);
   --green:#2E7D32;--greenL:#E8F5E9;
   --purple:#6A1B9A;--purpleL:#F3E5F5;
+  --orange:#EF6C00;--orangeL:#FFF3E0;
   --bg:#FAFBFE;--bg2:#F0F3F9;--bg3:#E4E9F2;
   --txt:#0D1B2A;--txt2:#3A4466;--dim:#5A6080;
   --border:#C4CEDF;--border2:#A8B6CC;
@@ -46,9 +47,10 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .ctr{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;}
 
 /* NAV */
-.navstrip{background:linear-gradient(180deg,var(--bg2),var(--bg3));border-bottom:2px solid var(--border);display:flex;align-items:center;padding:0 .5rem;gap:0;overflow-x:auto;scrollbar-width:none;}
+.navstrip{background:linear-gradient(180deg,var(--bg2),var(--bg3));border-bottom:2px solid var(--border);display:flex;align-items:center;padding:0 .5rem;gap:0;overflow-x:auto;scrollbar-width:none;position:relative;}
 .navstrip::-webkit-scrollbar{display:none;}
-.navtab{font-family:'JetBrains Mono',monospace;font-size:.55rem;text-transform:uppercase;letter-spacing:.06em;padding:.55rem .9rem;border-bottom:3px solid transparent;background:transparent;color:var(--dim);cursor:pointer;white-space:nowrap;transition:all .2s;font-weight:600;border-top:none;border-left:none;border-right:none;}
+.navstrip::after{content:'';position:absolute;right:0;top:0;bottom:0;width:30px;background:linear-gradient(90deg,transparent,var(--bg3));pointer-events:none;}
+.navtab{font-family:'JetBrains Mono',monospace;font-size:.5rem;text-transform:uppercase;letter-spacing:.05em;padding:.5rem .7rem;border-bottom:3px solid transparent;background:transparent;color:var(--dim);cursor:pointer;white-space:nowrap;transition:all .2s;font-weight:600;border-top:none;border-left:none;border-right:none;}
 .navtab:hover{color:var(--blue);background:var(--blueL);border-bottom-color:var(--blueL2);}
 .navtab.on{color:#fff;background:var(--grad-navy);border-bottom-color:var(--gold);font-weight:700;border-radius:6px 6px 0 0;}
 
@@ -87,8 +89,29 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .callout.red .callout-title{color:var(--red2);}
 .callout.green{background:var(--greenL);border:2px solid var(--green);color:var(--txt);}
 .callout.green .callout-title{color:var(--green);}
+.callout.orange{background:var(--orangeL);border:2px solid var(--orange);color:var(--txt);}
+.callout.orange .callout-title{color:var(--orange);}
 .callout-title{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:.5rem;}
 .callout-text{font-size:.88rem;line-height:1.7;}
+
+/* PBHP HARM BOX (new - woven throughout) */
+.pbhp-box{border:2px solid var(--gold);border-left:6px solid var(--gold);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.5rem 0;background:linear-gradient(135deg,rgba(249,168,37,.06),rgba(249,168,37,.02));}
+.pbhp-box .pbhp-label{font-family:'JetBrains Mono',monospace;font-size:.55rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold2);font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem;}
+.pbhp-box .pbhp-label::before{content:'';display:inline-block;width:8px;height:8px;background:var(--gold);border-radius:50%;}
+.pbhp-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.4rem;}
+.pbhp-cell{flex:1;min-width:180px;font-size:.82rem;color:var(--txt2);line-height:1.5;}
+.pbhp-cell strong{color:var(--navy);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.2rem;}
+
+/* DATA STAT CARDS */
+.data-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin:1.5rem 0;}
+.data-card{background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:1rem 1.2rem;text-align:center;transition:all .25s;}
+.data-card:hover{border-color:var(--blue);transform:translateY(-2px);box-shadow:0 4px 16px rgba(21,101,192,.1);}
+.data-card .dc-num{font-family:'JetBrains Mono',monospace;font-size:1.6rem;font-weight:900;color:var(--red);line-height:1.2;}
+.data-card .dc-num.blue{color:var(--blue);}
+.data-card .dc-num.gold{color:var(--gold2);}
+.data-card .dc-num.green{color:var(--green);}
+.data-card .dc-label{font-size:.72rem;color:var(--dim);margin-top:.3rem;line-height:1.4;}
+.data-card .dc-src{font-family:'JetBrains Mono',monospace;font-size:.5rem;color:var(--border2);margin-top:.3rem;}
 
 /* POLICY CARDS */
 .policy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin:1.5rem 0;}
@@ -103,6 +126,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .policy-card.red-accent{border-left:5px solid var(--red);}
 .policy-card.green-accent{border-left:5px solid var(--green);}
 .policy-card.purple-accent{border-left:5px solid var(--purple);}
+.policy-card.orange-accent{border-left:5px solid var(--orange);}
 
 /* SLOGAN STRIP */
 .slogan-strip{background:var(--grad-navy);color:#fff;padding:1.5rem;border-radius:12px;margin:2rem 0;text-align:center;}
@@ -131,7 +155,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 /* POLICY LIST */
 .policy-list{margin:1rem 0 1.5rem;padding-left:0;list-style:none;}
 .policy-list li{position:relative;padding:.4rem 0 .4rem 1.6rem;font-size:.88rem;color:var(--txt2);line-height:1.6;}
-.policy-list li::before{content:'→';position:absolute;left:0;color:var(--gold);font-weight:700;}
+.policy-list li::before{content:'\2192';position:absolute;left:0;color:var(--gold);font-weight:700;}
+
+/* VOTER LOSS TABLE */
+.loss-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.82rem;}
+.loss-table th{background:var(--navy);color:#fff;padding:.6rem .8rem;text-align:left;font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;}
+.loss-table td{padding:.5rem .8rem;border-bottom:1px solid var(--border);color:var(--txt2);}
+.loss-table tr:hover{background:var(--blueL);}
+.loss-table .loss{color:var(--red);font-weight:700;}
+.loss-table .gain{color:var(--green);font-weight:700;}
 
 /* FOOTER */
 .site-footer{background:var(--grad-navy);color:rgba(255,255,255,.7);padding:2rem;text-align:center;margin-top:2rem;}
@@ -140,16 +172,12 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .footer-links{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;margin-top:.5rem;}
 .footer-brand{font-family:'JetBrains Mono',monospace;font-size:.5rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:.3rem;font-weight:700;}
 
-/* RESPONSIVE */
 /* BACK TO TOP */
 .btt{position:fixed;bottom:1.5rem;right:1.5rem;z-index:80;width:40px;height:40px;border-radius:50%;background:var(--navy);color:var(--gold);border:2px solid var(--gold);font-size:1.1rem;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(13,27,42,.3);transition:all .2s;}
 .btt:hover{background:var(--gold);color:var(--navy);transform:scale(1.1);}
 .btt.vis{display:flex;}
 
-/* NAVSTRIP FADE HINT */
-.navstrip::after{content:'';position:absolute;right:0;top:0;bottom:0;width:30px;background:linear-gradient(90deg,transparent,var(--bg3));pointer-events:none;}
-.navstrip{position:relative;}
-
+/* RESPONSIVE */
 @media(max-width:768px){
   .mh-top{padding:.5rem .8rem;}
   .logo h1{font-size:1.1rem;}
@@ -159,7 +187,13 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   .stat .num{font-size:1.3rem;}
   .policy-grid{grid-template-columns:1fr;}
   .scorecard-grid{grid-template-columns:1fr;}
+  .data-grid{grid-template-columns:repeat(2,1fr);}
   .section-header{font-size:1.1rem;}
+  .pbhp-row{flex-direction:column;}
+  .loss-table{font-size:.72rem;}
+}
+@media(max-width:480px){
+  .data-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -179,41 +213,46 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <nav class="navstrip" role="tablist">
     <button class="navtab on" data-panel="home" onclick="showPanel('home')" role="tab">Home</button>
     <button class="navtab" data-panel="about" onclick="showPanel('about')" role="tab">About Phil</button>
-    <button class="navtab" data-panel="diagnosis" onclick="showPanel('diagnosis')" role="tab">The Diagnosis</button>
+    <button class="navtab" data-panel="diagnosis" onclick="showPanel('diagnosis')" role="tab">Diagnosis</button>
+    <button class="navtab" data-panel="whywelose" onclick="showPanel('whywelose')" role="tab">Why We Lose</button>
     <button class="navtab" data-panel="democracy" onclick="showPanel('democracy')" role="tab">Democracy Repair</button>
     <button class="navtab" data-panel="truth" onclick="showPanel('truth')" role="tab">Truth Repair</button>
     <button class="navtab" data-panel="economic" onclick="showPanel('economic')" role="tab">Economic Repair</button>
     <button class="navtab" data-panel="rights" onclick="showPanel('rights')" role="tab">Rights &amp; Justice</button>
     <button class="navtab" data-panel="pbhp" onclick="showPanel('pbhp')" role="tab">PBHP Method</button>
     <button class="navtab" data-panel="candidate" onclick="showPanel('candidate')" role="tab">Candidate Test</button>
+    <button class="navtab" data-panel="numbers" onclick="showPanel('numbers')" role="tab">The Numbers</button>
+    <button class="navtab" data-panel="ethics" onclick="showPanel('ethics')" role="tab">Movement Ethics</button>
     <button class="navtab" data-panel="action" onclick="showPanel('action')" role="tab">Action</button>
   </nav>
 </header>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <!-- HOME PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel show" id="panel-home">
   <div class="home-hero">
     <h2>America Needs a <span>CAPA</span></h2>
-    <p class="tagline">The United States is not failing because ordinary people are lazy, stupid, or irresponsible. It is failing because the systems that govern our lives have been captured by money, protected from accountability, and allowed to harm people without correction.</p>
+    <p class="tagline">The United States is not failing because ordinary people are lazy, stupid, or irresponsible. It is failing because the systems that govern our lives have been captured by money, protected from accountability, and allowed to harm people without correction. This is the repair manual.</p>
   </div>
 
   <div class="home-stats">
-    <div class="stat"><div class="num">9</div><div class="lbl">Repair Packages</div></div>
-    <div class="stat"><div class="num">30+</div><div class="lbl">Policy Areas</div></div>
+    <div class="stat"><div class="num">13</div><div class="lbl">Sections</div></div>
+    <div class="stat"><div class="num">50+</div><div class="lbl">Policy Areas</div></div>
+    <div class="stat"><div class="num">$1.9B</div><div class="lbl">Dark Money 2024</div></div>
+    <div class="stat"><div class="num">22.6M</div><div class="lbl">Rent-Burdened Households</div></div>
     <div class="stat"><div class="num">1</div><div class="lbl">Method: PBHP</div></div>
   </div>
 
   <div class="content-block">
     <p>In regulated industries, repeated failure triggers investigation. You document the deviation. You identify root cause. You implement corrective action. You verify effectiveness. You prevent recurrence.</p>
     <p>America does the opposite. It lets politicians lie, corporations extract, media manipulate, landlords gouge, employers exploit, judges operate without accountability, and billionaires buy the rules. Then it blames working people for not surviving the damage.</p>
-    <p>This project is a repair manual for that machine.</p>
+    <p>This project is a repair manual for that machine. It is also a mirror for any political party &mdash; including the Democrats &mdash; that claims to represent working people while failing them.</p>
   </div>
 
   <div class="slogan-strip">
-    <div class="slogan">No disposable people · No purchased government · No public power without accountability</div>
-    <div class="slogan">No mass persuasion without receipts · No policy without harm review · No democracy where money counts more than people</div>
+    <div class="slogan">No disposable people &middot; No purchased government &middot; No public power without accountability</div>
+    <div class="slogan">No mass persuasion without receipts &middot; No policy without harm review &middot; No democracy where money counts more than people</div>
   </div>
 
   <h3 class="section-header">The Agenda Stack</h3>
@@ -228,11 +267,11 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     </div>
     <div class="policy-card blue-accent">
       <div class="pc-title">THE REPAIR MANUAL</div>
-      <div class="pc-text">Explains what to build. A complete corrective and preventive action plan for American democracy &mdash; policy by policy, system by system, with public metrics and harm review.</div>
+      <div class="pc-text">Explains what to build. A complete corrective and preventive action plan for American democracy &mdash; policy by policy, system by system, with public metrics, harm review, and hard data.</div>
     </div>
     <div class="policy-card gold-accent">
       <div class="pc-title">THE CANDIDATE TEST</div>
-      <div class="pc-text">Measures alignment. A public scorecard that grades politicians against the repair agenda. Not vibes. Not party labels. Receipts.</div>
+      <div class="pc-text">Measures alignment. A public scorecard that grades politicians &mdash; including Democrats &mdash; against the repair agenda. Not vibes. Not party labels. Receipts.</div>
     </div>
     <div class="policy-card red-accent">
       <div class="pc-title">PBHP: THE HARM TEST</div>
@@ -242,7 +281,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <div class="callout navy">
     <div class="callout-title">The Governing Thesis</div>
-    <div class="callout-text">The country is not broken because ordinary people failed. It is broken because power has been allowed to detach itself from accountability. Money detached from labor. Politics detached from voters. Media detached from truth. Corporations detached from communities. Healthcare detached from care. Housing detached from shelter. Government detached from the public it is supposed to serve. The repair is not one policy. It is a system-wide power shift.</div>
+    <div class="callout-text">The country is not broken because ordinary people failed. It is broken because power has been allowed to detach itself from accountability. Money detached from labor. Politics detached from voters. Media detached from truth. Corporations detached from communities. Healthcare detached from care. Housing detached from shelter. Government detached from the public it is supposed to serve. The repair is not one policy. It is a system-wide power shift. And it starts with receipts.</div>
   </div>
 
   <div class="phil-quote">
@@ -250,14 +289,19 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="attr">&mdash; Phillip Linstrum</div>
   </div>
 
+  <div class="callout red">
+    <div class="callout-title">To the Democratic Party</div>
+    <div class="callout-text">You lost working-class voters by nearly 30 percentage points between 2008 and 2024. Your favorability rating hit a record low of 27%. You lost working-class Latinos by 31 points compared to 2020. This manual is not an attack on the party. It is a CAPA &mdash; a corrective and preventive action plan. You can use it as a roadmap or you can keep losing. But you cannot keep blaming voters for rejecting a party that does not fight for them.</div>
+  </div>
+
   <div class="content-block" style="text-align:center;margin-top:2rem;">
     <p>Also from PBHP: <a href="https://pausebeforeharmprotocol.github.io/the-record/" target="_blank" style="color:var(--blue);font-weight:600;">THE RECORD &mdash; Trump Administration</a> &middot; <a href="https://pausebeforeharmprotocol.github.io/the-record-in6/" target="_blank" style="color:var(--blue);font-weight:600;">THE RECORD &mdash; IN-6</a></p>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <!-- ABOUT PHIL PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-about">
   <h3 class="section-header first">Who I Am and Why I&rsquo;m Building This</h3>
 
@@ -296,9 +340,9 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
       <p><strong>I work in quality systems.</strong> That means I understand process failure, documentation, audits, corrective action, preventive action, training gaps, leadership failures, and verification.</p>
       <p><strong>I worked in plasma for years.</strong> That means I have seen working people, regulated systems, healthcare-adjacent extraction, and the gap between corporate policy and human reality.</p>
       <p><strong>I am not rich.</strong> That means grocery prices, rent, healthcare, utilities, cars, family stress, and time actually mean something to me.</p>
-      <p><strong>I have built The Record.</strong> That means I am not just yelling; I am documenting.</p>
+      <p><strong>I have built The Record.</strong> That means I am not just yelling; I am documenting. Over 4,500 sourced, timestamped accountability entries.</p>
       <p><strong>I created PBHP.</strong> That means I have a method for harm review, not just vibes.</p>
-      <p><strong>I am not perfect.</strong> That means I need receipts, accountability, and correction too.</p>
+      <p><strong>I am not perfect.</strong> That means I need receipts, accountability, and correction too. PBHP applies to me first.</p>
     </div>
   </div>
 
@@ -342,11 +386,16 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
     <p>That is not &ldquo;anti-business.&rdquo; That is anti-feudalism.</p>
   </div>
+
+  <div class="callout navy">
+    <div class="callout-title">The FDR Precedent</div>
+    <div class="callout-text">Franklin Roosevelt was elected four times. He gave America Social Security, the SEC, the FDIC, the NLRB, rural electrification, and the framework for the middle class. He was called a socialist, a communist, a traitor to his class. He won anyway &mdash; because he fought for working people and they knew it. Americans do not want a communist cartoon. They want a government that works for them. That is what democratic socialism means in practice. Call it whatever scares rich people the most.</div>
+  </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <!-- DIAGNOSIS PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-diagnosis">
   <h3 class="section-header first">The Diagnosis: What Is Broken</h3>
 
@@ -354,6 +403,19 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <p>America does not need a vibe shift. America needs a quality system.</p>
 
     <p>The country is not failing because ordinary people made bad choices. It is failing because the entire machine has been pointed in the wrong direction for decades. It extracts from working people, protects the rich, punishes the poor, monetizes sickness, privatizes survival, and then lectures everyone about personal responsibility.</p>
+
+    <p>Here are the receipts.</p>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">22.6M</div><div class="dc-label">Renter households spending 30%+ of income on housing</div><div class="dc-src">Census / JCHS 2023</div></div>
+    <div class="data-card"><div class="dc-num">$220B</div><div class="dc-label">Total medical debt owed by Americans</div><div class="dc-src">KFF / Roosevelt Institute</div></div>
+    <div class="data-card"><div class="dc-num">31.7%</div><div class="dc-label">Share of US wealth owned by top 1%</div><div class="dc-src">Federal Reserve Q3 2025</div></div>
+    <div class="data-card"><div class="dc-num">$7.8T</div><div class="dc-label">Combined wealth of 905 US billionaires</div><div class="dc-src">Forbes Sept. 2025</div></div>
+    <div class="data-card"><div class="dc-num">10.0%</div><div class="dc-label">Union membership rate (was 20.1% in 1983)</div><div class="dc-src">BLS 2025</div></div>
+    <div class="data-card"><div class="dc-num">$1.9B</div><div class="dc-label">Dark money in 2024 federal elections</div><div class="dc-src">Brennan Center</div></div>
+    <div class="data-card"><div class="dc-num">66.5%</div><div class="dc-label">Bankruptcies caused by medical bills</div><div class="dc-src">Consumer Bankruptcy Project</div></div>
+    <div class="data-card"><div class="dc-num">150%</div><div class="dc-label">Productivity growth since 1973 (wages: ~17%)</div><div class="dc-src">EPI Productivity-Pay Gap</div></div>
   </div>
 
   <div class="callout red">
@@ -376,7 +438,17 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
     <p>&ldquo;If I pay this, can I afford that?&rdquo; &ldquo;If I buy this for my kid, what bill gets pushed?&rdquo; &ldquo;If I go to the doctor, what gets sacrificed?&rdquo; &ldquo;If rent goes up again, where the hell do we go?&rdquo;</p>
 
-    <p>That is not freedom. That is not prosperity. That is managed desperation.</p>
+    <p>That is not freedom. That is not prosperity. That is managed desperation. And nearly three-quarters of American workers now say they cannot afford anything beyond basic living expenses.</p>
+  </div>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Harm Analysis: The Cost of Living Crisis</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Who Benefits</strong>Corporate landlords, insurance companies, pharmaceutical companies, private equity, monopoly grocery chains, and the donor class that funds politicians to maintain this system.</div>
+      <div class="pbhp-cell"><strong>Who Pays</strong>Working families. The bottom 50% of US households hold $4.1 trillion combined &mdash; while the top 1% holds $55 trillion.</div>
+      <div class="pbhp-cell"><strong>Who Gets Harmed First</strong>Single parents. Rural communities. Black and Latino households. Disabled people. Anyone living paycheck to paycheck. Anyone one medical bill from bankruptcy.</div>
+      <div class="pbhp-cell"><strong>Is It Reversible</strong>Not without structural correction. Wages have diverged from productivity for 50 years. The gap only closes with policy.</div>
+    </div>
   </div>
 
   <h3 class="sub-header">The Scam</h3>
@@ -390,22 +462,22 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <h3 class="sub-header">The Detachment Map</h3>
 
   <div class="policy-grid">
-    <div class="policy-card red-accent"><div class="pc-title">Money Detached from Labor</div><div class="pc-text">Work no longer produces wealth for workers. Productivity rose; wages flatlined. Profits rise; workers get squeezed. The wealthiest extract value from labor without sharing it.</div></div>
-    <div class="policy-card red-accent"><div class="pc-title">Politics Detached from Voters</div><div class="pc-text">Elected officials respond to donors, not constituents. Citizens United opened unlimited corporate election spending. Gerrymandering and voter suppression finish the job.</div></div>
-    <div class="policy-card red-accent"><div class="pc-title">Media Detached from Truth</div><div class="pc-text">Billion-dollar propaganda machines masquerade as news. Algorithmic rage farming replaces journalism. Lies are profitable. Corrections are invisible.</div></div>
-    <div class="policy-card red-accent"><div class="pc-title">Corporations Detached from Communities</div><div class="pc-text">Private equity strips towns. Monopolies kill competition. Essential services become extraction rackets. Worker deaths become productivity calculations.</div></div>
-    <div class="policy-card red-accent"><div class="pc-title">Healthcare Detached from Care</div><div class="pc-text">Insurance companies profit by denying care. Medical debt is the leading cause of bankruptcy. People ration insulin, skip doctors, and start GoFundMes to survive.</div></div>
-    <div class="policy-card red-accent"><div class="pc-title">Housing Detached from Shelter</div><div class="pc-text">Housing became a speculative casino. Corporate landlords and private equity bulk-buy homes. Rent eats half of working-class income. Homelessness is a policy choice.</div></div>
-    <div class="policy-card red-accent"><div class="pc-title">Justice Detached from Equality</div><div class="pc-text">A poor person steals $500 and faces immediate consequences. A corporation steals $500 million in wages and gets a negotiated settlement.</div></div>
-    <div class="policy-card red-accent"><div class="pc-title">Government Detached from the Public</div><div class="pc-text">Benefits require fighting a bureaucratic maze. Agencies are understaffed and underfunded. Public service became a networking internship for future lobbying careers.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Money Detached from Labor</div><div class="pc-text">Productivity rose 150% since 1973. Wages rose ~17%. If workers had received raises equal to their productivity, average hourly pay would be $72.88 today. The top 1% gained 101x more wealth than the median household.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Politics Detached from Voters</div><div class="pc-text">$1.9 billion in dark money flooded the 2024 elections. Outside spending exploded 28-fold since 2008, from $144 million to over $4.2 billion. Super PACs set a record of $2.7 billion. One man contributed a quarter of a billion dollars to one campaign.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Media Detached from Truth</div><div class="pc-text">Billion-dollar propaganda machines masquerade as news. Algorithmic rage farming replaces journalism. Lies are profitable. Corrections are invisible. AI-generated deepfakes are now a legislative emergency with 169 state laws enacted since 2022.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Corporations Detached from Communities</div><div class="pc-text">Five telecom companies control 90%+ of US broadband and mobile. Three pharma companies control 40%+ of the US market. Private equity bought Walgreens for $10 billion. PE buyout value in North America rose 69% in 2025 to ~$500 billion.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Healthcare Detached from Care</div><div class="pc-text">$220 billion in medical debt. 66.5% of bankruptcies caused by medical bills. The One Big Beautiful Bill cut $1.1 trillion from healthcare and will cost 11.8 million people their coverage. 19 million children will get less than the full child tax credit because their families earn too little.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Housing Detached from Shelter</div><div class="pc-text">22.6 million renter households are cost-burdened. 12.1 million are severely burdened (50%+ of income). RealPage used algorithmic rent-fixing that the DOJ sued as price-fixing. Corporate landlords coordinate rents through software while families choose between rent and food.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Justice Detached from Equality</div><div class="pc-text">A poor person steals $500 and faces immediate consequences. A corporation steals $500 million in wages and gets a negotiated settlement. Private prisons profit from incarceration. The IRS is cutting 40% of its workforce, forgoing an estimated $323 billion in uncollected tax revenue over the next decade.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Government Detached from the Public</div><div class="pc-text">DOGE cut 350,000 federal workers while government spending rose 6% to $7.558 trillion. The claimed $215 billion in savings actually cost $135 billion in rehiring, lost productivity, and chaos. Agencies were cut to one staff member. Benefits became a maze.</div></div>
   </div>
 
   <h3 class="sub-header">America Is Not Expensive by Accident</h3>
 
   <div class="content-block">
-    <p>It is expensive because every part of working-class life has been turned into someone else&rsquo;s profit center. Your rent goes up because your landlord can raise it. Your utilities go up because the energy company can squeeze you. Your groceries go up because corporations learned they can blame &ldquo;inflation&rdquo; while still posting massive profits. Your health insurance goes up because some middleman company gets to stand between you and medical care and charge you for the privilege of maybe being allowed to survive.</p>
+    <p>It is expensive because every part of working-class life has been turned into someone else&rsquo;s profit center. Your rent goes up because your landlord can raise it &mdash; and now, because an algorithm told them exactly how much they could squeeze before you leave. Your utilities go up because the energy company can squeeze you. Your groceries go up because corporations learned they can blame &ldquo;inflation&rdquo; while still posting record margins. Your health insurance goes up because some middleman company gets to stand between you and medical care and charge you for the privilege of maybe being allowed to survive.</p>
 
-    <p>This is the richest country on Earth, and millions of people are living like one flat tire could end their entire life. That is a policy choice. Poverty wages are a policy choice. Medical debt is a policy choice. Homelessness is a policy choice. Child poverty is a policy choice. Unaffordable rent is a policy choice. Letting billionaires hoard more wealth than entire nations while working people ration groceries is a policy choice.</p>
+    <p>This is the richest country on Earth, and millions of people are living like one flat tire could end their entire life. That is a policy choice. Poverty wages are a policy choice. Medical debt is a policy choice. Homelessness is a policy choice. Child poverty is a policy choice. Unaffordable rent is a policy choice. Letting 905 billionaires hoard $7.8 trillion while working people ration groceries is a policy choice.</p>
 
     <p>Funny how America only &ldquo;can&rsquo;t afford&rdquo; things that help normal people.</p>
   </div>
@@ -416,9 +488,109 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
+<!-- WHY WE LOSE PANEL (NEW) -->
+<!-- ======================================= -->
+<div class="panel" id="panel-whywelose">
+  <h3 class="section-header first">Why We Lose: The Democratic Party&rsquo;s CAPA</h3>
+
+  <div class="content-block">
+    <p>This section is addressed to Democrats, progressives, and anyone wondering why the party that should be winning elections on economic populism keeps losing them. This is not an attack. It is a corrective and preventive action report. If PBHP means anything, it means you audit your own side too.</p>
+  </div>
+
+  <div class="callout red">
+    <div class="callout-title">The Numbers Don&rsquo;t Lie</div>
+    <div class="callout-text">Between 2008 and 2024, Democrats lost nearly 30% of working-class voters making less than $50,000 annually. The DNC favorability rating hit a record low of 27% &mdash; the worst since polling began in 1990. Harris lost working-class white support (37% to 34%), but the loss among non-white working-class voters was three times worse (73% to 65%). Working-class Latinos shifted 31 points toward Trump compared to 2020. This is not a messaging problem. This is a credibility collapse.</div>
+  </div>
+
+  <h3 class="sub-header">The Working-Class Voter Collapse</h3>
+
+  <table class="loss-table">
+    <thead><tr><th>Demographic</th><th>2020 (Biden)</th><th>2024 (Harris)</th><th>Shift</th></tr></thead>
+    <tbody>
+      <tr><td>Working-class (no degree) overall</td><td>~46%</td><td>42%</td><td class="loss">&minus;4</td></tr>
+      <tr><td>Working-class white</td><td>37%</td><td>34%</td><td class="loss">&minus;3</td></tr>
+      <tr><td>Working-class non-white</td><td>73%</td><td>65%</td><td class="loss">&minus;8</td></tr>
+      <tr><td>Working-class Latino</td><td>~78%</td><td>51%</td><td class="loss">&minus;27</td></tr>
+      <tr><td>Voters under $50K (since 2008)</td><td colspan="2">~30% decline</td><td class="loss">&minus;30</td></tr>
+      <tr><td>DNC favorability (record)</td><td colspan="2">27%</td><td class="loss">Worst since 1990</td></tr>
+    </tbody>
+  </table>
+
+  <div class="content-block">
+    <p>These are not people who &ldquo;voted against their interests.&rdquo; These are people who concluded that the Democratic Party does not fight for them. And the data says they have a point.</p>
+  </div>
+
+  <h3 class="sub-header">Root Cause Analysis: Why Democrats Lose Working People</h3>
+
+  <div class="policy-grid">
+    <div class="policy-card red-accent">
+      <div class="pc-title">Donor Capture</div>
+      <div class="pc-text">The party takes corporate money and then wonders why working people do not trust it. When your healthcare plan is written to protect insurance companies, your housing plan avoids landlord accountability, and your labor plan is a press release instead of legislation, people notice. Democrats took $205 million from a single dark money group in 2024. That is not a workers&rsquo; party.</div>
+    </div>
+    <div class="policy-card red-accent">
+      <div class="pc-title">Messaging Failure</div>
+      <div class="pc-text">Democrats talk to working people like they are giving a TED talk at a wine bar. &ldquo;Bidenomics is working.&rdquo; &ldquo;The economy is actually good.&rdquo; &ldquo;Unemployment is low.&rdquo; People who cannot afford rent do not care about your macroeconomic dashboard. They care about their paycheck, their grocery bill, and whether they can take their kid to the doctor. Meet them where they are or lose them forever.</div>
+    </div>
+    <div class="policy-card red-accent">
+      <div class="pc-title">The Hostage Logic Trap</div>
+      <div class="pc-text">&ldquo;Vote for this corporate Democrat or the fascist wins.&rdquo; That is not a pitch. That is a hostage negotiation. It works once, maybe twice. Eventually people decide the hostage taker is not on their side either. If the only argument for voting Democratic is &ldquo;the other guy is worse,&rdquo; you do not have a party. You have a protection racket.</div>
+    </div>
+    <div class="policy-card red-accent">
+      <div class="pc-title">No Farm System</div>
+      <div class="pc-text">The right-wing understood candidate pipelines for decades. They took school boards, courts, statehouses, election offices, media ecosystems, churches, and donor networks while Democrats kept acting like the presidency was the whole game. The left has no bench, no farm system, no local infrastructure. The right has a machine. The left has vibes and a prayer.</div>
+    </div>
+    <div class="policy-card red-accent">
+      <div class="pc-title">Culture War Surrender</div>
+      <div class="pc-text">Republicans set cultural traps and Democrats walk into every single one. The billionaire does not care about your bathroom. He cares that you are yelling about bathrooms while he steals your pension, busts your union, and buys your senator. Protect people&rsquo;s rights firmly, then pivot back to the money trail every time. The right weaponizes culture because they cannot win on economics. Stop letting them.</div>
+    </div>
+    <div class="policy-card red-accent">
+      <div class="pc-title">Failure to Deliver</div>
+      <div class="pc-text">Democrats had a trifecta. They passed an infrastructure bill, a climate bill, and a gun safety bill. But they did not pass voting rights. They did not pass labor reform. They did not overturn Citizens United. They did not codify abortion rights until it was too late. The things that would have structurally shifted power &mdash; the democracy repair &mdash; never happened. And now Republicans are cutting $1.1 trillion from healthcare.</div>
+    </div>
+  </div>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Harm Analysis: Democratic Party Inaction</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Who Benefits</strong>Incumbent Democrats who keep their seats and donor relationships without having to fight structural battles. Consultants who get paid whether the party wins or loses.</div>
+      <div class="pbhp-cell"><strong>Who Pays</strong>Working-class voters who get no material improvement in their lives. Communities that needed labor reform, healthcare, housing, and voting rights that never came.</div>
+      <div class="pbhp-cell"><strong>Who Gets Harmed First</strong>The people Democrats claim to represent: low-income families, communities of color, rural workers, the uninsured, the rent-burdened. They are told to wait, be patient, vote harder. And then they leave.</div>
+      <div class="pbhp-cell"><strong>Is It Reversible</strong>Yes. But only if the party changes its operating model. Not just its messaging. Its actual priorities, its donor dependencies, its candidate pipeline, and its willingness to fight.</div>
+    </div>
+  </div>
+
+  <h3 class="sub-header">What Would a CAPA Look Like for the Democratic Party?</h3>
+
+  <div class="content-block">
+    <p>In quality systems, when you have a recurring deviation, you do not just change the label. You change the process. Here is the corrective action plan:</p>
+  </div>
+
+  <ul class="policy-list">
+    <li><strong>Stop taking corporate PAC money.</strong> If you want credibility with working people, stop being funded by the people exploiting them. Small-dollar fundraising works. It worked for Sanders. It worked for AOC. Scale it.</li>
+    <li><strong>Run on economics, not against Trump.</strong> Anti-Trump is not a platform. It is a reaction. Working people need to hear what you will DO for them. Lead with wages, housing, healthcare, childcare, and corporate power. Every time.</li>
+    <li><strong>Build the pipeline.</strong> Fund and train candidates for school boards, city councils, county boards, state legislatures, prosecutors, and secretaries of state. The right built a machine over 40 years. Start now.</li>
+    <li><strong>Fight for structural reform.</strong> Democracy repair is not optional. Without it, every good policy gets killed by dark money, gerrymandering, and judicial capture. Pass voting rights. Fight Citizens United. Reform the courts. Or nothing else survives.</li>
+    <li><strong>Talk like a normal person.</strong> If a bartender cannot repeat your message back to a friend, it is not a message. It is a press release. Working people respond to anger at the right targets, clear solutions, and someone who sounds like they give a damn.</li>
+    <li><strong>Protect rights without taking the culture bait.</strong> Codify abortion. Protect LGBTQ people. Defend voting rights. Then pivot to the money trail. Every time. Refuse to let Republicans set the agenda.</li>
+    <li><strong>Measure outcomes and admit failures.</strong> If your policy did not lower rent, did not raise wages, did not expand coverage, say so. Fix it. Iterative governance, not religious loyalty to a talking point.</li>
+    <li><strong>Apply PBHP to your own party.</strong> Who benefits from this policy? Who pays? Who is harmed? If the answer is &ldquo;donors benefit, workers pay,&rdquo; you have a deviation. Correct it.</li>
+  </ul>
+
+  <div class="callout gold">
+    <div class="callout-title">The Good News: 2025 Shows the Path</div>
+    <div class="callout-text">In the 2025 Virginia and New Jersey gubernatorial elections, Democratic candidates flipped working-class support that had leaned Republican in 2024. National polling now shows voters trust Democrats more on the economy and inflation. The DOGE chaos, Medicaid cuts, and tariff damage have created an opening. But the opening closes fast if Democrats revert to corporate comfort. The data says populism wins. The question is whether the party has the courage to run on it.</div>
+  </div>
+
+  <div class="phil-quote">
+    "I am not asking the Democratic Party to become socialist. I am asking it to become credible. If you say you represent working people, then fight for working people. If you take corporate money and deliver corporate policy, you are not an alternative to the Republican Party. You are a softer version of the same machine. And working people can tell the difference. That is why they left."
+    <div class="attr">&mdash; Phillip Linstrum</div>
+  </div>
+</div>
+
+<!-- ======================================= -->
 <!-- DEMOCRACY REPAIR PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-democracy">
   <h3 class="section-header first">Democracy Repair Package</h3>
 
@@ -428,11 +600,18 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <p>So the first priority is not &ldquo;pass my favorite policy.&rdquo; The first priority is to rebuild the political operating system so decent policy can survive contact with money, courts, lobbyists, gerrymandering, propaganda, and career politicians.</p>
   </div>
 
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">$4.2B</div><div class="dc-label">Total outside spending in 2024 elections (28x since 2008)</div><div class="dc-src">Brennan Center</div></div>
+    <div class="data-card"><div class="dc-num">$1.3B</div><div class="dc-label">Shell company &amp; nonprofit money to super PACs in 2024</div><div class="dc-src">Brennan Center</div></div>
+    <div class="data-card"><div class="dc-num">$250M</div><div class="dc-label">One man&rsquo;s contribution to super PACs for one candidate</div><div class="dc-src">Public filings</div></div>
+    <div class="data-card"><div class="dc-num">$71M</div><div class="dc-label">Dark money to top 4 congressional super PACs in 2025 alone</div><div class="dc-src">Issue One</div></div>
+  </div>
+
   <h3 class="sub-header">1. Overturn Citizens United</h3>
   <div class="content-block">
     <p>A constitutional amendment to overturn Citizens United and the broader money-is-speech doctrine. Citizens United held that the government could not ban independent political expenditures by corporations and unions, and the practical result was a system where wealthy actors can pour enormous money into politics through outside groups while pretending it is &ldquo;speech.&rdquo;</p>
     <p>My amendment would say: political rights belong to natural persons, not corporations. Money is property used to amplify speech, not speech itself. Congress and the states have power to set reasonable limits on campaign spending, independent expenditures, electioneering communications, and dark-money operations.</p>
-    <p>That amendment matters because almost every other reform dies if the donor class can drown it. Healthcare reform dies. Labor reform dies. Housing reform dies. Climate reform dies. Anti-monopoly reform dies. You can pass a good bill one year and watch billionaires spend the next six years building a propaganda machine to repeal it. So you do not just pass better laws. You cut the wires connecting private wealth to public power.</p>
+    <p>That amendment matters because almost every other reform dies if the donor class can drown it. Healthcare reform dies. Labor reform dies. Housing reform dies. Climate reform dies. Anti-monopoly reform dies. The numbers prove it: outside election spending went from $144 million in 2008 to $4.2 billion in 2024. You can pass a good bill one year and watch billionaires spend the next six years building a propaganda machine to repeal it. So you do not just pass better laws. You cut the wires connecting private wealth to public power.</p>
   </div>
 
   <h3 class="sub-header">2. Public Campaign Financing</h3>
@@ -450,13 +629,12 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <h3 class="sub-header">4. Federal Recall Amendment</h3>
   <div class="content-block">
     <p>Right now, voters cannot recall members of Congress under the federal Constitution. Congress can expel its own members with a two-thirds vote, but that means the institution polices itself. Imagine if your workplace policy was, &ldquo;The only way to fire corrupt managers is if the other managers agree by supermajority.&rdquo; That is not accountability. That is a country club honor system.</p>
-    <p>I would propose a Federal Recall Amendment with guardrails so billionaires cannot just spam recalls every time a representative votes for healthcare or labor rights. No recall during the first six months of a House term or first year of a Senate term unless there is a formal finding of serious misconduct. For ordinary political recall, voters would need signatures from 25% of the voters who participated in the last election for that seat. For misconduct recall, the threshold drops to 15% if an independent federal ethics body finds probable cause. Once triggered, a recall election happens within 90 days. Public financing applies. Dark money banned.</p>
+    <p>My proposal includes guardrails so billionaires cannot spam recalls: no recall during the first six months of a House term or first year of a Senate term unless there is a formal finding of serious misconduct. For ordinary political recall, voters need signatures from 25% of the last election&rsquo;s voters. For misconduct recall, the threshold drops to 15% if an independent federal ethics body finds probable cause. Once triggered, a recall election happens within 90 days. Public financing applies. Dark money banned.</p>
   </div>
 
   <h3 class="sub-header">5. Age Limits</h3>
   <div class="content-block">
-    <p>No person may begin a new term as president, senator, representative, or Supreme Court justice after age 75. Not &ldquo;kick everyone out on their birthday.&rdquo; Just: you cannot start a new term after that point.</p>
-    <p>That is not because older people are worthless. That is because power calcifies. A government run by people who will not live with the long-term consequences of their decisions becomes structurally reckless. Climate policy, AI policy, debt, war, healthcare, labor, education, housing, infrastructure &mdash; these are future-shaping issues. The people governing the future should have some reasonable stake in living in it.</p>
+    <p>No person may begin a new term as president, senator, representative, or Supreme Court justice after age 75. Not &ldquo;kick everyone out on their birthday.&rdquo; Just: you cannot start a new term after that point. A government run by people who will not live with the long-term consequences of their decisions becomes structurally reckless.</p>
   </div>
 
   <h3 class="sub-header">6. Supreme Court Repair</h3>
@@ -466,7 +644,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <h3 class="sub-header">7. Ban Congressional Stock Trading</h3>
   <div class="content-block">
-    <p>No individual stocks. No sector ETFs. No options. No crypto trading while in office. Members of Congress and senior executive officials should use blind trusts or broad public index funds only. If you are writing laws, receiving classified briefings, shaping regulation, and moving markets with your votes, you do not get to day-trade the country. Same for spouses and dependent children.</p>
+    <p>No individual stocks. No sector ETFs. No options. No crypto trading while in office. Members of Congress and senior executive officials should use blind trusts or broad public index funds only. Same for spouses and dependent children. If you are writing laws and receiving classified briefings, you do not get to day-trade the country.</p>
   </div>
 
   <h3 class="sub-header">8. Revolving Door Lockdown</h3>
@@ -476,48 +654,63 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <h3 class="sub-header">9. Independent Anti-Corruption Commission</h3>
   <div class="content-block">
-    <p>An agency with subpoena power, public reporting duties, referral power to DOJ, civil enforcement authority, and protection from presidential interference. Congress should not get to bury its own ethics complaints. The Senate should not get to quietly police itself. Every federal officeholder should be under enforceable ethics rules with real consequences.</p>
+    <p>An agency with subpoena power, public reporting duties, referral power to DOJ, civil enforcement authority, and protection from presidential interference. Congress should not get to bury its own ethics complaints.</p>
   </div>
 
-  <h3 class="sub-header">10. End Gerrymandering</h3>
+  <h3 class="sub-header">10. End Gerrymandering &amp; Break the Two-Party Death Grip</h3>
   <div class="content-block">
-    <p>In Rucho v. Common Cause, the Supreme Court held that partisan gerrymandering claims are political questions beyond the reach of federal courts. Fine. Then Congress has to stop it. Independent redistricting commissions nationwide. Transparent map criteria. Compactness. Communities of interest. No partisan data in map drawing except to test for fairness.</p>
-    <p>I would go further: the House should move toward multi-member districts with ranked-choice voting. That one reform could do more to break the two-party death grip than almost anything else, because it would let voters support candidates who actually represent them without feeling like they are &ldquo;throwing their vote away.&rdquo;</p>
+    <p>Independent redistricting commissions nationwide. Transparent map criteria. And I would go further: the House should move toward multi-member districts with ranked-choice voting.</p>
+    <p>That one reform could do more to break the two-party death grip than almost anything else, because it would let voters support candidates who actually represent them without feeling like they are &ldquo;throwing their vote away.&rdquo; It would make room for labor candidates, anti-corruption candidates, rural populists, democratic socialists, independents &mdash; the full spectrum of what working people actually want, instead of two pre-packaged options neither of which represents them.</p>
   </div>
 
   <h3 class="sub-header">11. Voting Rights</h3>
   <div class="content-block">
-    <p>Automatic voter registration. Same-day registration. Election Day as a federal holiday. Early voting. No-excuse mail voting. Restored voting rights after incarceration. Paper ballots. Risk-limiting audits. Strong protections against voter intimidation. Federal penalties for election officials who knowingly suppress lawful votes. You do not get to call yourself a democracy while making voting a scavenger hunt.</p>
+    <p>Automatic voter registration. Same-day registration. Election Day as a federal holiday. Early voting. No-excuse mail voting. Restored voting rights after incarceration. Paper ballots. Risk-limiting audits. Strong protections against voter intimidation. You do not get to call yourself a democracy while making voting a scavenger hunt.</p>
   </div>
 
   <h3 class="sub-header">12. Executive Power Limits</h3>
   <div class="content-block">
-    <p>Limit emergency declarations. Reform pardon power so presidents cannot use it to protect co-conspirators. Enforce subpoenas faster. Strengthen inspectors general. Protect whistleblowers. Make presidential conflicts of interest illegal in plain language. Require divestment or blind trusts. Fast-track judicial review when presidents defy Congress or courts. No kings means no kings.</p>
+    <p>Limit emergency declarations. Reform pardon power so presidents cannot use it to protect co-conspirators. Enforce subpoenas faster. Strengthen inspectors general. Protect whistleblowers. Make presidential conflicts of interest illegal in plain language. Fast-track judicial review when presidents defy Congress or courts. No kings means no kings.</p>
+  </div>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Harm Analysis: The Status Quo (No Democracy Reform)</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Who Benefits</strong>Incumbent politicians, the donor class, lobbyists, corporate PACs, and anyone whose power depends on low voter turnout and captured institutions.</div>
+      <div class="pbhp-cell"><strong>Who Pays</strong>Every voter. Every policy that gets killed by dark money. Every community that gets gerrymandered into irrelevance.</div>
+      <div class="pbhp-cell"><strong>Harm Level</strong>BLACK. Democratic capture is the root cause of every other failure. Without democracy repair, every other reform is temporary.</div>
+    </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <!-- TRUTH REPAIR PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-truth">
   <h3 class="section-header first">Truth Repair Package</h3>
 
   <div class="content-block">
     <p>America cannot repair itself if the public cannot tell what is true. That does not mean government gets to control opinions. That does not mean criticism becomes illegal. That does not mean satire, disagreement, or honest mistakes should be punished.</p>
-    <p>But powerful people and institutions should face consequences for knowingly spreading material lies that cause public harm.</p>
-    <p>The higher the power, the higher the duty.</p>
+    <p>But powerful people and institutions should face consequences for knowingly spreading material lies that cause public harm. The higher the power, the higher the duty.</p>
+  </div>
+
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">169</div><div class="dc-label">State laws on deepfakes enacted since 2022</div><div class="dc-src">NCSL</div></div>
+    <div class="data-card"><div class="dc-num">1</div><div class="dc-label">Federal AI law passed (TAKE IT DOWN Act, May 2025)</div><div class="dc-src">Congress.gov</div></div>
+    <div class="data-card"><div class="dc-num">0</div><div class="dc-label">Federal laws on algorithmic accountability, AI bias, or political deepfakes</div><div class="dc-src">Legisletter 2026</div></div>
+    <div class="data-card"><div class="dc-num">38</div><div class="dc-label">States with AI-related laws by late 2025</div><div class="dc-src">NCSL</div></div>
   </div>
 
   <h3 class="sub-header">The Legal Reality</h3>
   <div class="content-block">
-    <p>The First Amendment makes broad &ldquo;lying is illegal&rdquo; laws extremely difficult. In United States v. Alvarez, the Supreme Court struck down the Stolen Valor Act as applied to a man lying about receiving the Medal of Honor, treating that kind of false speech as protected unless it fits into recognized categories like fraud, defamation, perjury, etc. And public officials or public figures already face the very high &ldquo;actual malice&rdquo; standard in defamation cases under New York Times v. Sullivan.</p>
+    <p>The First Amendment makes broad &ldquo;lying is illegal&rdquo; laws extremely difficult. In United States v. Alvarez, the Supreme Court struck down the Stolen Valor Act as applied to a man lying about receiving the Medal of Honor. And public officials face the very high &ldquo;actual malice&rdquo; standard under New York Times v. Sullivan.</p>
     <p>So the move is not &ldquo;make all lies illegal.&rdquo; That is too broad, too unconstitutional, and too easy to abuse.</p>
     <p>The move is: make material, provable, high-harm lying legally accountable in specific public-power contexts.</p>
   </div>
 
   <h3 class="sub-header">Public Information Integrity Commission</h3>
   <div class="content-block">
-    <p>Not controlled by the president. Not controlled by one party. Not a cable-news referee. A genuinely independent constitutional agency with staggered terms, bipartisan and nonpartisan appointments, judicial review, public evidence files, appeal rights, and strict limits on what it can touch.</p>
+    <p>Not controlled by the president. Not controlled by one party. A genuinely independent constitutional agency with staggered terms, bipartisan and nonpartisan appointments, judicial review, public evidence files, appeal rights, and strict limits on what it can touch.</p>
     <p>Its job would not be to ban speech. Its job would be to classify, document, correct, and penalize high-harm deception in regulated public contexts.</p>
   </div>
 
@@ -526,35 +719,36 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="harm-level hl-green"><span class="hl-badge">Level 1</span><span>False or misleading, low harm. Public notice only.</span></div>
     <div class="harm-level hl-yellow"><span class="hl-badge">Level 2</span><span>False, material, and not corrected after notice. Required correction with equal or comparable reach.</span></div>
     <div class="harm-level hl-orange"><span class="hl-badge">Level 3</span><span>Knowingly or recklessly false and harmful. Fines, mandatory disclosure, loss of public financing eligibility, or campaign penalties.</span></div>
-    <div class="harm-level hl-red"><span class="hl-badge">Level 4</span><span>Election sabotage, public safety deception, fabricated evidence, deepfake fraud, incitement-adjacent targeting, or repeated bad-faith deception. Civil penalties, criminal referral where existing law applies, and recall/ethics triggers for officials.</span></div>
+    <div class="harm-level hl-red"><span class="hl-badge">Level 4</span><span>Election sabotage, public safety deception, fabricated evidence, deepfake fraud, incitement-adjacent targeting, or repeated bad-faith deception. Civil penalties, criminal referral, recall/ethics triggers.</span></div>
   </div>
 
   <div class="callout gold">
     <div class="callout-title">The Key Rule: Equal-Reach Correction</div>
-    <div class="callout-text">If a PAC spends $10 million telling people a candidate voted to legalize murder or whatever insane bullshit they invent, and it is proven false, they should not get to quietly delete the ad two weeks later. They should be forced to spend comparable money correcting it. Same audience. Same markets. Same visibility. You lied loudly; now you correct loudly. That one rule alone would change politics.</div>
+    <div class="callout-text">If a PAC spends $10 million telling people a candidate voted to legalize murder or whatever insane lie they invent, and it is proven false, they should not get to quietly delete the ad two weeks later. They should be forced to spend comparable money correcting it. Same audience. Same markets. Same visibility. You lied loudly; now you correct loudly. That one rule alone would change politics.</div>
   </div>
 
   <h3 class="sub-header">Political Ads Need Receipts</h3>
   <div class="content-block">
-    <p>Every paid political ad should be required to maintain a public evidence file for every factual claim. Not opinions. Not &ldquo;my opponent is bad.&rdquo; But factual claims. &ldquo;My opponent voted for X.&rdquo; Source it. &ldquo;My opponent took money from Y.&rdquo; Source it. &ldquo;My opponent supports cutting Z.&rdquo; Explain the vote, bill, or statement.</p>
+    <p>Every paid political ad should be required to maintain a public evidence file for every factual claim. Not opinions. Not &ldquo;my opponent is bad.&rdquo; But factual claims. &ldquo;My opponent voted for X.&rdquo; Source it. &ldquo;My opponent took money from Y.&rdquo; Source it.</p>
   </div>
 
   <h3 class="sub-header">Algorithmic Amplification Accountability</h3>
   <div class="content-block">
     <p>A person can say something stupid. But no one has a constitutional right to algorithmic boost, monetization, paid targeting, recommendation placement, bot assistance, or platform-engineered virality.</p>
-    <p>Platforms should have to disclose when political content is paid, AI-generated, bot-amplified, foreign-linked, microtargeted, or rapidly spreading despite being materially false. They should also need &ldquo;pause before amplification&rdquo; protocols for high-stakes content: elections, public health, violence, civil unrest, disaster response, targeted harassment, ethnic/religious scapegoating, war propaganda, and civil rights panic.</p>
-    <p>That is not banning speech. That is not letting the algorithm pour gasoline on a public fire.</p>
+    <p>Platforms should disclose when political content is paid, AI-generated, bot-amplified, foreign-linked, microtargeted, or rapidly spreading despite being materially false. They should also need &ldquo;pause before amplification&rdquo; protocols for high-stakes content: elections, public health, violence, civil unrest, disaster response.</p>
   </div>
 
   <h3 class="sub-header">AI Political Content Rules</h3>
   <div class="content-block">
-    <p>Every synthetic political ad should require clear labeling. Every AI-generated candidate impersonation should require consent or obvious parody labeling. Deepfakes close to elections should face expedited review. Campaigns should disclose AI-generated mass messaging. Because the next stage of lying is not just a politician lying on TV. It is 50,000 customized AI-generated lies sent to different micro-audiences, each optimized to exploit fear, race, religion, gender, guns, inflation, immigration, or whatever pressure point works on that specific person. That is not persuasion. That is psychological warfare against voters.</p>
+    <p>The TAKE IT DOWN Act (May 2025) was a start &mdash; banning nonconsensual intimate deepfakes and requiring platform takedowns within 48 hours. But there is still zero federal legislation on political deepfakes, algorithmic bias testing, or AI-driven voter manipulation.</p>
+    <p>The Algorithmic Accountability Act, AI Civil Rights Act, and NO FAKES Act are all pending but have not cleared Congress. Meanwhile, the EU AI Act requires AI-generated content to be labeled by August 2026. America is falling behind.</p>
+    <p>Every synthetic political ad should require clear labeling. Every AI-generated candidate impersonation should require consent or obvious parody labeling. Deepfakes close to elections should face expedited review. The next stage of lying is not just a politician lying on TV. It is 50,000 customized AI-generated lies sent to different micro-audiences, each optimized to exploit fear, race, religion, gender, or whatever pressure point works on that specific person. That is not persuasion. That is psychological warfare against voters.</p>
   </div>
 
   <h3 class="sub-header">Media Accountability Without a Ministry of Truth</h3>
   <div class="content-block">
-    <p>If you want to call yourself a news organization and receive legal, platform, tax, credentialing, or access benefits as news, then you meet basic standards. You maintain a corrections policy. You distinguish news from opinion. You disclose ownership and major conflicts of interest. You disclose sponsored content clearly. You do not knowingly present fabricated evidence. You correct material falsehoods with reasonable prominence. You publish an annual transparency report.</p>
-    <p>Not &ldquo;the government approves your articles.&rdquo; No. You can publish what you want. But if you want the public trust benefits of being treated as a news institution, you need a functioning quality system. That is literally QA applied to democracy.</p>
+    <p>If you want to call yourself a news organization and receive legal, platform, tax, credentialing, or access benefits as news, then you meet basic standards. You maintain a corrections policy. You distinguish news from opinion. You disclose ownership and major conflicts of interest. You correct material falsehoods with reasonable prominence. You publish an annual transparency report.</p>
+    <p>Not &ldquo;the government approves your articles.&rdquo; You can publish what you want. But if you want the public trust benefits of being treated as a news institution, you need a functioning quality system. That is literally QA applied to democracy.</p>
   </div>
 
   <h3 class="sub-header">PBHP for Political Persuasion</h3>
@@ -562,8 +756,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <p>Politics should persuade people. That is democracy. But persuasion should not mean manipulation, dehumanization, fabricated evidence, fear exploitation, or mass psychological warfare. A PBHP political message should answer:</p>
   </div>
   <ul class="policy-list">
-    <li>Is the claim true?</li>
-    <li>Is the evidence attached?</li>
+    <li>Is the claim true? Is the evidence attached?</li>
     <li>Is opinion clearly separated from fact?</li>
     <li>Does this message increase the audience&rsquo;s understanding, or exploit their fear?</li>
     <li>Does it attack actions, policies, systems, and power &mdash; or human worth?</li>
@@ -572,13 +765,13 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <li>Would we accept this tactic if the other side used it?</li>
   </ul>
   <div class="content-block">
-    <p>That last question matters. If the answer is no, then maybe the tactic is poison, even if the policy goal is good. This is how we build a better politics without becoming what we hate.</p>
+    <p>That last question matters. If the answer is no, then maybe the tactic is poison, even if the policy goal is good.</p>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <!-- ECONOMIC REPAIR PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-economic">
   <h3 class="section-header first">Economic Repair Package</h3>
 
@@ -586,9 +779,17 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <p>My solution is simple in principle, even if it is hard in practice: build a country where people who work can live, people who cannot work are not discarded, and nobody gets rich enough to buy the government out from under the rest of us.</p>
   </div>
 
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">$72.88</div><div class="dc-label">What average hourly pay would be if wages tracked productivity since 1973</div><div class="dc-src">EPI</div></div>
+    <div class="data-card"><div class="dc-num">$1.1T</div><div class="dc-label">Healthcare spending cut in One Big Beautiful Bill</div><div class="dc-src">CBO / CNBC</div></div>
+    <div class="data-card"><div class="dc-num">11.8M</div><div class="dc-label">People projected to lose health coverage from that bill</div><div class="dc-src">CBO</div></div>
+    <div class="data-card"><div class="dc-num">5.9%</div><div class="dc-label">Private-sector union membership (down from 20%+ in 1983)</div><div class="dc-src">BLS 2025</div></div>
+  </div>
+
   <h3 class="sub-header">Labor Repair</h3>
   <div class="content-block">
     <p><strong>The first economic law is simple: no full-time worker should be poor.</strong> Minimum wage indexed to local cost of living and productivity. Not some fake $15 number that becomes obsolete the moment it passes. A living wage formula. If rent, food, healthcare, childcare, utilities, and transportation go up, wages move. If productivity goes up, workers share in it. If a company cannot survive without poverty wages, then the company is not a business. It is a subsidy extraction machine.</p>
+    <p>Had wages kept pace with productivity since 1979, the median worker&rsquo;s hourly pay would be 43% higher. The 10th-percentile worker would be earning 45% more. That gap is not natural. It was built by policy: union busting, deregulation, trade deals without labor protections, and a tax code that rewards hoarding over working.</p>
   </div>
   <ul class="policy-list">
     <li>Card check union recognition</li>
@@ -607,24 +808,27 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <h3 class="sub-header">Healthcare as a Right</h3>
   <div class="content-block">
-    <p>Universal coverage. No medical bankruptcy. No insurance company standing between you and a doctor. The destination is obvious: healthcare is a public right. No more death panels run by insurance companies with quarterly earnings calls.</p>
+    <p>Universal coverage. No medical bankruptcy. No insurance company standing between you and a doctor. Americans owe at least $220 billion in medical debt. 66.5% of bankruptcies are caused by medical bills. And now the One Big Beautiful Bill is cutting $1.1 trillion from healthcare, putting 11.8 million people at risk of losing coverage, and imposing work requirements on Medicaid recipients starting in 2026.</p>
+    <p>Meanwhile, more generous ACA exchange subsidies expired at the end of 2025, causing premiums to spike and pushing people to drop insurance. The average marketplace deductible is now $5,304 for a silver plan. That is not healthcare. That is a suggestion.</p>
   </div>
   <ul class="policy-list">
     <li>Universal coverage &mdash; Medicare for All, public option glidepath, or all-payer rate setting</li>
     <li>Mental health, dental, and vision included</li>
-    <li>Direct negotiation on drug prices</li>
-    <li>Rural hospital protection</li>
+    <li>Direct negotiation on drug prices (the IRA&rsquo;s Medicare negotiation saved 38-79% on 10 drugs &mdash; expand it to all)</li>
+    <li>Rural hospital protection (10 Ohio hospitals already face closure risk from Medicaid cuts)</li>
     <li>Public pharmaceutical manufacturing for essential medicines</li>
     <li>Private equity out of critical healthcare infrastructure</li>
     <li>Strict regulation of insurance denial practices</li>
+    <li>$35 insulin cap expanded beyond Medicare to all Americans</li>
   </ul>
 
   <h3 class="sub-header">Housing Anti-Ransom Plan</h3>
   <div class="content-block">
-    <p>If you want to own one home, good. If you want to own a reasonable rental property and maintain it responsibly, fine. But if your entire business model is hoarding housing, jacking up rent, neglecting repairs, and forcing working families to fund your passive income fantasy, then no.</p>
+    <p>22.6 million renter households are cost-burdened. 12.1 million are severely cost-burdened &mdash; spending more than half their income on housing. And until the DOJ settlement in November 2025, RealPage was using algorithmic software to coordinate rents across competing landlords, turning the rental market into a legalized price-fixing operation.</p>
+    <p>If you want to own one home, good. If you want to own a reasonable rental property and maintain it responsibly, fine. But if your entire business model is hoarding housing, jacking up rent using algorithmic collusion, neglecting repairs, and forcing working families to fund your passive income fantasy, then no.</p>
   </div>
   <ul class="policy-list">
-    <li>Ban algorithmic rent-fixing and data-sharing systems that coordinate rents</li>
+    <li>Ban algorithmic rent-fixing permanently (the RealPage settlement expires in 7 years &mdash; make it law)</li>
     <li>Tax vacant speculative units</li>
     <li>Limit corporate bulk purchases of single-family homes</li>
     <li>National social housing construction program</li>
@@ -637,21 +841,21 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <h3 class="sub-header">Food &amp; Essentials</h3>
   <div class="content-block">
-    <p>If a working parent in America cannot buy milk, tomatoes, crackers, and ranch without feeling like they got robbed at a grocery store, the problem is not the cart. The problem is the country.</p>
+    <p>If a working parent in America cannot buy milk, tomatoes, crackers, and ranch without feeling like they got robbed at a grocery store, the problem is not the cart. The problem is the country. Corporate profits rose 75% from mid-2020 to mid-2022 &mdash; five times as fast as inflation. The Kansas City Fed found that growth in markups accounted for more than half of inflation in 2021.</p>
   </div>
   <ul class="policy-list">
     <li>Public grocery pilots where markets fail</li>
     <li>Support cooperative grocery stores</li>
     <li>Universal school breakfast and lunch</li>
-    <li>Price-gouging investigations for essentials</li>
+    <li>Restore Robinson-Patman Act enforcement to protect independent grocers</li>
     <li>Break up grocery and food-processing monopolies</li>
     <li>Support local farmers over agribusiness giants</li>
-    <li>Anti-price-gouging enforcement</li>
+    <li>Anti-price-gouging enforcement with teeth</li>
   </ul>
 
   <h3 class="sub-header">Tax Justice</h3>
   <div class="content-block">
-    <p>Work should be rewarded more than hoarding. If you became unimaginably wealthy using American workers, infrastructure, law, courts, currency, research, and markets, you owe the country back.</p>
+    <p>The top 1% of US households own 31.7% of all wealth &mdash; $55 trillion &mdash; nearly as much as the bottom 90% combined. The bottom half of households &mdash; 66 million of them &mdash; hold $4.1 trillion total. The IRS is cutting 40% of its workforce, which will forfeit an estimated $323 billion in uncollected revenue over the next decade. Work should be rewarded more than hoarding.</p>
   </div>
   <ul class="policy-list">
     <li>Tax capital gains like labor</li>
@@ -660,24 +864,25 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <li>Stronger estate tax</li>
     <li>Tax stock buybacks</li>
     <li>Crack down on offshore tax avoidance</li>
-    <li>Make IRS enforcement focus upward, not downward</li>
+    <li>Fully fund and staff the IRS to audit the wealthy, not the poor</li>
   </ul>
 
   <h3 class="sub-header">Corporate Power Repair</h3>
   <div class="content-block">
-    <p>Break up corporate concentration in healthcare, food, tech, housing, media, agriculture, banks, defense, and finance. Ban anti-competitive mergers. Regulate private equity. Create public options where private markets fail. A free market cannot exist when five companies own the marketplace, the sellers, the data, the payment rails, the ads, and the politicians.</p>
+    <p>Five telecom companies control 90%+ of broadband and mobile. Three pharma companies control 40%+ of the market. Private equity buyout value in North America rose 69% in 2025 to ~$500 billion. PE bought Walgreens. PE is buying medical practices. A free market cannot exist when five companies own the marketplace, the sellers, the data, the payment rails, the ads, and the politicians.</p>
   </div>
   <ul class="policy-list">
-    <li>Executive certification of compliance with personal liability for knowing false certification</li>
+    <li>Executive certification of compliance with personal liability</li>
     <li>Corporate death penalty for repeat criminal enterprises</li>
     <li>Wage theft prosecuted like theft</li>
     <li>No tax deductions for settlements or penalties</li>
     <li>Victim compensation before shareholder distributions</li>
+    <li>Ban private equity from essential services: hospitals, housing, pharmacies, nursing homes</li>
   </ul>
 
   <h3 class="sub-header">Small Business Liberation</h3>
   <div class="content-block">
-    <p>I am not anti-business. I am anti-ransom. A mechanic, coffee shop, small contractor, family farm, or local restaurant is not the same thing as Amazon, UnitedHealth, BlackRock, or Walmart. Small businesses get crushed by the same machine workers do: unaffordable healthcare, commercial rent, monopoly suppliers, payment processors, platform fees, chain competition, private equity landlords, and lack of affordable credit.</p>
+    <p>I am not anti-business. I am anti-ransom. A mechanic, coffee shop, small contractor, family farm, or local restaurant is not the same thing as Amazon, UnitedHealth, BlackRock, or Walmart. Small businesses get crushed by the same machine workers do: unaffordable healthcare, commercial rent, monopoly suppliers, platform fees, chain competition, and private equity landlords. Independent grocery store closures skyrocketed once the FTC quit enforcing the Robinson-Patman Act.</p>
   </div>
   <ul class="policy-list">
     <li>Universal healthcare to remove employer healthcare burden</li>
@@ -686,16 +891,17 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <li>Public/local banking</li>
     <li>Co-op conversion support</li>
     <li>Local procurement preferences</li>
+    <li>Restore Robinson-Patman Act protections against discriminatory pricing</li>
   </ul>
 
   <h3 class="sub-header">Childcare &amp; Family Survival</h3>
   <div class="content-block">
-    <p>Conservatives scream about birth rates and family values, then oppose every policy that would make family life survivable. That is fake pro-family politics. Real family values means parents have time, money, healthcare, housing, and support.</p>
+    <p>Conservatives scream about birth rates and family values, then oppose every policy that would make family life survivable. 19 million children &mdash; more than 1 in 4 under 17 &mdash; will receive less than the full child tax credit in 2026 because their families earn too little. That includes half of Black children and more than a third of Latino children. Real family values means parents have time, money, healthcare, housing, and support.</p>
   </div>
   <ul class="policy-list">
     <li>Universal childcare</li>
     <li>Paid family leave</li>
-    <li>Child tax credits</li>
+    <li>Expand child tax credits to reach the poorest families</li>
     <li>Elder care and disability care</li>
     <li>Domestic violence support</li>
     <li>Maternal healthcare</li>
@@ -713,11 +919,21 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <li>Public transit expansion</li>
     <li>Rural infrastructure investment</li>
   </ul>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Harm Analysis: The One Big Beautiful Bill</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Who Benefits</strong>Wealthy Americans receiving tax extensions. Corporations avoiding higher taxes. Donors who funded the campaigns that produced this bill.</div>
+      <div class="pbhp-cell"><strong>Who Pays</strong>11.8 million people losing health coverage. Rural hospitals facing closure. Medicaid recipients forced into work requirements. Children whose families earn too little for the full tax credit.</div>
+      <div class="pbhp-cell"><strong>Who Gets Harmed First</strong>The poorest, sickest, and most rural Americans. The people with the least power to fight back.</div>
+      <div class="pbhp-cell"><strong>Harm Level: RED</strong>Irreversible for families who lose coverage and cannot afford care. Potentially fatal for communities that lose their only hospital.</div>
+    </div>
+  </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <!-- RIGHTS & JUSTICE PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-rights">
   <h3 class="section-header first">Rights &amp; Justice Repair</h3>
 
@@ -767,13 +983,10 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <div class="callout navy">
     <div class="callout-title">The Culture War Detox</div>
-    <div class="callout-text">They want you fighting your neighbor over identity while they rob both of you. Protect people&rsquo;s rights, then get back to the money trail. The billionaire does not care about your bathroom. He cares that you are yelling about bathrooms while he steals your pension, busts your union, and buys your senator.</div>
+    <div class="callout-text">They want you fighting your neighbor over identity while they rob both of you. Protect people&rsquo;s rights firmly and clearly. Then get back to the money trail. Every single time. The billionaire does not care about your bathroom. He cares that you are yelling about bathrooms while he steals your pension, busts your union, and buys your senator. Rights are not negotiable. But they also are not a distraction tool for the powerful.</div>
   </div>
 
   <h3 class="sub-header">War Powers &amp; Empire Accountability</h3>
-  <div class="content-block">
-    <p>Congress should have to vote on military action. No endless authorizations. No blank checks. No undeclared wars. No laundering foreign policy through &ldquo;emergency&rdquo; forever.</p>
-  </div>
   <ul class="policy-list">
     <li>Repeal outdated Authorizations for Use of Military Force</li>
     <li>Require affirmative congressional votes for military action beyond immediate defense</li>
@@ -790,22 +1003,17 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
   <ul class="policy-list">
     <li>Universal pre-K</li>
-    <li>Fully funded public schools &mdash; federal equalization so poor ZIP codes are not punished for being poor</li>
+    <li>Fully funded public schools &mdash; federal equalization so poor ZIP codes are not punished</li>
     <li>Trade schools and community college tuition-free</li>
-    <li>Public universities affordable</li>
-    <li>Student debt relief tied to a new system that prevents the debt machine from restarting</li>
+    <li>Student debt relief tied to a system that prevents the debt machine from restarting</li>
     <li>Real civics, labor history, media literacy, financial literacy, and &ldquo;how power works&rdquo; education</li>
   </ul>
 
   <h3 class="sub-header">Climate &amp; National Repair</h3>
-  <div class="content-block">
-    <p>We do not just doom-scroll collapse. We build.</p>
-  </div>
   <ul class="policy-list">
     <li>Clean energy buildout and grid expansion</li>
     <li>Public transit</li>
     <li>Climate-resilient infrastructure</li>
-    <li>Disaster response</li>
     <li>Home weatherization</li>
     <li>Regenerative agriculture</li>
     <li>Water protection</li>
@@ -829,7 +1037,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <h3 class="sub-header">Government Service Repair</h3>
   <div class="content-block">
-    <p>A benefit you cannot access is not a benefit. It is a maze. Government should be boring, accessible, and humane.</p>
+    <p>A benefit you cannot access is not a benefit. It is a maze. DOGE cut 350,000 federal workers and then agencies had to rehire because they could not perform basic operations. The &ldquo;savings&rdquo; cost $135 billion. Government should be boring, accessible, and humane &mdash; not a political stunt.</p>
   </div>
   <ul class="policy-list">
     <li>Plain-language forms</li>
@@ -842,14 +1050,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </ul>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <!-- PBHP METHOD PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-pbhp">
   <h3 class="section-header first">PBHP: The Civic Quality System</h3>
 
   <div class="content-block">
     <p>PBHP &mdash; the Pause Before Harm Protocol &mdash; is a simple idea with serious implications: before a person, institution, algorithm, corporation, or government takes an action that could harm people, especially people with less power, it should pause and answer basic questions.</p>
+    <p>This applies to Republicans. It applies to corporations. It applies to media. It applies to AI systems. And it applies to Democrats, progressives, and this movement itself. If PBHP only works on your enemies, it is not a quality system. It is a weapon. Quality systems work on everyone.</p>
   </div>
 
   <div class="callout navy">
@@ -885,9 +1094,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
 
   <h3 class="sub-header">Public Harm Thresholds</h3>
-  <div class="content-block">
-    <p>Every policy, campaign message, media claim, platform decision, or government action should be checked against a harm threshold. The test is not &ldquo;does someone dislike this?&rdquo; The test is: does this create credible risk of material harm, especially to people with less power?</p>
-  </div>
 
   <div class="harm-scale">
     <div class="harm-level hl-green"><span class="hl-badge">Green</span><span>Low harm, ordinary political disagreement. Proceed.</span></div>
@@ -897,10 +1103,16 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="harm-level hl-black"><span class="hl-badge">Black</span><span>Authoritarian, violent, fraudulent, election-subverting, or intentionally rights-destroying conduct. Refuse, expose, escalate, and document.</span></div>
   </div>
 
+  <h3 class="sub-header">PBHP Applied to Your Own Side</h3>
+  <div class="content-block">
+    <p>This is the part most political movements skip. PBHP is not just for auditing enemies. It is for auditing allies, leaders, candidates, and yourself. If a progressive policy proposal would harm rural workers to benefit urban professionals, that is a PBHP failure. If a Democratic campaign uses manipulative fear messaging, that is a PBHP failure. If a left-leaning media outlet shares unverified claims because they feel politically useful, that is a PBHP failure.</p>
+    <p>The test is symmetric. If you would not accept the tactic when Republicans use it, you cannot accept it when Democrats use it. That is how you build a movement that does not rot from the inside.</p>
+  </div>
+
   <h3 class="sub-header">PBHP for Governance</h3>
   <div class="content-block">
-    <p>Every major bill should have a Harm Impact Statement. Who benefits? Who pays? Who is exposed to irreversible harm? What happens to poor people first? What happens to disabled people? What happens to children? What happens to rural communities? What happens to workers? What happens if the assumption is wrong? What is the smallest reversible test before we commit? That should be standard governance.</p>
-    <p>Every agency should have public outcome dashboards. Not 900-page reports nobody reads. Simple public receipts. Did rent burden go down? Did wages rise? Did medical debt fall? Did union density increase? Did evictions decrease? If a policy fails, adjust it. If it works, expand it. Government should be iterative repair, not religious loyalty to a talking point.</p>
+    <p>Every major bill should have a Harm Impact Statement. Who benefits? Who pays? Who is exposed to irreversible harm? What happens to poor people first? What happens to disabled people? What happens to children? What happens to rural communities? What happens if the assumption is wrong? What is the smallest reversible test before we commit?</p>
+    <p>Every agency should have public outcome dashboards. Not 900-page reports nobody reads. Simple public receipts. Did rent burden go down? Did wages rise? Did medical debt fall? Did union density increase? If a policy fails, adjust it. If it works, expand it. Government should be iterative repair, not religious loyalty to a talking point.</p>
   </div>
 
   <h3 class="sub-header">AI &amp; Technology Governance</h3>
@@ -928,14 +1140,14 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <!-- CANDIDATE TEST PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-candidate">
   <h3 class="section-header first">The Candidate Test</h3>
 
   <div class="content-block">
-    <p>Not vibes. Not party labels. A scorecard. Do you support the repair plan? Here are the questions every candidate should answer publicly.</p>
+    <p>Not vibes. Not party labels. A scorecard. Do you support the repair plan? Here are the questions every candidate should answer publicly &mdash; including Democrats.</p>
   </div>
 
   <div class="scorecard-grid">
@@ -943,9 +1155,9 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="score-item"><div class="si-title">Truth &amp; Media</div><div class="si-desc">Do you support political ad evidence requirements? Equal-reach corrections? AI content labeling? Platform amplification accountability?</div></div>
     <div class="score-item"><div class="si-title">Labor Power</div><div class="si-desc">Do you support card check? Sectoral bargaining? Living wage? Worker board seats? Paid leave? Ban on union busting?</div></div>
     <div class="score-item"><div class="si-title">Healthcare</div><div class="si-desc">Do you support universal coverage? No medical bankruptcy? Mental health parity? Drug price negotiation? Rural hospital protection?</div></div>
-    <div class="score-item"><div class="si-title">Housing</div><div class="si-desc">Do you support social housing? Tenant protections? Anti-rent-gouging rules? Corporate bulk-buy limits? Right to counsel in eviction?</div></div>
-    <div class="score-item"><div class="si-title">Anti-Corruption</div><div class="si-desc">Do you support an independent anti-corruption commission? Lobbying bans? Revolving door lockdown? Public conflict-of-interest database?</div></div>
-    <div class="score-item"><div class="si-title">Corporate Power</div><div class="si-desc">Do you support breaking monopolies? Price-gouging enforcement? Corporate crime penalties? Private equity regulation? No corporate PAC money?</div></div>
+    <div class="score-item"><div class="si-title">Housing</div><div class="si-desc">Do you support social housing? Tenant protections? Anti-rent-gouging rules? Banning algorithmic rent-fixing? Right to counsel?</div></div>
+    <div class="score-item"><div class="si-title">Anti-Corruption</div><div class="si-desc">Do you support an independent anti-corruption commission? Lobbying bans? Revolving door lockdown? No corporate PAC money?</div></div>
+    <div class="score-item"><div class="si-title">Corporate Power</div><div class="si-desc">Do you support breaking monopolies? Banning PE from essential services? Corporate crime penalties? Private equity regulation?</div></div>
     <div class="score-item"><div class="si-title">Civil Rights</div><div class="si-desc">Do you support codified abortion rights? LGBTQ protections? Voting rights? Disability rights? Religious freedom without domination?</div></div>
     <div class="score-item"><div class="si-title">Climate &amp; Infrastructure</div><div class="si-desc">Do you support clean energy buildout? Grid modernization? Public transit? Water system repair? Worker transition guarantees?</div></div>
     <div class="score-item"><div class="si-title">War Powers</div><div class="si-desc">Do you support requiring congressional votes for military action? Defense contractor audits? War cost dashboards? Veteran care funding?</div></div>
@@ -957,15 +1169,11 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="callout-title">How the Candidate Test Works</div>
     <div class="callout-text">
       <p>Make candidates answer. Publish the answers. Archive them. Track whether they kept their word. That is where The Record plugs in.</p>
-      <p>The Record shows what they did. The Repair Plan shows what they should do. The Candidate Test shows whether they are aligned. The Accountability Tracker shows whether they betrayed it.</p>
-      <p>The site should distinguish &ldquo;says they support&rdquo; from &ldquo;voted for&rdquo; from &ldquo;funded by interests opposing it.&rdquo;</p>
+      <p>The Record shows what they did. The Repair Plan shows what they should do. The Candidate Test shows whether they are aligned. The site distinguishes &ldquo;says they support&rdquo; from &ldquo;voted for&rdquo; from &ldquo;funded by interests opposing it.&rdquo;</p>
     </div>
   </div>
 
   <h3 class="sub-header">Candidate Score Format</h3>
-  <div class="content-block">
-    <p>For each category, the scorecard tracks:</p>
-  </div>
   <ul class="policy-list">
     <li><strong>Position:</strong> Yes / No / Partial / Unknown</li>
     <li><strong>Evidence:</strong> Public statements, votes, co-sponsorships</li>
@@ -978,9 +1186,177 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </ul>
 </div>
 
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
+<!-- THE NUMBERS PANEL (NEW) -->
+<!-- ======================================= -->
+<div class="panel" id="panel-numbers">
+  <h3 class="section-header first">The Numbers: Receipts for a Broken Country</h3>
+
+  <div class="content-block">
+    <p>This is not opinion. This is data. Every claim in this manual has a number behind it. Here are the receipts, organized by category, with sources. Share them. Use them. Make politicians answer to them.</p>
+  </div>
+
+  <h3 class="sub-header">Wealth &amp; Inequality</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">31.7%</div><div class="dc-label">US wealth owned by top 1% (Q3 2025)</div><div class="dc-src">Federal Reserve</div></div>
+    <div class="data-card"><div class="dc-num">$55T</div><div class="dc-label">Wealth held by top 1% of households</div><div class="dc-src">Federal Reserve</div></div>
+    <div class="data-card"><div class="dc-num">$4.1T</div><div class="dc-label">Wealth held by bottom 50% (66 million households)</div><div class="dc-src">Federal Reserve</div></div>
+    <div class="data-card"><div class="dc-num">$7.8T</div><div class="dc-label">Combined wealth of 905 US billionaires</div><div class="dc-src">Forbes Sept 2025</div></div>
+    <div class="data-card"><div class="dc-num">101x</div><div class="dc-label">Top 1% wealth gain vs. median household</div><div class="dc-src">Inequality.org</div></div>
+    <div class="data-card"><div class="dc-num">4x</div><div class="dc-label">Top 12 billionaires&rsquo; wealth growth since March 2020</div><div class="dc-src">Inequality.org</div></div>
+  </div>
+
+  <h3 class="sub-header">Wages &amp; Labor</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">150%</div><div class="dc-label">Productivity growth since 1973</div><div class="dc-src">EPI</div></div>
+    <div class="data-card"><div class="dc-num">~17%</div><div class="dc-label">Real wage growth since 1973</div><div class="dc-src">EPI</div></div>
+    <div class="data-card"><div class="dc-num">$72.88</div><div class="dc-label">What hourly pay would be if wages tracked productivity</div><div class="dc-src">EPI</div></div>
+    <div class="data-card"><div class="dc-num">10.0%</div><div class="dc-label">Union membership rate (2025)</div><div class="dc-src">BLS</div></div>
+    <div class="data-card"><div class="dc-num">5.9%</div><div class="dc-label">Private-sector union density</div><div class="dc-src">BLS</div></div>
+    <div class="data-card"><div class="dc-num">~75%</div><div class="dc-label">Workers who say pay doesn&rsquo;t cover beyond basics</div><div class="dc-src">SHRM / EPI</div></div>
+  </div>
+
+  <h3 class="sub-header">Housing</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">22.6M</div><div class="dc-label">Renter households spending 30%+ on housing</div><div class="dc-src">Census / JCHS 2023</div></div>
+    <div class="data-card"><div class="dc-num">12.1M</div><div class="dc-label">Severely cost-burdened renters (50%+ of income)</div><div class="dc-src">JCHS</div></div>
+    <div class="data-card"><div class="dc-num">49.5%</div><div class="dc-label">All renters who are cost-burdened</div><div class="dc-src">Census 2023</div></div>
+    <div class="data-card"><div class="dc-num">7 yrs</div><div class="dc-label">RealPage settlement duration (algorithmic rent-fixing)</div><div class="dc-src">DOJ Nov 2025</div></div>
+  </div>
+
+  <h3 class="sub-header">Healthcare</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">$220B</div><div class="dc-label">Total medical debt owed by Americans</div><div class="dc-src">KFF / Roosevelt</div></div>
+    <div class="data-card"><div class="dc-num">66.5%</div><div class="dc-label">Bankruptcies caused by medical bills</div><div class="dc-src">Consumer Bankruptcy Project</div></div>
+    <div class="data-card"><div class="dc-num">$1.1T</div><div class="dc-label">Healthcare cuts in One Big Beautiful Bill</div><div class="dc-src">CBO</div></div>
+    <div class="data-card"><div class="dc-num">11.8M</div><div class="dc-label">People projected to lose coverage</div><div class="dc-src">CBO</div></div>
+    <div class="data-card"><div class="dc-num">$5,304</div><div class="dc-label">Average marketplace deductible (silver plan, 2026)</div><div class="dc-src">KFF</div></div>
+    <div class="data-card"><div class="dc-num">38-79%</div><div class="dc-label">Discounts from Medicare drug price negotiation</div><div class="dc-src">CMS</div></div>
+  </div>
+
+  <h3 class="sub-header">Dark Money &amp; Elections</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">$4.2B</div><div class="dc-label">Total outside spending in 2024 elections</div><div class="dc-src">Brennan Center</div></div>
+    <div class="data-card"><div class="dc-num">$1.9B</div><div class="dc-label">Dark money in 2024 federal races (record)</div><div class="dc-src">Brennan Center</div></div>
+    <div class="data-card"><div class="dc-num">28x</div><div class="dc-label">Growth in outside spending since 2008</div><div class="dc-src">Brennan Center</div></div>
+    <div class="data-card"><div class="dc-num">$1.3B</div><div class="dc-label">Shell company / nonprofit money to super PACs (2024)</div><div class="dc-src">Brennan Center</div></div>
+  </div>
+
+  <h3 class="sub-header">Corporate Power</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">90%+</div><div class="dc-label">US broadband/mobile controlled by 5 companies</div><div class="dc-src">Market data</div></div>
+    <div class="data-card"><div class="dc-num">40%+</div><div class="dc-label">US pharma market controlled by 3 companies</div><div class="dc-src">Market data</div></div>
+    <div class="data-card"><div class="dc-num">$500B</div><div class="dc-label">North America PE buyout value (2025, up 69%)</div><div class="dc-src">Bain PE Report 2026</div></div>
+    <div class="data-card"><div class="dc-num">$323B</div><div class="dc-label">Revenue forfeited by IRS workforce cuts (10-year)</div><div class="dc-src">CBO estimates</div></div>
+  </div>
+
+  <h3 class="sub-header">DOGE &amp; Government</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">350K</div><div class="dc-label">Federal workers who left in 2025</div><div class="dc-src">OPM / PBS</div></div>
+    <div class="data-card"><div class="dc-num">$135B</div><div class="dc-label">Estimated cost of DOGE actions in FY2025</div><div class="dc-src">Nonpartisan analysis / CBS</div></div>
+    <div class="data-card"><div class="dc-num">6%</div><div class="dc-label">Government spending increase despite DOGE cuts</div><div class="dc-src">Brookings Hamilton Project</div></div>
+    <div class="data-card"><div class="dc-num">$215B</div><div class="dc-label">DOGE claimed savings (vs. $135B actual cost)</div><div class="dc-src">DOGE website / analysis</div></div>
+  </div>
+
+  <h3 class="sub-header">Children &amp; Families</h3>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">13.7%</div><div class="dc-label">Child poverty rate (SPM, 2023, up from 5.2% in 2021)</div><div class="dc-src">Census</div></div>
+    <div class="data-card"><div class="dc-num">19M</div><div class="dc-label">Children receiving less than full CTC in 2026</div><div class="dc-src">CBPP</div></div>
+    <div class="data-card"><div class="dc-num">50%</div><div class="dc-label">Black children not receiving full credit</div><div class="dc-src">CBPP</div></div>
+    <div class="data-card"><div class="dc-num">2.4M</div><div class="dc-label">Children lifted above poverty by CTC in 2024</div><div class="dc-src">CBPP</div></div>
+  </div>
+
+  <div class="callout navy">
+    <div class="callout-title">How to Use These Numbers</div>
+    <div class="callout-text">Print them. Screenshot them. Send them to your representative. Use them in town halls. Put them in campaign materials. When someone says &ldquo;the economy is fine,&rdquo; respond with receipts. When a politician says reform is &ldquo;too expensive,&rdquo; ask who is paying now. Every number here is sourced from federal agencies, nonpartisan research institutions, or court filings. This is not opinion. This is the country.</div>
+  </div>
+</div>
+
+<!-- ======================================= -->
+<!-- MOVEMENT ETHICS PANEL (NEW) -->
+<!-- ======================================= -->
+<div class="panel" id="panel-ethics">
+  <h3 class="section-header first">Movement Ethics: Rules for Not Becoming What We Fight</h3>
+
+  <div class="content-block">
+    <p>This is the section most movements skip, and it is the section that determines whether a movement survives contact with power or rots from the inside. PBHP applies to us. Here are the rules.</p>
+  </div>
+
+  <div class="callout navy">
+    <div class="callout-title">The Core Principle</div>
+    <div class="callout-text">If you would not accept a tactic when the other side uses it, you cannot accept it when your side uses it. Integrity is not situational. If it only applies to your enemies, it is not integrity. It is tribalism with better branding.</div>
+  </div>
+
+  <div class="policy-grid">
+    <div class="policy-card gold-accent">
+      <div class="pc-title">Receipts Over Vibes</div>
+      <div class="pc-text">Every claim should be sourced. Every policy should have data. Every argument should have evidence. If you cannot prove it, do not say it. That is the line between a movement and a mob.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">Attack Systems, Not Human Worth</div>
+      <div class="pc-text">Attack policies, conduct, systems, power structures, and decisions. Never attack people for being poor, uneducated, rural, religious, or for who they are. The moment you dehumanize someone for their identity, you have become what you oppose.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">Correct Errors Publicly</div>
+      <div class="pc-text">When we get something wrong, we say so. Publicly. With the same visibility as the original claim. That is what equal-reach correction means and it applies to us first.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">No False Claims, Even If Useful</div>
+      <div class="pc-text">Do not knowingly share false or misleading information because it feels politically useful. That is exactly what we are fighting against. If truth only matters when it is convenient, it does not matter at all.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">No Scapegoating Vulnerable People</div>
+      <div class="pc-text">Do not redirect legitimate economic anger toward immigrants, poor people, disabled people, religious minorities, or any group with less power. Follow the money trail. Always.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">Do Not Excuse Political Violence</div>
+      <div class="pc-text">Violence is not repair. It is failure. A movement built on accountability cannot abandon accountability when it is angry. Channel the anger into structure, strategy, and systems &mdash; not destruction.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">Preserve Democratic Agency</div>
+      <div class="pc-text">Persuade, do not manipulate. Inform, do not deceive. Respect the audience&rsquo;s ability to think. If your message only works because people are scared, confused, or misinformed, you are not persuading. You are exploiting.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">Use Anger as Fuel, Not Steering</div>
+      <div class="pc-text">Anger is the engine. Strategy is the steering wheel. Anger without direction becomes spectacle. Direction without anger becomes technocratic elitism. You need both. But anger follows strategy, not the other way around.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">Measure Outcomes</div>
+      <div class="pc-text">If a policy we support is not working, we say so and fix it. Iterative governance. Not loyalty to a talking point. The KPIs on the Action tab exist to hold us accountable too.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">No Purity Spirals</div>
+      <div class="pc-text">Broad coalitions require tolerating disagreement on secondary issues. If you demand 100% alignment on every position, you end up with a small, angry faction that cannot win elections or pass legislation. Win first. Then argue about the fine print.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">No Billionaire-Funded Capture</div>
+      <div class="pc-text">A movement against donor capture cannot be captured by donors. Small-dollar funded. Community organized. No dark money. No corporate PACs. No exceptions.</div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-title">No Leader Above Correction</div>
+      <div class="pc-text">Including Phil. Including any future leader of this movement. PBHP applies from the top down. The moment a leader is treated as infallible, the movement has become a cult. Quality systems do not have exceptions for the boss.</div>
+    </div>
+  </div>
+
+  <div class="phil-quote">
+    "If I say something false, correct me. If I make a bad argument, challenge it. If my policy idea has a harm pathway I missed, show me. A serious repair movement cannot be built around one man being right all the time. It has to be built around a method that makes everyone more accountable, including me. Especially me."
+    <div class="attr">&mdash; Phillip Linstrum</div>
+  </div>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Self-Audit: Is This Movement Causing Harm?</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Check 1</strong>Are we sharing claims we have not verified? Are our arguments sourced?</div>
+      <div class="pbhp-cell"><strong>Check 2</strong>Are we attacking people or systems? Are we dehumanizing anyone?</div>
+      <div class="pbhp-cell"><strong>Check 3</strong>Are we tolerating coalition disagreement or demanding purity?</div>
+      <div class="pbhp-cell"><strong>Check 4</strong>Would we accept this tactic if the other side used it?</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================= -->
 <!-- ACTION PANEL -->
-<!-- ═══════════════════════════════════════ -->
+<!-- ======================================= -->
 <div class="panel" id="panel-action">
   <h3 class="section-header first">Action: What You Can Do</h3>
 
@@ -989,37 +1365,51 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
 
   <div class="policy-grid">
-    <div class="policy-card blue-accent"><div class="pc-title">Share</div><div class="pc-text">Send this to people. Post it. Talk about it. The ideas only work if they spread beyond one site.</div></div>
-    <div class="policy-card gold-accent"><div class="pc-title">Submit Receipts</div><div class="pc-text">See a politician lying? See corporate harm? See a policy failure? Document it. Source it. Send it in.</div></div>
-    <div class="policy-card green-accent"><div class="pc-title">Run for Office</div><div class="pc-text">Start local. School board. City council. County council. State legislature. The right-wing understood this for decades. We need a farm system.</div></div>
-    <div class="policy-card navy-accent"><div class="pc-title">Pressure Officials</div><div class="pc-text">Call. Write. Show up. Use the Candidate Test. Ask them on the record. Archive the answers.</div></div>
+    <div class="policy-card blue-accent"><div class="pc-title">Share</div><div class="pc-text">Send this to people. Post it. Talk about it. Send it to your representative, your DNC chair, your local party, your union, your school board. The ideas only work if they spread beyond one site.</div></div>
+    <div class="policy-card gold-accent"><div class="pc-title">Submit Receipts</div><div class="pc-text">See a politician lying? See corporate harm? See a policy failure? Document it. Source it. Send it in. The Record grows when people contribute.</div></div>
+    <div class="policy-card green-accent"><div class="pc-title">Run for Office</div><div class="pc-text">Start local. School board. City council. County council. State legislature. The right-wing understood this for decades. We need a farm system. Start now.</div></div>
+    <div class="policy-card navy-accent"><div class="pc-title">Pressure Officials</div><div class="pc-text">Call. Write. Show up. Use the Candidate Test. Ask them on the record. Archive the answers. Hold them to it.</div></div>
+    <div class="policy-card red-accent"><div class="pc-title">Pressure the DNC</div><div class="pc-text">Send this site to DNC members. Demand economic populism. Demand they stop taking corporate PAC money. Demand candidate pipeline investment. They work for voters, not donors.</div></div>
+    <div class="policy-card orange-accent"><div class="pc-title">Use the Numbers</div><div class="pc-text">Every stat in The Numbers tab is sourced and shareable. Screenshot them. Print them. Use them in town halls. Make politicians answer to data, not slogans.</div></div>
   </div>
 
   <h3 class="sub-header">The Pipeline: Start Local</h3>
   <div class="content-block">
     <p>You do not wait for a savior. You build a candidate pipeline. School board. City council. County council. Township boards. State legislature. Prosecutor. Sheriff. Judges where elected. State attorney general. Secretary of state. These offices control real life and build the bench for Congress.</p>
-    <p>The right-wing understood this for decades. They took school boards, courts, statehouses, election offices, media ecosystems, churches, and donor networks while liberals kept acting like the presidency was the whole game. The left needs an actual farm system.</p>
+    <p>The right-wing understood this for decades. They took school boards, courts, statehouses, election offices, media ecosystems, churches, and donor networks while liberals kept acting like the presidency was the whole game. The left needs an actual farm system. And it needs it ten years ago. So start now.</p>
   </div>
 
-  <h3 class="sub-header">Movement Ethics</h3>
+  <h3 class="sub-header">How to Make This Spread</h3>
   <div class="content-block">
-    <p>This is how we avoid building something that drifts into culty bullshit or pure rage. These are the rules:</p>
+    <p>This site is designed to be shared. Every tab is a standalone argument. Every data card is a screenshot. Every PBHP box is a framework people can apply to their own local fights.</p>
   </div>
   <ul class="policy-list">
-    <li>Receipts over vibes</li>
-    <li>Attack systems, conduct, and policies &mdash; not human worth</li>
-    <li>Correct errors publicly</li>
-    <li>Do not knowingly share false claims even if politically useful</li>
-    <li>Do not dehumanize vulnerable groups</li>
-    <li>Do not excuse political violence</li>
-    <li>Do not become what you oppose</li>
-    <li>Preserve agency</li>
-    <li>Use anger as fuel, not as steering</li>
-    <li>Measure outcomes</li>
-    <li>No purity spirals</li>
-    <li>No billionaire-funded capture</li>
-    <li>No leader above correction</li>
+    <li><strong>For social media:</strong> Screenshot individual data cards or PBHP boxes. They are self-contained arguments.</li>
+    <li><strong>For town halls:</strong> Use the Candidate Test. Print it. Hand it to candidates. Ask them to fill it out on camera.</li>
+    <li><strong>For DNC pressure:</strong> Send the Why We Lose tab to DNC members. The data is undeniable.</li>
+    <li><strong>For union halls:</strong> The Economic Repair tab is a complete labor platform. Share it with organizers.</li>
+    <li><strong>For local campaigns:</strong> Adapt the repair packages to local issues. Housing repair for your city. Labor repair for your industry. Democracy repair for your state.</li>
+    <li><strong>For media:</strong> Every claim is sourced. Every number has a receipt. This is designed to survive fact-checking.</li>
   </ul>
+
+  <h3 class="sub-header">Public Metrics Dashboard</h3>
+  <div class="content-block">
+    <p>This is how we avoid being dismissed as just angry. We measure outcomes. Here are the KPIs for a decent society:</p>
+  </div>
+  <div class="scorecard-grid">
+    <div class="score-item"><div class="si-title">Rent Burden</div><div class="si-desc">% of income spent on housing. Currently: 49.5% of renters burdened. Target: below 30%.</div></div>
+    <div class="score-item"><div class="si-title">Medical Debt</div><div class="si-desc">Currently: $220 billion. Target: zero.</div></div>
+    <div class="score-item"><div class="si-title">Wage Growth vs. Productivity</div><div class="si-desc">Currently: 150% productivity, ~17% wages. Target: convergence.</div></div>
+    <div class="score-item"><div class="si-title">Union Density</div><div class="si-desc">Currently: 10.0% (5.9% private). Target: rising.</div></div>
+    <div class="score-item"><div class="si-title">Child Poverty</div><div class="si-desc">Currently: 13.7% (was 5.2% with expanded CTC). Target: below 5%.</div></div>
+    <div class="score-item"><div class="si-title">Eviction Rates</div><div class="si-desc">Eviction filings per capita. Target: falling.</div></div>
+    <div class="score-item"><div class="si-title">Rural Hospital Access</div><div class="si-desc">Distance to nearest hospital. Target: decreasing.</div></div>
+    <div class="score-item"><div class="si-title">Voter Turnout</div><div class="si-desc">% of eligible voters participating. Target: rising.</div></div>
+    <div class="score-item"><div class="si-title">Dark Money Volume</div><div class="si-desc">Currently: $1.9 billion (2024 record). Target: zero.</div></div>
+    <div class="score-item"><div class="si-title">Corporate Crime Penalties</div><div class="si-desc">Ratio of penalties to harm caused. Target: proportional.</div></div>
+    <div class="score-item"><div class="si-title">Police Misconduct</div><div class="si-desc">Complaints, investigations, outcomes. Target: transparent and declining.</div></div>
+    <div class="score-item"><div class="si-title">Food Insecurity</div><div class="si-desc">Households experiencing food insecurity. Target: falling.</div></div>
+  </div>
 
   <div class="callout navy">
     <div class="callout-title">The Machine Heals When...</div>
@@ -1032,25 +1422,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <div class="phil-quote">
     "The country can be repaired, but not by the people who profit from keeping it broken. We need receipts. We need standards. We need public accountability. We need power to move downward again. We need a government that works like a public repair tool instead of a concierge desk for billionaires. America needs a CAPA. And this is the beginning of one."
     <div class="attr">&mdash; Phillip Linstrum</div>
-  </div>
-
-  <h3 class="sub-header">Public Metrics Dashboard</h3>
-  <div class="content-block">
-    <p>This is how we avoid being dismissed as just angry. We measure outcomes. Here are the KPIs for a decent society:</p>
-  </div>
-  <div class="scorecard-grid">
-    <div class="score-item"><div class="si-title">Rent Burden</div><div class="si-desc">% of income spent on housing. Target: below 30%.</div></div>
-    <div class="score-item"><div class="si-title">Medical Debt</div><div class="si-desc">Households carrying medical debt. Target: zero.</div></div>
-    <div class="score-item"><div class="si-title">Wage Growth</div><div class="si-desc">Real wages vs. cost of living. Target: positive and rising.</div></div>
-    <div class="score-item"><div class="si-title">Union Density</div><div class="si-desc">% of workers in unions. Currently ~10%. Target: rising.</div></div>
-    <div class="score-item"><div class="si-title">Child Poverty</div><div class="si-desc">Children living below poverty line. Target: falling.</div></div>
-    <div class="score-item"><div class="si-title">Eviction Rates</div><div class="si-desc">Eviction filings per capita. Target: falling.</div></div>
-    <div class="score-item"><div class="si-title">Rural Hospital Access</div><div class="si-desc">Distance to nearest hospital. Target: decreasing.</div></div>
-    <div class="score-item"><div class="si-title">Voter Turnout</div><div class="si-desc">% of eligible voters participating. Target: rising.</div></div>
-    <div class="score-item"><div class="si-title">Dark Money Volume</div><div class="si-desc">Undisclosed political spending. Target: zero.</div></div>
-    <div class="score-item"><div class="si-title">Corporate Crime Penalties</div><div class="si-desc">Ratio of penalties to harm caused. Target: proportional.</div></div>
-    <div class="score-item"><div class="si-title">Police Misconduct</div><div class="si-desc">Complaints, investigations, outcomes. Target: transparent and declining.</div></div>
-    <div class="score-item"><div class="si-title">Food Insecurity</div><div class="si-desc">Households experiencing food insecurity. Target: falling.</div></div>
   </div>
 </div>
 
