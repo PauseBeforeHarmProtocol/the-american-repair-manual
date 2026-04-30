@@ -22,9 +22,12 @@
 .load-bar-wrap{width:280px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;position:relative;}
 .load-bar{height:100%;background:linear-gradient(90deg,#1565C0,#F9A825,#C62828);border-radius:2px;width:0;transition:width .3s ease;}
 .load-text{font-size:.5rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.4);margin-top:1rem;height:1rem;}
-.load-flag{display:flex;gap:0;margin-bottom:1.5rem;height:6px;width:120px;border-radius:3px;overflow:hidden;}
-.load-flag span{flex:1;}
-.load-flag .f-r{background:#C62828;}.load-flag .f-w{background:#fff;}.load-flag .f-b{background:#1565C0;}
+.load-flag{position:relative;margin-bottom:1.5rem;width:130px;height:68px;border-radius:4px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);}
+.load-flag .stripe{width:100%;height:5.23px;} /* 13 stripes = 68px */
+.load-flag .stripe.r{background:#B22234;}
+.load-flag .stripe.w{background:#fff;}
+.load-flag .canton{position:absolute;top:0;left:0;width:52px;height:36.54px;background:#3C3B6E;display:flex;align-items:center;justify-content:center;}
+.load-flag .canton::after{content:'★ ★ ★\\A★ ★ ★\\A★ ★ ★';white-space:pre;font-size:5.5px;line-height:9px;text-align:center;color:#fff;letter-spacing:2px;}
 </style>
 <style>
 :root{
@@ -251,7 +254,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
 <!-- LOADING SCREEN -->
 <div id="loadScreen">
-  <div class="load-flag"><span class="f-r"></span><span class="f-w"></span><span class="f-b"></span></div>
+  <div class="load-flag"><div class="canton"></div><div class="stripe r"></div><div class="stripe w"></div><div class="stripe r"></div><div class="stripe w"></div><div class="stripe r"></div><div class="stripe w"></div><div class="stripe r"></div><div class="stripe w"></div><div class="stripe r"></div><div class="stripe w"></div><div class="stripe r"></div><div class="stripe w"></div><div class="stripe r"></div></div>
   <div class="load-logo">PBHP</div>
   <div class="load-sub">Pause Before Harm Protocol</div>
   <div class="load-bar-wrap"><div class="load-bar" id="loadBar"></div></div>
