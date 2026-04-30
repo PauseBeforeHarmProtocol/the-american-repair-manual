@@ -14,6 +14,19 @@
 <meta name="twitter:description" content="Civic QA for a failing republic. Policy receipts, harm review, public accountability. The data says we're losing. Here's the fix.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* LOADING SCREEN */
+#loadScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:#0D1B2A;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease;color:#fff;font-family:'JetBrains Mono',monospace;}
+#loadScreen.fade{opacity:0;pointer-events:none;}
+.load-logo{font-size:1.8rem;font-weight:900;letter-spacing:.08em;color:#fff;text-align:center;margin-bottom:.5rem;}
+.load-sub{font-size:.55rem;text-transform:uppercase;letter-spacing:.2em;color:#F9A825;margin-bottom:2rem;}
+.load-bar-wrap{width:280px;height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;position:relative;}
+.load-bar{height:100%;background:linear-gradient(90deg,#1565C0,#F9A825,#C62828);border-radius:2px;width:0;transition:width .3s ease;}
+.load-text{font-size:.5rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.4);margin-top:1rem;height:1rem;}
+.load-flag{display:flex;gap:0;margin-bottom:1.5rem;height:6px;width:120px;border-radius:3px;overflow:hidden;}
+.load-flag span{flex:1;}
+.load-flag .f-r{background:#C62828;}.load-flag .f-w{background:#fff;}.load-flag .f-b{background:#1565C0;}
+</style>
+<style>
 :root{
   --navy:#0D1B2A;--navy2:#1B2838;--navy3:#263545;
   --blue:#1565C0;--blue2:#0D47A1;--blue3:#0A3680;--blueL:#E3F2FD;--blueL2:#BBDEFB;
@@ -32,7 +45,7 @@
   --grad-red:linear-gradient(135deg,var(--red2),var(--red));
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;cursor:crosshair;}
 body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;min-height:100vh;line-height:1.7;}
 :focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
 
@@ -175,6 +188,40 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .btt:hover{background:var(--gold);color:var(--navy);transform:scale(1.1);}
 .btt.vis{display:flex;}
 
+/* INTERACTIVE QUIZ */
+.quiz-box{background:var(--grad-navy);border-radius:16px;padding:2rem;margin:2rem 0;color:#fff;position:relative;overflow:hidden;}
+.quiz-box::before{content:'';position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(249,168,37,.08),transparent 60%);pointer-events:none;}
+.quiz-title{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);margin-bottom:1rem;font-weight:700;}
+.quiz-q{font-size:1.1rem;font-weight:700;margin-bottom:1.2rem;line-height:1.6;}
+.quiz-opts{display:flex;flex-direction:column;gap:.6rem;}
+.quiz-opt{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.15);border-radius:10px;padding:.8rem 1rem;cursor:pointer;transition:all .25s;font-size:.88rem;color:rgba(255,255,255,.9);}
+.quiz-opt:hover{background:rgba(249,168,37,.15);border-color:var(--gold);transform:translateX(4px);}
+.quiz-opt.selected{background:rgba(249,168,37,.2);border-color:var(--gold);color:#fff;font-weight:600;}
+.quiz-opt.correct{background:rgba(46,125,50,.3);border-color:var(--green);}
+.quiz-opt.wrong{background:rgba(198,40,40,.2);border-color:var(--red);opacity:.6;}
+.quiz-result{display:none;margin-top:1rem;padding:1rem;background:rgba(249,168,37,.1);border:2px solid var(--gold);border-radius:10px;font-size:.88rem;line-height:1.7;}
+.quiz-result.show{display:block;animation:fadeUp .4s ease;}
+.quiz-nav{display:flex;gap:.6rem;margin-top:1rem;}
+.quiz-btn{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;padding:.5rem 1.2rem;border-radius:8px;border:2px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-weight:700;transition:all .2s;}
+.quiz-btn:hover{background:var(--gold);color:var(--navy);}
+.quiz-score{font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:var(--gold);font-weight:900;text-align:center;margin:1rem 0;}
+.quiz-share{text-align:center;margin-top:.8rem;}
+.quiz-share-btn{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;padding:.6rem 1.5rem;border-radius:8px;border:none;background:var(--gold);color:var(--navy);cursor:pointer;font-weight:700;transition:all .2s;}
+.quiz-share-btn:hover{transform:scale(1.05);box-shadow:0 4px 20px var(--goldGlow);}
+
+/* PULSE ANIMATION */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--goldGlow)}50%{box-shadow:0 0 20px 8px var(--goldGlow)}}
+.pulse-gold{animation:pulse 2s infinite;}
+
+/* COUNTER ANIMATION */
+.counter-row{display:flex;justify-content:center;gap:2rem;margin:1.5rem 0;flex-wrap:wrap;}
+.counter-item{text-align:center;padding:1rem;background:var(--bg);border:2px solid var(--border);border-radius:12px;min-width:140px;transition:all .3s;}
+.counter-item:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 4px 16px rgba(198,40,40,.12);}
+.counter-item .ci-num{font-family:'JetBrains Mono',monospace;font-size:1.8rem;font-weight:900;color:var(--red);}
+.counter-item .ci-label{font-size:.65rem;color:var(--dim);margin-top:.2rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600;}
+.counter-item .ci-sub{font-size:.6rem;color:var(--border2);margin-top:.2rem;}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   .mh-top{padding:.5rem .8rem;}
@@ -189,6 +236,11 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   .section-header{font-size:1.1rem;}
   .pbhp-row{flex-direction:column;}
   .loss-table{font-size:.72rem;}
+  .quiz-box{padding:1.2rem;}
+  .quiz-q{font-size:.95rem;}
+  .counter-row{gap:.8rem;}
+  .counter-item{min-width:110px;padding:.6rem;}
+  .counter-item .ci-num{font-size:1.3rem;}
 }
 @media(max-width:480px){
   .data-grid{grid-template-columns:1fr;}
@@ -196,6 +248,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 </style>
 </head>
 <body>
+
+<!-- LOADING SCREEN -->
+<div id="loadScreen">
+  <div class="load-flag"><span class="f-r"></span><span class="f-w"></span><span class="f-b"></span></div>
+  <div class="load-logo">PBHP</div>
+  <div class="load-sub">Pause Before Harm Protocol</div>
+  <div class="load-bar-wrap"><div class="load-bar" id="loadBar"></div></div>
+  <div class="load-text" id="loadText"></div>
+</div>
 
 <!-- HEADER -->
 <header class="mh">
@@ -231,21 +292,47 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 <div class="panel show" id="panel-home">
   <div class="home-hero">
     <h2>America Needs a <span>CAPA</span></h2>
-    <p class="tagline">The United States is not failing because ordinary people are lazy, stupid, or irresponsible. It is failing because the systems that govern our lives have been captured by money, protected from accountability, and allowed to harm people without correction. This is the repair manual.</p>
+    <p class="tagline">You are not crazy. You are not lazy. You are not bad with money. You are living in a country where 905 billionaires hold $7.8 trillion while 62% of Americans live paycheck to paycheck. Where CEOs make 281 times what their workers make. Where corporations post $4 trillion in annual profits while wages shrink as a share of the economy. Where employers steal $50 billion a year from workers&rsquo; paychecks &mdash; more than all robberies, burglaries, and car thefts in America <em>combined</em> &mdash; and almost nobody goes to jail. You are not failing. You are being robbed. This is the repair manual.</p>
   </div>
 
   <div class="home-stats">
-    <div class="stat"><div class="num">13</div><div class="lbl">Sections</div></div>
-    <div class="stat"><div class="num">50+</div><div class="lbl">Policy Areas</div></div>
-    <div class="stat"><div class="num">$1.9B</div><div class="lbl">Dark Money 2024</div></div>
-    <div class="stat"><div class="num">22.6M</div><div class="lbl">Rent-Burdened Households</div></div>
-    <div class="stat"><div class="num">1</div><div class="lbl">Method: PBHP</div></div>
+    <div class="stat"><div class="num">281:1</div><div class="lbl">CEO-to-Worker Pay Ratio</div></div>
+    <div class="stat"><div class="num">$50B</div><div class="lbl">Wage Theft Per Year</div></div>
+    <div class="stat"><div class="num">62%</div><div class="lbl">Paycheck to Paycheck</div></div>
+    <div class="stat"><div class="num">$14,885</div><div class="lbl">Healthcare Cost Per Person</div></div>
+    <div class="stat"><div class="num">46th</div><div class="lbl">US Life Expectancy Rank</div></div>
+  </div>
+
+  <!-- INTERACTIVE QUIZ: THE HOOK -->
+  <div class="quiz-box" id="quizBox">
+    <div class="quiz-title">&#9888; How Broken Is America? Take the Quiz.</div>
+    <div id="quizContent">
+      <div class="quiz-q" id="quizQ"></div>
+      <div class="quiz-opts" id="quizOpts"></div>
+      <div class="quiz-result" id="quizResult"></div>
+      <div class="quiz-nav">
+        <button class="quiz-btn" id="quizNext" onclick="nextQuestion()" style="display:none;">Next &rarr;</button>
+      </div>
+    </div>
+    <div id="quizFinal" style="display:none;">
+      <div class="quiz-score" id="quizScore"></div>
+      <div class="quiz-result show" id="quizVerdict"></div>
+      <div class="quiz-share">
+        <button class="quiz-share-btn" onclick="shareQuiz()">Share Your Score</button>
+      </div>
+    </div>
   </div>
 
   <div class="content-block">
-    <p>In regulated industries, repeated failure triggers investigation. You document the deviation. You identify root cause. You implement corrective action. You verify effectiveness. You prevent recurrence.</p>
-    <p>America does the opposite. It lets politicians lie, corporations extract, media manipulate, landlords gouge, employers exploit, judges operate without accountability, and billionaires buy the rules. Then it blames working people for not surviving the damage.</p>
-    <p>This project is a repair manual for that machine. It is also a mirror for any political party &mdash; including the Democrats &mdash; that claims to represent working people while failing them.</p>
+    <p>The richest country in the history of the world ranks 46th in life expectancy. We spend $14,885 per person on healthcare &mdash; double every other developed nation &mdash; and die younger. A working-class American in a poor county can expect to die <strong>15 years earlier</strong> than someone in a wealthy one. Not because of genetics. Because of policy.</p>
+    <p>In regulated industries, when a system produces repeated failures, you investigate. You document the deviation. You identify root cause. You implement corrective action. You verify effectiveness. You prevent recurrence. That is how you run a hospital, an eye bank, a plasma center, a drug manufacturer, an airline.</p>
+    <p>America does the opposite. It lets politicians lie, corporations extract, media manipulate, landlords gouge, employers steal, judges operate without ethics, and billionaires buy the rules. Then it blames working people for not surviving the damage. That is not governance. That is a protection racket.</p>
+    <p>This project is a repair manual. It is also a mirror held up to any political party &mdash; including the Democrats &mdash; that claims to represent working people while taking corporate money and delivering corporate policy. If you say you fight for us and then lose working-class voters by 30 points over 16 years, the problem is not the voters. The problem is you.</p>
+  </div>
+
+  <div class="callout red">
+    <div class="callout-title">The Number That Should End Every Argument</div>
+    <div class="callout-text">In 1978, CEOs made 31 times what their workers made. Today it is 281 times. At low-wage companies, it is 632 times. At Starbucks, it is 6,666 times. Productivity rose 150% since 1973. Wages rose 17%. If your pay had kept pace with your output, you would be making $72.88 an hour. You are not. The difference is not in your work ethic. It is in their pockets. That is $4 trillion in corporate profits and $942 billion in stock buybacks in a single year &mdash; money that came from your labor and went to their shareholders. Every dollar of that was a choice. A policy choice. And it can be reversed.</div>
   </div>
 
   <div class="slogan-strip">
@@ -255,7 +342,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <h3 class="section-header">The Agenda Stack</h3>
   <div class="content-block">
-    <p>This is not just a manifesto. It is a civic accountability engine built from four interlocking tools:</p>
+    <p>This is not a manifesto. Manifestos collect dust. This is a civic accountability engine built from four interlocking tools:</p>
   </div>
 
   <div class="policy-grid">
@@ -282,14 +369,33 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="callout-text">The country is not broken because ordinary people failed. It is broken because power has been allowed to detach itself from accountability. Money detached from labor. Politics detached from voters. Media detached from truth. Corporations detached from communities. Healthcare detached from care. Housing detached from shelter. Government detached from the public it is supposed to serve. The repair is not one policy. It is a system-wide power shift. And it starts with receipts.</div>
   </div>
 
+  <h3 class="section-header">The Theft</h3>
+  <div class="content-block">
+    <p>Before we talk about solutions, let&rsquo;s talk about the crime scene.</p>
+  </div>
+  <div class="data-grid">
+    <div class="data-card"><div class="dc-num">$50B/yr</div><div class="dc-label">Wage theft &mdash; more than all robberies, burglaries, larceny &amp; auto theft combined ($12.7B)</div><div class="dc-src">EPI / FBI UCR</div></div>
+    <div class="data-card"><div class="dc-num">$942B</div><div class="dc-label">Stock buybacks in 2024 (new record). Heading to $1.2T in 2025</div><div class="dc-src">S&amp;P Global</div></div>
+    <div class="data-card"><div class="dc-num">$4.0T</div><div class="dc-label">Corporate profits in 2024 &mdash; doubled since 2010 while wages shrank as % of GDP</div><div class="dc-src">BEA / St. Louis Fed</div></div>
+    <div class="data-card"><div class="dc-num">$1.7T</div><div class="dc-label">Wealth gained by US billionaires during 3 years of COVID while 150M fell into poverty worldwide</div><div class="dc-src">Americans for Tax Fairness / Oxfam</div></div>
+    <div class="data-card"><div class="dc-num">281:1</div><div class="dc-label">CEO-to-worker pay ratio in 2024 (was 31:1 in 1978). Low-wage employers: 632:1</div><div class="dc-src">EPI / AFL-CIO</div></div>
+    <div class="data-card"><div class="dc-num">10x</div><div class="dc-label">US insulin prices vs. 33 other developed countries</div><div class="dc-src">RAND / ASPE 2024</div></div>
+    <div class="data-card"><div class="dc-num">$14,885</div><div class="dc-label">US healthcare cost per person (double other countries). We rank 46th in life expectancy</div><div class="dc-src">Peterson-KFF / WHO</div></div>
+    <div class="data-card"><div class="dc-num">15 yrs</div><div class="dc-label">Life expectancy gap between richest and poorest US counties</div><div class="dc-src">Sanders Senate HELP Committee 2025</div></div>
+  </div>
+  <div class="content-block">
+    <p>Read those numbers again. Employers steal more from workers than every thief, robber, and carjacker in America combined &mdash; and less than 3% is ever recovered. Corporations made $4 trillion in profit and spent $942 billion buying back their own stock instead of raising wages. Billionaires gained $1.7 trillion during a pandemic that killed over a million Americans. And the CEO of Starbucks made 6,666 times what a barista makes.</p>
+    <p>This is not an economy. This is a heist. And you are the mark.</p>
+  </div>
+
   <div class="phil-quote">
-    "We run hospitals, tissue banks, aviation systems, food production, drug manufacturing, laboratories, and medical supply chains with quality systems because we understand that when stakes are high, vibes are not enough. But somehow the systems that decide healthcare, housing, wages, elections, war, policing, education, media, and public truth are allowed to run on corruption, propaganda, donor influence, and 'trust us bro.' That is insane."
+    "We run hospitals, tissue banks, aviation systems, food production, drug manufacturing, laboratories, and medical supply chains with quality systems because we understand that when stakes are high, vibes are not enough. But somehow the systems that decide healthcare, housing, wages, elections, war, policing, education, media, and public truth are allowed to run on corruption, propaganda, donor influence, and 'trust us bro.' That is insane. And I&rsquo;m done pretending it&rsquo;s normal."
     <div class="attr">&mdash; Phillip Linstrum</div>
   </div>
 
   <div class="callout red">
     <div class="callout-title">To the Democratic Party</div>
-    <div class="callout-text">You lost working-class voters by nearly 30 percentage points between 2008 and 2024. Your favorability rating hit a record low of 27%. You lost working-class Latinos by 31 points compared to 2020. This manual is not an attack on the party. It is a CAPA &mdash; a corrective and preventive action plan. You can use it as a roadmap or you can keep losing. But you cannot keep blaming voters for rejecting a party that does not fight for them.</div>
+    <div class="callout-text">You lost working-class voters by nearly 30 percentage points between 2008 and 2024. Your favorability rating hit a record low of 27%. You lost working-class Latinos by 31 points compared to 2020. You had trifectas and did not pass voting rights, labor reform, or codified abortion protections. You told people &ldquo;the economy is actually good&rdquo; while 62% of them lived paycheck to paycheck. This manual is not an attack. It is a CAPA &mdash; a corrective and preventive action plan. You can use it as a roadmap or you can keep losing. But you cannot keep blaming voters for rejecting a party that does not fight for them. They are not stupid. They are paying attention. And they are leaving.</div>
   </div>
 
   <div class="content-block" style="text-align:center;margin-top:2rem;">
@@ -406,14 +512,14 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
 
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">22.6M</div><div class="dc-label">Renter households spending 30%+ of income on housing</div><div class="dc-src">Census / JCHS 2023</div></div>
+    <div class="data-card"><div class="dc-num">62%</div><div class="dc-label">Americans living paycheck to paycheck in 2025</div><div class="dc-src">LendingClub / PYMNTS</div></div>
     <div class="data-card"><div class="dc-num">$220B</div><div class="dc-label">Total medical debt owed by Americans</div><div class="dc-src">KFF / Roosevelt Institute</div></div>
-    <div class="data-card"><div class="dc-num">31.7%</div><div class="dc-label">Share of US wealth owned by top 1%</div><div class="dc-src">Federal Reserve Q3 2025</div></div>
     <div class="data-card"><div class="dc-num">$7.8T</div><div class="dc-label">Combined wealth of 905 US billionaires</div><div class="dc-src">Forbes Sept. 2025</div></div>
-    <div class="data-card"><div class="dc-num">10.0%</div><div class="dc-label">Union membership rate (was 20.1% in 1983)</div><div class="dc-src">BLS 2025</div></div>
-    <div class="data-card"><div class="dc-num">$1.9B</div><div class="dc-label">Dark money in 2024 federal elections</div><div class="dc-src">Brennan Center</div></div>
+    <div class="data-card"><div class="dc-num">$4.1T</div><div class="dc-label">Total wealth of bottom 50% &mdash; 66 million households</div><div class="dc-src">Federal Reserve</div></div>
+    <div class="data-card"><div class="dc-num">46th</div><div class="dc-label">US global life expectancy ranking despite highest spending</div><div class="dc-src">WHO / Peterson-KFF</div></div>
+    <div class="data-card"><div class="dc-num">15 yrs</div><div class="dc-label">Life expectancy gap: richest vs poorest US counties</div><div class="dc-src">Sanders HELP Committee 2025</div></div>
     <div class="data-card"><div class="dc-num">66.5%</div><div class="dc-label">Bankruptcies caused by medical bills</div><div class="dc-src">Consumer Bankruptcy Project</div></div>
-    <div class="data-card"><div class="dc-num">150%</div><div class="dc-label">Productivity growth since 1973 (wages: ~17%)</div><div class="dc-src">EPI Productivity-Pay Gap</div></div>
+    <div class="data-card"><div class="dc-num">6,666:1</div><div class="dc-label">Starbucks CEO-to-barista pay ratio in 2024</div><div class="dc-src">AFL-CIO Paywatch</div></div>
   </div>
 
   <div class="callout red">
@@ -470,6 +576,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <div class="policy-card red-accent"><div class="pc-title">Government Detached from the Public</div><div class="pc-text">DOGE cut 350,000 federal workers while government spending rose 6% to $7.558 trillion. The claimed $215 billion in savings actually cost $135 billion in rehiring, lost productivity, and chaos. Agencies were cut to one staff member. Benefits became a maze.</div></div>
   </div>
 
+  <h3 class="sub-header">They Are Literally Killing You</h3>
+
+  <div class="content-block">
+    <p>This is not metaphor. Being working class in America <em>shortens your life</em>. A March 2025 report from the Senate HELP Committee found that people in the poorest 50% of US counties die 7 years earlier than people in the wealthiest 1% of counties. In rural areas the gap is 10 years. Between Loudoun County, Virginia (the richest in America) and McDowell County, West Virginia, the gap is <strong>15 years</strong>. Every $10,000 increase in a county&rsquo;s median income adds 2.6 years to life expectancy.</p>
+    <p>And when private equity buys your hospital, it gets worse. ER deaths increase 13% after PE acquisition. Surgical mortality rises 17%. When PE buys nursing homes, deaths increase 11% while staffing drops. They load the facility with debt, strip staff, extract fees, and walk away. Hahnemann Hospital in Philadelphia served low-income patients for nearly 200 years. Private equity bought it and it closed within two years.</p>
+    <p>We spend $14,885 per person on healthcare &mdash; the most in the world, double the average of comparable countries. Our administrative costs alone ($1,000+ per person) are five times higher than other wealthy nations. We pay 10 times more for insulin. And we rank <strong>46th in life expectancy</strong> &mdash; heading to 66th by 2050.</p>
+    <p>The richest country in human history is killing its own people to protect quarterly earnings. That is not a healthcare system. It is a murder margin.</p>
+  </div>
+
   <h3 class="sub-header">America Is Not Expensive by Accident</h3>
 
   <div class="content-block">
@@ -494,6 +609,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
   <div class="content-block">
     <p>This section is addressed to Democrats, progressives, and anyone wondering why the party that should be winning elections on economic populism keeps losing them. This is not an attack. It is a corrective and preventive action report. If PBHP means anything, it means you audit your own side too.</p>
+    <p>We cannot keep running from this conversation. The party that is supposed to represent the working class is hemorrhaging working-class support because it stopped acting like a working-class party. It hired consultants instead of organizers. It chased suburban moderates instead of mobilizing the base. It took corporate money and delivered corporate policy. And then it told voters who noticed that they were misinformed, misguided, or manipulated. They were not. They were paying attention.</p>
   </div>
 
   <div class="callout red">
@@ -793,10 +909,14 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   </div>
 
   <div class="data-grid">
-    <div class="data-card"><div class="dc-num">$72.88</div><div class="dc-label">What average hourly pay would be if wages tracked productivity since 1973</div><div class="dc-src">EPI</div></div>
-    <div class="data-card"><div class="dc-num">$1.1T</div><div class="dc-label">Healthcare spending cut in One Big Beautiful Bill</div><div class="dc-src">CBO / CNBC</div></div>
-    <div class="data-card"><div class="dc-num">11.8M</div><div class="dc-label">People projected to lose health coverage from that bill</div><div class="dc-src">CBO</div></div>
-    <div class="data-card"><div class="dc-num">5.9%</div><div class="dc-label">Private-sector union membership (down from 20%+ in 1983)</div><div class="dc-src">BLS 2025</div></div>
+    <div class="data-card"><div class="dc-num">$72.88</div><div class="dc-label">What average hourly pay would be if wages tracked productivity</div><div class="dc-src">EPI</div></div>
+    <div class="data-card"><div class="dc-num">$1.1T</div><div class="dc-label">Healthcare cuts in One Big Beautiful Bill</div><div class="dc-src">CBO / CNBC</div></div>
+    <div class="data-card"><div class="dc-num">11.8M</div><div class="dc-label">People projected to lose health coverage</div><div class="dc-src">CBO</div></div>
+    <div class="data-card"><div class="dc-num">5.9%</div><div class="dc-label">Private-sector union density (was 20%+ in 1983)</div><div class="dc-src">BLS 2025</div></div>
+    <div class="data-card"><div class="dc-num">+13%</div><div class="dc-label">ER death increase after private equity buys a hospital</div><div class="dc-src">Annals of Internal Medicine</div></div>
+    <div class="data-card"><div class="dc-num">$13,128</div><div class="dc-label">Average annual childcare cost per child (35% of single-parent income)</div><div class="dc-src">Child Care Aware / DOL</div></div>
+    <div class="data-card"><div class="dc-num">$942B</div><div class="dc-label">Stock buybacks in 2024 instead of raising wages</div><div class="dc-src">S&amp;P Global</div></div>
+    <div class="data-card"><div class="dc-num">$4.0T</div><div class="dc-label">Corporate profits in 2024 (doubled since 2010)</div><div class="dc-src">BEA</div></div>
   </div>
 
   <h3 class="sub-header">Labor Repair</h3>
@@ -1596,6 +1716,38 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 
 <!-- APP JS -->
 <script>
+// LOADING SCREEN
+(function(){
+  var msgs = [
+    'LOADING RECEIPTS...',
+    'DOCUMENTING THE DEVIATION...',
+    'IDENTIFYING ROOT CAUSE...',
+    'IMPLEMENTING CORRECTIVE ACTION...',
+    'VERIFYING EFFECTIVENESS...',
+    'PREVENTING RECURRENCE...',
+    'AMERICA NEEDS A CAPA.'
+  ];
+  var bar = document.getElementById('loadBar');
+  var txt = document.getElementById('loadText');
+  var screen = document.getElementById('loadScreen');
+  var step = 0;
+  var total = msgs.length;
+  function tick() {
+    if (step < total) {
+      txt.textContent = msgs[step];
+      bar.style.width = Math.round(((step + 1) / total) * 100) + '%';
+      step++;
+      setTimeout(tick, 350);
+    } else {
+      setTimeout(function() {
+        screen.classList.add('fade');
+        setTimeout(function() { screen.style.display = 'none'; }, 600);
+      }, 400);
+    }
+  }
+  tick();
+})();
+
 window.showPanel = function(id) {
   document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('show'); });
   document.querySelectorAll('.navtab').forEach(function(b) { b.classList.remove('on'); });
@@ -1614,6 +1766,130 @@ window.addEventListener('scroll', function() {
   if (window.scrollY > 400) { btt.classList.add('vis'); }
   else { btt.classList.remove('vis'); }
 });
+
+// ===== INTERACTIVE QUIZ =====
+var quizData = [
+  {
+    q: "How much do employers steal from workers in wage theft every year?",
+    opts: ["$2 billion", "$12 billion", "$50 billion", "$500 million"],
+    correct: 2,
+    explain: "$50 billion per year. That is more than ALL robberies, burglaries, larceny, and motor vehicle theft in the US combined ($12.7B). Less than 3% is ever recovered. (Source: EPI)"
+  },
+  {
+    q: "In 1978, CEOs made 31x what their workers made. What is the ratio today?",
+    opts: ["52:1", "120:1", "281:1", "500:1"],
+    correct: 2,
+    explain: "281:1 on average. At low-wage companies it is 632:1. At Starbucks it is 6,666:1. CEO pay grew nearly tenfold while worker pay barely moved. (Source: EPI / AFL-CIO)"
+  },
+  {
+    q: "How much did US billionaires gain during the 3 years of the COVID pandemic?",
+    opts: ["$200 billion", "$700 billion", "$1.7 trillion", "$3 trillion"],
+    correct: 2,
+    explain: "$1.7 trillion — a 58% increase — while over 150 million people worldwide fell into poverty and over 1 million Americans died. (Source: Americans for Tax Fairness)"
+  },
+  {
+    q: "What percentage of Americans live paycheck to paycheck?",
+    opts: ["25%", "40%", "62%", "78%"],
+    correct: 2,
+    explain: "62% of American adults live paycheck to paycheck in 2025. This is the richest country in the history of the world. (Source: LendingClub / PYMNTS)"
+  },
+  {
+    q: "The US spends $14,885 per person on healthcare — double other rich nations. Where does the US rank in life expectancy?",
+    opts: ["12th", "27th", "46th", "66th"],
+    correct: 2,
+    explain: "46th globally. We spend double and die younger. A working-class person in a poor county dies 15 years earlier than someone in a wealthy county. Not genetics. Policy. (Source: WHO / Peterson-KFF / Sanders HELP Committee)"
+  },
+  {
+    q: "How much did corporations spend buying back their own stock in 2024 instead of raising wages?",
+    opts: ["$100 billion", "$450 billion", "$942 billion", "$2 trillion"],
+    correct: 2,
+    explain: "$942.5 billion — a new record. Heading to $1.2 trillion in 2025. That money came from worker productivity and went to shareholders. (Source: S&P Global)"
+  },
+  {
+    q: "US insulin prices are how many times higher than in other developed countries?",
+    opts: ["2x", "5x", "10x", "20x"],
+    correct: 2,
+    explain: "Nearly 10 times higher on average across 33 OECD countries. Up to 38x higher than Turkey. The cost of Humalog went from $21 in 1996 to $275 — a 1,200% increase. (Source: RAND / ASPE)"
+  },
+  {
+    q: "What happens to ER death rates when private equity buys a hospital?",
+    opts: ["They decrease 5%", "No change", "They increase 13%", "They increase 30%"],
+    correct: 2,
+    explain: "ER deaths increase 13%. Surgical mortality rises 17%. In nursing homes PE acquires, deaths rise 11% while staffing drops. Profit and healthcare are incompatible. (Source: Annals of Internal Medicine / Harvard Medical School)"
+  }
+];
+
+var quizIdx = 0;
+var quizCorrect = 0;
+var quizAnswered = false;
+
+function renderQuestion() {
+  if (quizIdx >= quizData.length) { showFinal(); return; }
+  var d = quizData[quizIdx];
+  document.getElementById('quizQ').textContent = (quizIdx + 1) + '/' + quizData.length + ': ' + d.q;
+  var optsEl = document.getElementById('quizOpts');
+  optsEl.innerHTML = '';
+  d.opts.forEach(function(opt, i) {
+    var btn = document.createElement('div');
+    btn.className = 'quiz-opt';
+    btn.textContent = opt;
+    btn.onclick = function() { answerQuestion(i); };
+    optsEl.appendChild(btn);
+  });
+  document.getElementById('quizResult').className = 'quiz-result';
+  document.getElementById('quizResult').textContent = '';
+  document.getElementById('quizNext').style.display = 'none';
+  quizAnswered = false;
+}
+
+function answerQuestion(idx) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+  var d = quizData[quizIdx];
+  var opts = document.querySelectorAll('#quizOpts .quiz-opt');
+  opts.forEach(function(o, i) {
+    if (i === d.correct) o.classList.add('correct');
+    else if (i === idx && i !== d.correct) o.classList.add('wrong');
+    o.style.pointerEvents = 'none';
+  });
+  if (idx === d.correct) quizCorrect++;
+  var res = document.getElementById('quizResult');
+  res.textContent = d.explain;
+  res.className = 'quiz-result show';
+  document.getElementById('quizNext').style.display = 'inline-block';
+}
+
+function nextQuestion() {
+  quizIdx++;
+  renderQuestion();
+}
+
+function showFinal() {
+  document.getElementById('quizContent').style.display = 'none';
+  document.getElementById('quizFinal').style.display = 'block';
+  document.getElementById('quizScore').textContent = quizCorrect + ' / ' + quizData.length;
+  var pct = Math.round((quizCorrect / quizData.length) * 100);
+  var msg = '';
+  if (pct >= 80) msg = 'You already know how broken this is. Now help fix it. Share this site. Read the repair plan. Use the Candidate Test. Pressure your representatives. The data is undeniable.';
+  else if (pct >= 50) msg = 'You knew some of it. But the full picture is worse than most people realize. Every answer you got wrong is a number someone powerful does not want you to know. Read the rest of this manual. Then share it.';
+  else msg = 'Most people do not know these numbers. That is by design. The people profiting from this system spend billions making sure you never see the receipts. Now you have them. Read this manual. Share it. Make them answer for it.';
+  document.getElementById('quizVerdict').textContent = msg;
+}
+
+function shareQuiz() {
+  var txt = 'I scored ' + quizCorrect + '/' + quizData.length + ' on the American Repair Manual quiz. How broken is America? Take it yourself: https://pausebeforeharmprotocol.github.io/the-american-repair-manual/';
+  if (navigator.share) {
+    navigator.share({ title: 'How Broken Is America?', text: txt, url: 'https://pausebeforeharmprotocol.github.io/the-american-repair-manual/' });
+  } else if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(function() {
+      var btn = document.querySelector('.quiz-share-btn');
+      btn.textContent = 'COPIED! NOW SHARE IT.';
+      setTimeout(function() { btn.textContent = 'Share Your Score'; }, 3000);
+    });
+  }
+}
+
+renderQuestion();
 </script>
 </body>
 </html>
