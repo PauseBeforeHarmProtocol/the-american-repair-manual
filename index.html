@@ -281,6 +281,19 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 .copy-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--grad-navy);color:#fff;border:none;padding:.7rem 1.5rem;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;cursor:pointer;font-weight:700;transition:all .2s;}
 .copy-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.2);}
 .copy-btn.copied{background:var(--green);}
+/* DEBT CLOCK */
+.debt-clock{background:linear-gradient(135deg,#0D1B2A 0%,#1a2d42 100%);border:2px solid var(--red);border-radius:16px;padding:1.8rem 1.5rem;margin:0 0 2rem;text-align:center;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(198,40,40,.15);}
+.debt-clock::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--red));}
+.debt-clock-label{font-family:'JetBrains Mono',monospace;font-size:.55rem;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.5);margin-bottom:.4rem;}
+.debt-clock-title{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:700;margin-bottom:.8rem;}
+.debt-clock-num{font-family:'JetBrains Mono',monospace;font-size:clamp(1.6rem,5vw,2.8rem);font-weight:900;color:#fff;letter-spacing:.02em;text-shadow:0 0 20px rgba(198,40,40,.4);}
+.debt-clock-sub{display:flex;justify-content:center;gap:2rem;margin-top:1rem;flex-wrap:wrap;}
+.debt-clock-sub .dcs-item{text-align:center;}
+.debt-clock-sub .dcs-val{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:700;color:var(--red);}
+.debt-clock-sub .dcs-lbl{font-family:'JetBrains Mono',monospace;font-size:.45rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);}
+.debt-clock-src{font-size:.45rem;color:rgba(255,255,255,.3);margin-top:.8rem;font-family:'JetBrains Mono',monospace;}
+.debt-clock-src a{color:rgba(255,255,255,.5);text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.3);}
+.debt-clock-src a:hover{color:#fff;}
 </style>
 </head>
 <body>
@@ -1486,6 +1499,19 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
 <div class="panel" id="panel-numbers">
   <h3 class="section-header first">The Numbers: Receipts for a Broken Country</h3>
 
+  <div class="debt-clock">
+    <div class="debt-clock-label">Live Estimate</div>
+    <div class="debt-clock-title">U.S. National Debt</div>
+    <div class="debt-clock-num" id="debtCounter">$39,000,000,000,000</div>
+    <div class="debt-clock-sub">
+      <div class="dcs-item"><div class="dcs-val" id="debtPerCitizen">$116,265</div><div class="dcs-lbl">Per Citizen</div></div>
+      <div class="dcs-item"><div class="dcs-val" id="debtPerTaxpayer">$243,801</div><div class="dcs-lbl">Per Taxpayer</div></div>
+      <div class="dcs-item"><div class="dcs-val">$8.03B</div><div class="dcs-lbl">Added Per Day</div></div>
+      <div class="dcs-item"><div class="dcs-val">$92,940</div><div class="dcs-lbl">Added Per Second</div></div>
+    </div>
+    <div class="debt-clock-src">Based on <a href="https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/" target="_blank">U.S. Treasury Fiscal Data</a> &bull; Rate: <a href="https://www.jec.senate.gov/public/index.cfm/republicans/debt-dashboard" target="_blank">JEC Debt Dashboard</a></div>
+  </div>
+
   <div class="content-block">
     <p>This is not opinion. This is data. Every claim in this manual has a number behind it. Here are the receipts, organized by category, with sources. Share them. Use them. Make politicians answer to them.</p>
   </div>
@@ -2184,6 +2210,36 @@ function copyEmailTemplate() {
     alert('Email copied! Now customize the bracketed fields and send it.');
   }
 }
+
+// DEBT CLOCK — live ticker
+(function(){
+  // Anchor: April 3, 2026 = $38,980,000,000,000 (Treasury Fiscal Data)
+  // Rate: $8.03B/day = $92,939.81/sec (JEC Senate)
+  var anchorDate = new Date('2026-04-03T00:00:00Z').getTime();
+  var anchorDebt = 38980000000000;
+  var ratePerSec = 92940;
+  var pop = 335000000; // US population estimate
+  var taxpayers = 160000000; // taxpayer estimate
+
+  function fmt(n) {
+    return '$' + Math.floor(n).toLocaleString('en-US');
+  }
+
+  function tick() {
+    var now = Date.now();
+    var elapsed = (now - anchorDate) / 1000;
+    var current = anchorDebt + (elapsed * ratePerSec);
+    var el = document.getElementById('debtCounter');
+    if (el) el.textContent = fmt(current);
+    var elC = document.getElementById('debtPerCitizen');
+    if (elC) elC.textContent = fmt(current / pop);
+    var elT = document.getElementById('debtPerTaxpayer');
+    if (elT) elT.textContent = fmt(current / taxpayers);
+  }
+
+  tick();
+  setInterval(tick, 80);
+})();
 </script>
 </body>
 </html>
