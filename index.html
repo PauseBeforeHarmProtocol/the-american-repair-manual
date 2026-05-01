@@ -2170,52 +2170,94 @@ window.addEventListener('scroll', function() {
 // ===== INTERACTIVE QUIZ =====
 var quizData = [
   {
-    q: "How much do employers steal from workers in wage theft every year?",
-    opts: ["$2 billion", "$12 billion", "$50 billion", "$500 million"],
-    correct: 2,
-    explain: "$50 billion per year (EPI 2014 compilation). That is more than ALL FBI UCR property-crime loss in the same period (~$12.7B in 2012). Less than 3% is ever recovered."
+    q: "How much do US employers steal from workers in wage theft every year?",
+    opts: ["$50 billion", "$12 billion", "$2 billion", "$500 million"],
+    correct: 0,
+    explain: "$50 billion per year (EPI 2014 compilation). That is more than ALL FBI UCR property-crime loss in the same period (~$12.7B in 2012 — the comparison year used in the EPI report). Less than 3% of stolen wages is ever recovered."
   },
   {
     q: "In 1978, CEOs made about 31x what their workers made. What is the average ratio today?",
-    opts: ["52:1", "120:1", "281:1", "500:1"],
-    correct: 2,
+    opts: ["120:1", "281:1", "52:1", "500:1"],
+    correct: 1,
     explain: "281:1 on average. At low-wage companies it is 632:1. At Starbucks the peak hit 6,666:1 (Schultz era, 2022). CEO pay grew nearly tenfold while worker pay barely moved. (Source: EPI / AFL-CIO Paywatch)"
   },
   {
     q: "How much did US billionaires gain during the 3 years of the COVID pandemic?",
-    opts: ["$200 billion", "$700 billion", "$1.7 trillion", "$3 trillion"],
+    opts: ["$3 trillion", "$700 billion", "$1.7 trillion", "$200 billion"],
     correct: 2,
     explain: "$1.7 trillion — a 58% increase — while over 150 million people worldwide fell into poverty and over 1 million Americans died. (Source: Americans for Tax Fairness)"
   },
   {
     q: "What percentage of Americans live paycheck to paycheck?",
-    opts: ["25%", "40%", "62%", "78%"],
-    correct: 2,
+    opts: ["78%", "40%", "25%", "62%"],
+    correct: 3,
     explain: "62% of American adults live paycheck to paycheck in 2025. This is the richest country in the history of the world. (Source: LendingClub / PYMNTS)"
   },
   {
     q: "The US spends $14,885 per person on healthcare — double other rich nations. Where does the US rank in life expectancy?",
-    opts: ["12th", "27th", "46th", "66th"],
-    correct: 2,
-    explain: "46th globally. We spend double and die younger. A working-class person in a poor county dies 15 years earlier than someone in a wealthy county. Not genetics. Policy. (Source: WHO / Peterson-KFF / Sanders HELP Committee)"
+    opts: ["46th", "12th", "27th", "66th"],
+    correct: 0,
+    explain: "46th globally. We spend double and die younger. A working-class person in a poor county dies up to 15 years earlier than someone in a wealthy county. Not genetics. Policy. (Source: WHO / Peterson-KFF / Sanders HELP Committee)"
   },
   {
     q: "How much did corporations spend buying back their own stock in 2024 instead of raising wages?",
-    opts: ["$100 billion", "$450 billion", "$942 billion", "$2 trillion"],
-    correct: 2,
-    explain: "$942.5 billion — a new record. Heading to $1.2 trillion in 2025. That money came from worker productivity and went to shareholders. (Source: S&P Global)"
+    opts: ["$2 trillion", "$942 billion", "$100 billion", "$450 billion"],
+    correct: 1,
+    explain: "$942.5 billion — a new record. Heading to $1.2 trillion in 2025. That money came from worker productivity and went to shareholders, not to the people who produced it. (Source: S&P Global)"
   },
   {
     q: "US insulin prices are how many times higher than in other developed countries?",
-    opts: ["2x", "5x", "10x", "20x"],
+    opts: ["20x", "5x", "10x", "2x"],
     correct: 2,
-    explain: "Nearly 10 times higher on average across 33 OECD countries. Up to 38x higher than Turkey. The cost of Humalog went from $21 in 1996 to $275 — a 1,200% increase. (Source: RAND / ASPE)"
+    explain: "Nearly 10x higher on average across 33 OECD countries. Up to 38x higher than Turkey. The cost of Humalog went from $21 in 1996 to $275 — a 1,200% increase. (Source: RAND / ASPE)"
   },
   {
     q: "What happens to ER death rates when private equity buys a hospital?",
-    opts: ["They decrease 5%", "No change", "They increase 13%", "They increase 30%"],
-    correct: 2,
+    opts: ["No change", "They decrease 5%", "They increase 30%", "They increase 13%"],
+    correct: 3,
     explain: "ER deaths increase 13%. Surgical mortality rises 17%. In nursing homes PE acquires, deaths rise 11% while staffing drops. Profit and healthcare are incompatible. (Source: Annals of Internal Medicine / Harvard Medical School)"
+  },
+  {
+    q: "How much did AIPAC and its affiliated super PAC (UDP) spend targeting US primaries in the 2024 cycle?",
+    opts: ["$100 million+", "$5 million", "$10 million", "$30 million"],
+    correct: 0,
+    explain: "Over $100 million from AIPAC + UDP combined to influence US congressional primaries — much of it spent against incumbents who criticized Israeli government conduct. American voters first means American voters first. (Source: OpenSecrets / FEC)"
+  },
+  {
+    q: "Productivity has grown about 80% since 1979. By how much did typical worker hourly pay grow over the same period?",
+    opts: ["About 75%", "About 14%", "About 50%", "About 30%"],
+    correct: 1,
+    explain: "About 14% — roughly one-sixth of productivity growth. If pay had tracked productivity, the average worker would earn roughly $7–12 more per hour. The gap is in the buyback and dividend column. (Source: EPI Productivity-Pay Tracker, 2024)"
+  },
+  {
+    q: "How many US renter households are cost-burdened — paying 30%+ of income on housing?",
+    opts: ["8.5 million", "5 million", "12.1 million", "22.6 million"],
+    correct: 3,
+    explain: "22.6 million renter households are cost-burdened. 12.1 million are SEVERELY cost-burdened (paying 50%+ of income on rent). Algorithmic rent-fixing via RealPage drove much of this; DOJ sued in 2025 calling it price-fixing. (Source: JCHS Harvard / DOJ)"
+  },
+  {
+    q: "After Congress let the expanded Child Tax Credit expire, where is the US child poverty rate now (vs 5.2% in 2021 with the CTC)?",
+    opts: ["About 7%", "About 13.7%", "About 10%", "About 20%"],
+    correct: 1,
+    explain: "13.7% (Supplemental Poverty Measure, 2023) — more than double the 2021 low. About 19 million children now get less than the full credit because their families earn too little. Letting the CTC expire was a policy choice. (Source: Census / CBPP)"
+  },
+  {
+    q: "How much did the Saudi Public Investment Fund give to Jared Kushner's post-White-House private equity fund in 2022?",
+    opts: ["$200 million", "$50 million", "$5 billion", "$2 billion"],
+    correct: 3,
+    explain: "$2 billion. Saudi PIF's own advisors flagged the deal as risky; the fund's board approved it anyway. Six months earlier, Kushner had been the senior White House Middle East adviser. This is the textbook case for the 10-year cooling-off ban on sovereign-wealth-fund investments in former-officials' funds. (Source: SEC filings / NYT reporting)"
+  },
+  {
+    q: "Three pharmacy benefit managers — CVS Caremark, Express Scripts, and OptumRx — control roughly what share of the US PBM market that sits between insurers, drug companies, and patients?",
+    opts: ["~50%", "~30%", "~80%", "~95%"],
+    correct: 2,
+    explain: "About 80%. PBMs are the chokepoint of the US drug supply chain. They negotiate rebates, set formularies, and determine what patients pay at the counter. Three firms controlling 80% of that chokepoint is the antitrust scandal worth flagging. (Source: FTC PBM Report)"
+  },
+  {
+    q: "How wide is the life expectancy gap between the wealthiest and poorest US counties?",
+    opts: ["About 3 years", "About 7 years", "About 15 years", "About 25 years"],
+    correct: 2,
+    explain: "About 15 years between the richest counties and the poorest counties. In rural areas the gap is roughly 10 years. Every $10,000 increase in a county's median income adds about 2.6 years to life expectancy. Being working class in America literally shortens your life. (Source: Senate HELP Committee, March 2025)"
   }
 ];
 
@@ -2229,12 +2271,22 @@ function renderQuestion() {
   var qEl = document.getElementById('quizQ');
   if (!qEl) return;
   qEl.textContent = (quizIdx + 1) + '/' + quizData.length + ': ' + d.q;
+
+  // Shuffle options per render so the correct index is unpredictable.
+  // Track which shuffled position now holds the correct answer.
+  var pairs = d.opts.map(function(o, i){ return { opt: o, isCorrect: i === d.correct }; });
+  for (var s = pairs.length - 1; s > 0; s--) {
+    var r = Math.floor(Math.random() * (s + 1));
+    var tmp = pairs[s]; pairs[s] = pairs[r]; pairs[r] = tmp;
+  }
+  d._renderedCorrect = pairs.findIndex(function(p){ return p.isCorrect; });
+
   var optsEl = document.getElementById('quizOpts');
   optsEl.innerHTML = '';
-  d.opts.forEach(function(opt, i) {
+  pairs.forEach(function(p, i) {
     var btn = document.createElement('div');
     btn.className = 'quiz-opt';
-    btn.textContent = opt;
+    btn.textContent = p.opt;
     btn.onclick = function() { answerQuestion(i); };
     optsEl.appendChild(btn);
   });
@@ -2248,13 +2300,14 @@ function answerQuestion(idx) {
   if (quizAnswered) return;
   quizAnswered = true;
   var d = quizData[quizIdx];
+  var correctIdx = (typeof d._renderedCorrect === 'number') ? d._renderedCorrect : d.correct;
   var opts = document.querySelectorAll('#quizOpts .quiz-opt');
   opts.forEach(function(o, i) {
-    if (i === d.correct) o.classList.add('correct');
-    else if (i === idx && i !== d.correct) o.classList.add('wrong');
+    if (i === correctIdx) o.classList.add('correct');
+    else if (i === idx && i !== correctIdx) o.classList.add('wrong');
     o.style.pointerEvents = 'none';
   });
-  if (idx === d.correct) quizCorrect++;
+  if (idx === correctIdx) quizCorrect++;
   var res = document.getElementById('quizResult');
   res.textContent = d.explain;
   res.className = 'quiz-result show';
