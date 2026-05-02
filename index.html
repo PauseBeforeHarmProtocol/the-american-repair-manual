@@ -385,6 +385,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
     <button class="navtab" data-panel="diagnosis" onclick="showPanel('diagnosis')" role="tab">Diagnosis</button>
     <button class="navtab" data-panel="whywelose" onclick="showPanel('whywelose')" role="tab">Why We Lose</button>
     <button class="navtab" data-panel="maga" onclick="showPanel('maga')" role="tab">MAGA &amp; The GOP</button>
+    <button class="navtab" data-panel="vote" onclick="showPanel('vote')" role="tab">Vote The Primary</button>
     <button class="navtab" data-panel="democracy" onclick="showPanel('democracy')" role="tab">Democracy Repair</button>
     <button class="navtab" data-panel="truth" onclick="showPanel('truth')" role="tab">Truth Repair</button>
     <button class="navtab" data-panel="economic" onclick="showPanel('economic')" role="tab">Economic Repair</button>
@@ -407,6 +408,11 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <div class="home-hero">
     <h2>America Needs a <span>CAPA</span></h2>
     <p class="tagline">You are not crazy. You are not lazy. You are not bad with money. You are living in a country where 905 billionaires hold $7.8 trillion while 62% of Americans live paycheck to paycheck. Where CEOs make 281 times what their workers make. Where corporations post $4 trillion in annual profits while wages shrink as a share of the economy. Where employers steal $50 billion a year from workers&rsquo; paychecks &mdash; more than all robberies, burglaries, and car thefts in America <em>combined</em> &mdash; and almost nobody goes to jail. You are not failing. You are being robbed. This is the repair manual.</p>
+  </div>
+
+  <div class="callout gold" style="margin:2rem auto;max-width:780px;text-align:center;border:3px solid var(--gold);">
+    <div class="callout-title" style="font-size:.85rem;">If You Do One Civic Thing This Year</div>
+    <div class="callout-text" style="font-size:1rem;line-height:1.6;"><strong>Vote your primary.</strong> Most general elections are already decided by the time November arrives. Primary turnout is the lever the donor class fears most &mdash; because it is the only thing they cannot quietly buy. <a href="javascript:showPanel('vote');" style="color:var(--gold2);font-weight:700;text-decoration:underline;">Read the Vote The Primary tab &rarr;</a></div>
   </div>
 
   <div class="callout navy" style="margin:2rem auto;max-width:780px;">
@@ -922,6 +928,161 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-se
   <div class="callout gold">
     <div class="callout-title">The Invitation</div>
     <div class="callout-text">If you are a working-class MAGA voter and you read this far, thank you. The Manual does not need you to vote any particular way. It needs you to ask any candidate, of any party, the 12 questions on the Candidate Test &mdash; and judge them on the answers, not the brand. If a Republican answers them honestly, vote Republican. If a Democrat answers them honestly, vote Democrat. If neither will, vote primary. The fight is not between Red and Blue. The fight is between people who work and people who own &mdash; and you are on the same side as the neighbor you are told to hate.</div>
+  </div>
+</div>
+
+<div class="panel" id="panel-vote">
+  <div class="home-hero">
+    <h2>Vote <span>The Primary</span></h2>
+    <p class="tagline">If you do one civic thing this year, vote your primary. Most general elections are already decided by the time the general arrives. The primary is the highest-leverage, lowest-cost civic action available to almost every American &mdash; and the lever the donor class fears most, because turnout is the only thing they cannot quietly buy.</p>
+  </div>
+
+  <h3 class="section-header first">Why Voting Matters</h3>
+  <div class="content-block">
+    <p>The Manual&rsquo;s entire architecture depends on one assumption: that ordinary people can still change who holds power without picking up a weapon. That assumption is the whole game. It only holds if people vote.</p>
+    <p>Every other repair package in this Manual &mdash; healthcare, housing, wages, antitrust, foreign capture, judicial reform, climate, AI governance, all of it &mdash; routes through elected officials. None of them get fixed by a press release. None of them get fixed by a viral post. They get fixed by people who got elected to fix them, voted in by people who showed up. If turnout is low, the donor class wins by default, every cycle, on every issue. The whole Manual collapses to wishful thinking the moment voting collapses.</p>
+    <p>Voting is the only legal lever that puts a billionaire and a working-class voter on equal footing. They each get one ballot. They cannot legally buy yours. They cannot legally vote twice. Inside the booth, the playing field is the most equal it ever gets in American life. Outside the booth, they spend $1.9 billion in dark money trying to convince you that does not matter &mdash; <em>because it does</em>, and they need you to forget that.</p>
+    <p>The math is hard to argue with. There are roughly 905 US billionaires. There are roughly 240 million eligible US voters. Even in their wildest scenario, the billionaires cast 905 votes. The other 239,999,095 are the math problem they spend the year buying around. They fund media to lower your trust. They fund data operations to find which voters can be persuaded to stay home. They fund primary-season disinformation to confuse the field. They lobby for the suppression laws that make voting harder for the people most likely to vote against them. They invest in cynicism &mdash; the &ldquo;your vote does not matter&rdquo; narrative &mdash; because cynicism is cheaper than persuasion. They cannot cast a hundred million votes <em>for</em> you. So they need a hundred million people to cast none.</p>
+    <p>If you vote, you defeat that strategy in the only way it can be defeated. If you do not, you have not stayed neutral. You have handed your share of the decision to the small organized minority that did show up. There is no abstaining from a ballot you skipped &mdash; whoever wins still represents you, decides for you, signs the bill that touches your life, sets the policy that runs your kid&rsquo;s school, your hospital, your rent, your wage floor, your draft eligibility. The only question is whether you participated in choosing them.</p>
+    <p>This is not preaching about democracy as a sacred ritual. This is QA arithmetic. A system where 80 million eligible voters do not vote is a system optimized for whoever benefits from those 80 million staying home. That is the system we have. Showing up is how it gets unwired.</p>
+  </div>
+
+  <div class="callout navy" style="margin:1.5rem 0;">
+    <div class="callout-title">The Math In One Paragraph &mdash; Why The Primary Specifically</div>
+    <div class="callout-text">By most analyses, ~80% of US House districts are non-competitive in the general election (gerrymandered, sorted, or both). Average midterm primary turnout runs 15&ndash;25%. Off-year turnout runs lower. That means a typical House seat is decided by 5&ndash;15% of registered voters in the dominant party &mdash; in the primary. If you skip the primary, you are letting a small, organized, often well-funded minority pick your representation. Show up.</div>
+  </div>
+
+  <h3 class="section-header">Why Primaries Decide Everything</h3>
+  <div class="content-block">
+    <p>The mythology of American democracy is the November general election. The reality is that for the vast majority of US House seats, most state legislative seats, most county and city seats, and most prosecutor / sheriff / SOS races, <em>the contest is over before November</em>. The general election is a rubber stamp on whoever won the dominant party&rsquo;s primary.</p>
+    <p>This is not a conspiracy. It is geography (urban / rural sorting), gerrymandering (drawn maps), incumbency advantage (name recognition), and money (donor capture of primary fields). The result is the same: <strong>the primary is the election that matters in most American races, and almost nobody votes in it.</strong></p>
+    <p>The donor class understands this. That is why $1.9B in 2024 dark money was concentrated where it could move primary outcomes. That is why AIPAC and UDP spent $100M+ in primaries instead of generals. That is why Pelosi&rsquo;s and Crenshaw&rsquo;s and Shreve&rsquo;s caucuses keep blocking a stock-trading ban that polls 70%+ &mdash; because the people who pay them write checks in primary season, and the voters who would punish them mostly do not show up until November when it is already over.</p>
+    <p>Turnout is the lever. Every other repair in this Manual gets harder if turnout is low and easier if turnout is high. Especially in primaries.</p>
+  </div>
+
+  <h3 class="section-header">The Numbers</h3>
+  <div class="data-grid">
+    <div class="data-card" id="stat-non-competitive-house"><div class="dc-num">~80%</div><div class="dc-label">US House districts that are non-competitive in the general election (Cook Political Report PVI analysis)</div><div class="dc-src"><span class="claim-badge estimate">ESTIMATE</span><a href="https://www.cookpolitical.com/" target="_blank" rel="noopener">Cook Political Report</a></div></div>
+    <div class="data-card" id="stat-primary-turnout-midterm"><div class="dc-num">~17%</div><div class="dc-label">Average congressional primary turnout in recent midterm cycles (varies widely by state)</div><div class="dc-src"><span class="claim-badge estimate">ESTIMATE</span><a href="https://electionlab.mit.edu/" target="_blank" rel="noopener">MIT Election Lab</a></div></div>
+    <div class="data-card" id="stat-general-turnout-2024"><div class="dc-num">~66%</div><div class="dc-label">US presidential-year general turnout (2024) &mdash; high by US standards, still low by global democracy standards</div><div class="dc-src"><span class="claim-badge verified">VERIFIED</span><a href="https://www.census.gov/topics/public-sector/voting.html" target="_blank" rel="noopener">US Census</a></div></div>
+    <div class="data-card" id="stat-eligible-nonvoters"><div class="dc-num">80M+</div><div class="dc-label">Eligible Americans who did not vote in 2024 &mdash; larger than the margin of any modern presidential race</div><div class="dc-src"><span class="claim-badge verified">VERIFIED</span><a href="https://www.census.gov/topics/public-sector/voting.html" target="_blank" rel="noopener">US Census</a></div></div>
+    <div class="data-card" id="stat-fraud-rate"><div class="dc-num">~0.0003%</div><div class="dc-label">Documented in-person voter fraud rate across multiple state-level studies (Brennan Center, Heritage Foundation, news21)</div><div class="dc-src"><span class="claim-badge verified">VERIFIED</span><a href="https://www.brennancenter.org/issues/ensure-every-american-can-vote/vote-suppression/myth-voter-fraud" target="_blank" rel="noopener">Brennan Center</a></div></div>
+    <div class="data-card" id="stat-vote-suppression-laws"><div class="dc-num">29</div><div class="dc-label">States that enacted voter-suppression laws between 2021 and 2024 (voter ID expansion, roll-purge rules, mail-in restrictions, etc.)</div><div class="dc-src"><span class="claim-badge estimate">ESTIMATE</span><a href="https://www.brennancenter.org/our-work/research-reports" target="_blank" rel="noopener">Brennan Center</a></div></div>
+    <div class="data-card" id="stat-incumbent-reelect-rate"><div class="dc-num">~95%</div><div class="dc-label">House incumbent re-election rate in recent cycles &mdash; one of the highest in any democracy</div><div class="dc-src"><span class="claim-badge verified">VERIFIED</span><a href="https://www.opensecrets.org/elections-overview/reelection-rates" target="_blank" rel="noopener">OpenSecrets</a></div></div>
+    <div class="data-card" id="stat-felony-disenfranchised"><div class="dc-num">~4M</div><div class="dc-label">Americans currently disenfranchised by state felony-conviction rules (varies dramatically by state)</div><div class="dc-src"><span class="claim-badge estimate">ESTIMATE</span><a href="https://www.sentencingproject.org/" target="_blank" rel="noopener">Sentencing Project</a></div></div>
+  </div>
+
+  <h3 class="section-header">The "Voter Fraud" Myth, Honestly</h3>
+  <div class="content-block">
+    <p>Across multiple state-level studies &mdash; including studies done by parties on opposite sides of the question (Brennan Center on the left, Heritage Foundation&rsquo;s own database on the right, MIT Election Lab nonpartisan, news21 academic) &mdash; the rate of in-person voter fraud sits in the neighborhood of <strong>0.0003%</strong>. That is roughly <em>three cases per million votes cast</em>. Heritage&rsquo;s own database, which they curated specifically to make the case for restrictive voting laws, contains a few thousand cases across multiple decades and all 50 states. In-person voter fraud, statistically, does not exist as a meaningful electoral force in the United States.</p>
+    <p>This matters because the fraud narrative is itself the suppression mechanism. The myth is what justifies voter ID laws, polling-place reductions in low-income precincts, voter-roll purges that disproportionately remove voters who move, restrictions on mail-in voting, criminalization of helping disabled or elderly voters fill out ballots, and the late-cycle election-administration capture that lets partisans refuse to certify outcomes. The fraud claim is the sales pitch; the suppression is the product.</p>
+    <p>That does not mean every concern about election integrity is bad faith. There are real chain-of-custody questions, real registration-roll-quality questions, real ballot-design questions, and real questions about election-administration capture by partisans. Those questions deserve serious answers and serious procedural fixes (paper ballots, risk-limiting audits, nonpartisan election administration, transparent chain-of-custody). What does not deserve respect is the use of statistically nonexistent in-person fraud to disenfranchise millions of real voters whose only "crime" is being poor, mobile, formerly incarcerated, disabled, or non-white.</p>
+  </div>
+  <div class="callout gold">
+    <div class="callout-title">The Real Election Integrity Issues</div>
+    <div class="callout-text">If you care about election integrity, the actual surface area is: voter-roll purges, gerrymandering, dark money, election-administration capture by partisans, certification refusal by partisan officials, voter intimidation, polling-place reduction, restrictive ID requirements that fall harder on the poor and the working class, late ballot-counting rules, mail-ballot signature-match disputes, and disinformation about polling locations. Those are real. In-person fraud is not.</div>
+  </div>
+
+  <h3 class="section-header">How To Vote &mdash; The Mechanics</h3>
+  <div class="content-block">
+    <p>State rules vary. The fundamentals are universal. If anything below conflicts with what your state Secretary of State says, the SOS is authoritative.</p>
+  </div>
+  <ol class="policy-list" style="list-style:none;padding-left:0;">
+    <li><strong>1. Register.</strong> Most states allow online registration. Some require in-person or mail. Deadlines run from same-day (~20 states) to 30 days before the election (~16 states). Verify your registration is active <em>before</em> deadlines &mdash; voter-roll purges have removed millions of legitimate voters in recent cycles. Check at <a href="https://www.vote.org/am-i-registered-to-vote/" target="_blank" rel="noopener">vote.org/am-i-registered-to-vote</a>.</li>
+    <li><strong>2. Know your primary type.</strong> <strong>Closed</strong> primary: must be registered with the party (~14 states). <strong>Open</strong>: any registered voter can vote in any party&rsquo;s primary (~15 states). <strong>Semi-closed</strong>: independents can vote, party members are locked to their party. <strong>Top-two / jungle</strong>: all candidates on one ballot, top two go to general (CA, WA, others). If your state is closed and you are an independent, you may need to change registration <em>before the deadline</em> to vote in the primary you want.</li>
+    <li><strong>3. Find your primary date.</strong> Primaries are state-set, not federal. They run from March through September depending on state and office. Off-year and special-election primaries can be in any month. Check your state SOS for the calendar.</li>
+    <li><strong>4. Pick your method.</strong> In-person on election day. Early voting (most states; window varies). Absentee / mail-in (some states require an excuse, some are no-excuse, some are mail-by-default). Drop boxes (where available). Whichever method works for your schedule.</li>
+    <li><strong>5. Bring ID if your state requires it.</strong> 35+ states have some voter-ID requirement; rules vary from "show any document with your name" to strict photo ID. If your state has strict ID and you do not have one, free state IDs are available in most states &mdash; allow time. <a href="https://www.aclu.org/know-your-rights/voting-rights" target="_blank" rel="noopener">ACLU Know Your Rights: Voting</a> is the cleanest summary.</li>
+    <li><strong>6. Vote the whole ballot.</strong> Most ballots have 10&ndash;30 races below the top of the ticket. School board, city council, county commission, state legislature, prosecutor, sheriff, judges, ballot initiatives. The leverage is at the bottom of the ballot, not the top. Bring notes if you need them &mdash; most states allow it.</li>
+    <li><strong>7. If something goes wrong, do not leave.</strong> If you are turned away, told you are not registered when you should be, given a provisional ballot you do not understand, sent to the wrong precinct, or face intimidation, call <strong>866-OUR-VOTE</strong> (Election Protection hotline, run by a nonpartisan coalition of voting-rights groups). They will walk you through your options on the spot.</li>
+  </ol>
+
+  <h3 class="section-header">State-By-State &mdash; The Canonical Lookups</h3>
+  <div class="content-block">
+    <p>Every state runs its own election system. Rules change frequently. Always verify with your state Secretary of State or election administrator. The links below are the canonical national-level lookups that route you to your state.</p>
+  </div>
+  <div class="policy-grid">
+    <div class="policy-card blue-accent">
+      <div class="pc-icon">&#128269;</div>
+      <div class="pc-title">Find Your Election Office</div>
+      <div class="pc-text">USA.gov&rsquo;s election-office locator routes you to your state Secretary of State and your local election administrator. Always the authoritative source for your state.<br><br><a href="https://www.usa.gov/election-office" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;">USA.gov / election-office</a></div>
+    </div>
+    <div class="policy-card blue-accent">
+      <div class="pc-icon">&#128221;</div>
+      <div class="pc-title">Register / Verify Registration</div>
+      <div class="pc-text">Vote.org provides one-click registration for most states, deadline lookups, and registration verification. Run by a nonpartisan voting-rights nonprofit.<br><br><a href="https://www.vote.org/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;">vote.org</a></div>
+    </div>
+    <div class="policy-card blue-accent">
+      <div class="pc-icon">&#128203;</div>
+      <div class="pc-title">See Your Full Ballot In Advance</div>
+      <div class="pc-text">BallotReady shows every race and candidate on your specific ballot, with positions and endorsements. Free, nonpartisan.<br><br><a href="https://www.ballotready.org/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;">ballotready.org</a></div>
+    </div>
+    <div class="policy-card blue-accent">
+      <div class="pc-icon">&#128218;</div>
+      <div class="pc-title">Comprehensive Race Information</div>
+      <div class="pc-text">Ballotpedia is the largest nonpartisan database of US elections, candidates, and ballot measures. Especially useful for down-ballot races.<br><br><a href="https://ballotpedia.org/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;">ballotpedia.org</a></div>
+    </div>
+    <div class="policy-card gold-accent">
+      <div class="pc-icon">&#128737;</div>
+      <div class="pc-title">If You Were Formerly Incarcerated</div>
+      <div class="pc-text">Voting rights for people with felony convictions vary dramatically by state &mdash; some restore automatically on release, some after sentence completion, some require petition, two never restore (with limited exceptions). Get a state-specific answer.<br><br><a href="https://restoreyourvote.org/" target="_blank" rel="noopener" style="color:var(--gold2);font-weight:600;">restoreyourvote.org</a> &middot; <a href="https://www.sentencingproject.org/research/felony-disenfranchisement-laws-in-the-united-states/" target="_blank" rel="noopener" style="color:var(--gold2);font-weight:600;">Sentencing Project state guide</a></div>
+    </div>
+    <div class="policy-card red-accent">
+      <div class="pc-icon">&#128242;</div>
+      <div class="pc-title">If Something Goes Wrong At The Polls</div>
+      <div class="pc-text">Election Protection nonpartisan hotline: <strong>866-OUR-VOTE</strong> (866-687-8683) for English. <strong>888-VE-Y-VOTA</strong> (888-839-8682) for Spanish. <strong>888-API-VOTE</strong> (888-274-8683) for Asian languages. <strong>844-418-1682</strong> for Arabic. They answer through the entire voting period.<br><br><a href="https://866ourvote.org/" target="_blank" rel="noopener" style="color:var(--red);font-weight:600;">866ourvote.org</a></div>
+    </div>
+    <div class="policy-card green-accent">
+      <div class="pc-icon">&#9878;&#65039;</div>
+      <div class="pc-title">Know Your Rights At The Polls</div>
+      <div class="pc-text">ACLU and the League of Women Voters maintain plain-language guides to what poll workers can and cannot do, what intimidation looks like, when you can request a provisional ballot, and what to do if you are turned away.<br><br><a href="https://www.aclu.org/know-your-rights/voting-rights" target="_blank" rel="noopener" style="color:var(--green);font-weight:600;">ACLU: Voting Rights</a> &middot; <a href="https://www.lwv.org/voting-elections" target="_blank" rel="noopener" style="color:var(--green);font-weight:600;">League of Women Voters</a></div>
+    </div>
+    <div class="policy-card purple-accent">
+      <div class="pc-icon">&#129534;</div>
+      <div class="pc-title">Election Protection &amp; Disinformation Reporting</div>
+      <div class="pc-text">Common Cause Election Protection runs election-day monitoring. Report disinformation, intimidation, or voter-roll problems. Campaign Legal Center handles strategic litigation on voter-suppression rules.<br><br><a href="https://www.commoncause.org/election-protection/" target="_blank" rel="noopener" style="color:var(--purple);font-weight:600;">Common Cause</a> &middot; <a href="https://campaignlegal.org/" target="_blank" rel="noopener" style="color:var(--purple);font-weight:600;">Campaign Legal Center</a></div>
+    </div>
+  </div>
+
+  <h3 class="section-header">Down-Ballot Is Where The Leverage Is</h3>
+  <div class="content-block">
+    <p>The presidential race gets ~95% of the attention. It controls maybe 30% of what touches your daily life. The other 70% is decided in races you have probably never paid attention to:</p>
+    <p><strong>School board.</strong> Curriculum, book bans, school budgets, who teaches what. Often decided by a few hundred votes.</p>
+    <p><strong>City council and county commission.</strong> Zoning, rent rules, police policy, local taxes, infrastructure, water, public health. Decided by a few thousand.</p>
+    <p><strong>State legislature.</strong> Redistricting, voting laws, healthcare expansion, criminal justice, education funding, abortion access, labor law. Most of what affects your daily life happens here. Many state-leg races are decided by under 5,000 votes.</p>
+    <p><strong>Prosecutor / district attorney.</strong> Decides who gets charged and who walks. Whether corporate crime is treated like crime. Whether police misconduct gets investigated. Often runs unopposed in primary, then unopposed in general &mdash; <em>which is exactly why your primary vote here is the highest-leverage vote you ever cast</em>.</p>
+    <p><strong>Sheriff.</strong> Often the most powerful unaccountable office in the county. Some of them run their own jails as profit centers. Some have refused to enforce gun laws or domestic-violence orders. Decided by a few thousand votes.</p>
+    <p><strong>Secretary of State.</strong> Runs your state&rsquo;s elections. After 2020, the right-wing specifically targeted SOS races. The position decides who gets purged, who gets certified, and whether the next election is administered honestly.</p>
+    <p><strong>State attorney general.</strong> Can sue corporations, investigate corruption, enforce consumer protection, and check executive overreach. State AGs have driven most major antitrust action in recent years.</p>
+    <p><strong>State supreme court / state appellate judges.</strong> In many states these are elected. They decide voting-rights, abortion, and corporate-liability cases that the federal courts will not touch. Judicial elections are often the lowest-turnout races on the ballot &mdash; meaning a few thousand informed voters can move them.</p>
+    <p>The Local Mode template (in the Action panel) walks through how to apply this systematically to your district.</p>
+  </div>
+
+  <div class="pbhp-box">
+    <div class="pbhp-label">PBHP Harm Analysis: Skipping The Primary</div>
+    <div class="pbhp-row">
+      <div class="pbhp-cell"><strong>Who Benefits</strong>Incumbents protected by name recognition. Donor-class&ndash;funded primary candidates who can drown out grassroots opposition. Uncontested judges, prosecutors, and election administrators.</div>
+      <div class="pbhp-cell"><strong>Who Pays</strong>Every voter in the dominant-party primary&rsquo;s district who would have voted differently. The 80M+ Americans who do not vote at all and so absorb whoever the 5&ndash;15% picked. Working-class voters whose interests rarely align with the small organized minority that does vote primaries.</div>
+      <div class="pbhp-cell"><strong>Who Gets Harmed First</strong>Communities in safe-seat districts where the primary is the entire election. Vulnerable populations that depend on local prosecutors, judges, and election administrators acting in good faith. Anyone whose representation is captured by donor money in primary season.</div>
+      <div class="pbhp-cell"><strong>Reversibility</strong>Reversible &mdash; one cycle of higher primary turnout starts moving outcomes immediately. The donor advantage is large but not absolute, and primary races have flipped on margins of hundreds of votes.</div>
+      <div class="pbhp-cell"><strong>Power Asymmetry</strong>High in the donor class&rsquo;s favor by default. Inverted by turnout. This is the rare political lever where ordinary people, organized, can outweigh concentrated wealth &mdash; because votes do not scale with money in the booth itself.</div>
+    </div>
+  </div>
+
+  <h3 class="section-header">First-Time Voter? Read This.</h3>
+  <div class="content-block">
+    <p>If you have never voted before, or have not voted in a long time:</p>
+    <p>1. <strong>Verify your registration today.</strong> Right now. <a href="https://www.vote.org/am-i-registered-to-vote/" target="_blank" rel="noopener">vote.org/am-i-registered-to-vote</a>. Voter-roll purges have removed millions of legitimate voters in recent cycles, including people who voted last cycle and assumed they were still registered. Verify, do not assume.</p>
+    <p>2. <strong>If your state has same-day registration</strong> (about 20 states do), you can register and vote on the same day. Bring proof of address.</p>
+    <p>3. <strong>If your state has a deadline</strong> (most do, 8&ndash;30 days before election day), register now, even if the next election is months away. Once you are registered, you stay registered as long as you keep voting and your address is current.</p>
+    <p>4. <strong>Mail-ballot the first time if you can.</strong> A mail ballot at the kitchen table with the BallotReady guide open lets you research every race without holding up a polling-place line.</p>
+    <p>5. <strong>Bring a friend the first in-person time.</strong> Polling places can be confusing. Going with someone who has done it before takes the friction down to almost zero.</p>
+    <p>6. <strong>The poll workers are not trying to trip you up.</strong> They are mostly retired neighbors who took the training. If you are confused, ask. If something feels wrong, call 866-OUR-VOTE before leaving.</p>
+  </div>
+
+  <div class="callout gold" style="margin-top:2rem;">
+    <div class="callout-title">The One Thing</div>
+    <div class="callout-text">If you take one action from this entire Manual, take this one. Verify your registration today. Mark your next primary date in your calendar. Vote the whole ballot when it arrives. Bring a neighbor. The donor class spent $1.9 billion on dark money in 2024 because turnout is the only thing they cannot quietly buy. Show up.</div>
   </div>
 </div>
 
