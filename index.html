@@ -3462,4 +3462,21 @@ function copyEmailTemplate() {
     return '$' + Math.floor(n).toLocaleString('en-US');
   }
 
-  function 
+  function tick() {
+    var now = Date.now();
+    var elapsed = (now - anchorDate) / 1000;
+    var current = anchorDebt + (elapsed * ratePerSec);
+    var el = document.getElementById('debtCounter');
+    if (el) el.textContent = fmt(current);
+    var elC = document.getElementById('debtPerCitizen');
+    if (elC) elC.textContent = fmt(current / pop);
+    var elT = document.getElementById('debtPerTaxpayer');
+    if (elT) elT.textContent = fmt(current / taxpayers);
+  }
+
+  tick();
+  setInterval(tick, 250);
+})();
+</script>
+</body>
+</html>
