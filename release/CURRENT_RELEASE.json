@@ -1,0 +1,9 @@
+{
+  "schema": "american-repair-manual-release-v1",
+  "prepared": "2026-07-18",
+  "source": "index.html",
+  "download": "downloads/THE_AMERICAN_REPAIR_MANUAL_CURRENT.html",
+  "bytes": 591562,
+  "sha256": "334abf4b63a3b1ba8194b683195b74b2baf0fc55cbe87d44066dd8cd0a8bf665",
+  "claim_boundary": "file integrity and structure only; policy content not independently validated"
+}
