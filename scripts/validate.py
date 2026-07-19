@@ -5,6 +5,9 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 files=[root/'index.html',root/'the-american-repair-manual.html']
 for p in files: assert p.exists(), p
+social_card=root/'social-card.png'
+assert social_card.exists(), social_card
+assert social_card.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), 'social-card.png is not a PNG'
 text=(root/'index.html').read_text(encoding='utf-8',errors='replace')
 for marker in ['THE AMERICAN REPAIR MANUAL','CAPA','Pause Before Harm','<meta name="viewport"']:
     assert marker.lower() in text.lower(), marker

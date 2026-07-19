@@ -1,4 +1,17 @@
-# The American Repair Manual — CAPA Edition
+<p align="center">
+  <img src="social-card.png" alt="A civic repair blueprint tracing defects through root cause, correction, prevention, and effectiveness checks" width="100%">
+</p>
+
+<h1 align="center">The American Repair Manual — CAPA Edition</h1>
+
+<p align="center"><strong>Find the failure. Trace the cause. Repair the system. Prove the fix held.</strong></p>
+
+<p align="center">
+  <a href="index.html">Open the manual</a> ·
+  <a href="downloads/THE_AMERICAN_REPAIR_MANUAL_CURRENT.html">Download standalone HTML</a> ·
+  <a href="CURRENT_RELEASE.md">Release status</a> ·
+  <a href="CHANGELOG.md">Changelog</a>
+</p>
 
 A civic quality-assurance framework for repairing American democracy through corrective and preventive action.
 
